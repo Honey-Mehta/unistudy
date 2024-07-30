@@ -48,6 +48,11 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
             </div>
+              
+
+             
+      
+
 
             <ul class="navbar-nav gap-2">
 
@@ -103,162 +108,16 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
             </ul>
+            <div class="container justify-content-center">
 
-            <div class="d-block d-lg-none">
-              <div class="brand-logo d-flex align-items-center justify-content-between">
-                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
-                  <b class="logo-icon">
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                    <!-- Dark Logo icon -->
-                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="dark-logo" />
-                    <!-- Light Logo icon -->
-                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="light-logo" />
-                  </b>
-                  <!--End Logo icon -->
-                  <!-- Logo text -->
-                  <span class="logo-text">
-                    <!-- dark Logo text -->
-                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" alt="homepage" class="dark-logo ps-2" />
-                    <!-- Light Logo text -->
-                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" class="light-logo ps-2" alt="homepage" />
-                  </span>
-                </a>
-              </div>
+<h1 class="text-white">Document Verification</h1>
+
+</div>
+           
 
 
-            </div>
-            <ul class="navbar-nav flex-row  gap-2 align-items-center justify-content-center d-flex d-lg-none">
-              <li class="nav-item dropdown nav-icon-hover-bg rounded-circle">
-                <a class="navbar-toggler nav-link text-white nav-icon-hover border-0" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="">
-                    <i class="ti ti-dots fs-7"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <div class="d-flex align-items-center justify-content-between py-2 py-lg-0">
-                <ul class="navbar-nav flex-row  align-items-center justify-content-center d-flex d-lg-none">
-                  <li class="nav-item dropdown">
-                    <a href="javascript:void(0)" class="nav-link d-flex d-lg-none align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar" aria-controls="offcanvasWithBothOptions">
-                      <iconify-icon icon="solar:menu-dots-circle-linear"></iconify-icon>
-                    </a>
-                  </li>
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
-                 
-                  </li>
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-secondary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mathew Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Bianca Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Andrew Johnson</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Miyra Strokes</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mark, Stoinus & Rishvi..</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-7.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Eliga Rush</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Messages</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-                    </div>
-                  </li>
-                </ul>
+            
+          
                 <ul class="navbar-nav gap-2 flex-row ms-auto align-items-center justify-content-center">
                   <!-- ------------------------------- -->
                   <!-- start language Dropdown -->
@@ -276,18 +135,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                   </li>
 
 
-                  <!-- ------------------------------- -->
-                  <!-- end language Dropdown -->
-                  <!-- ------------------------------- -->
-
-                  <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                    </a>
-                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                    </a>
-                  </li>
+                
 
 
                
@@ -319,43 +167,11 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                          <div class="px-3 pt-3">
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class=" d-flex  align-items-center ">
-                                My Profile
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="javascript:void(0)" class=" d-flex  align-items-center ">
-                                My Projects
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class=" d-flex  align-items-center ">
-                                Inbox
-                              </a>
-                            </div>
-                          </div>
-                          <hr>
+                        
+                        
                           <div class="px-3">
-                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
-                              <a href="javascript:void(0)" class="">
-                                Mode
-                              </a>
-                              <div>
-                                <a class="moon dark-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                                </a>
-                                <a class="sun light-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                                </a>
-                              </div>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class=" d-flex  align-items-center  ">
-                                Account Settings
-                              </a>
-                            </div>
+                            
+                            
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -709,37 +525,17 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                     </div>
                     <div class="col-4 ms-n7">
                       <div class="position-relative p-3 border-start h-100">
-                        <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
-                        <ul>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html">Pricing Page</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-login.html">Authentication Design</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-register.html">Register Now</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-error.html">404 Error Page</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html">Notes App</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html">User Application</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html">Account Settings</a>
-                          </li>
-                        </ul>
+                       
+                       
                       </div>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
+            
 
+          
 
             <a class="navbar-toggler nav-icon-hover p-0 border-0 text-white" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="p-2">
@@ -896,7 +692,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                       </div>
 
 
-
+                    
 
 
                     </div>
@@ -1007,7 +803,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                     </div>
                   </li>
 
-
+                 
                   <!-- ------------------------------- -->
                   <!-- start profile Dropdown -->
                   <!-- ------------------------------- -->
@@ -1097,24 +893,16 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
 
-        <div class="container-fluid p-5 text-white text-center" style="margin-top:30px; max-width:100%;">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1>Document Verification</h1>
-    </div>
-  </div>
-</div>
 
 
 
-
-<div class="container-fluid mt-5 " style="max-width:100%;">
+<div class="container-fluid" style="max-width:100%;">
   <form id="insertForm" method="POST">
     <input type="hidden" value="<?php echo $id; ?>" name="id">
     
-    <div class="row" style="border:10px solid red;">
+    <div class="row">
       <!-- Passport -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">Passport</h4>
         <?php if ($fetch['image'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1125,23 +913,40 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="250px" height="250px" />
           </div>
             <div class="d-flex justify-content-center mt-2" >
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-passport" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a onclick="return confirm('Are you sure delete?')" href="?delete_id=<?php echo $fetch['id']; ?>"  style="text-color:blue; margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-passport" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a onclick="return confirm('Are you sure delete?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger bt-lg"  style="text-color:blue; margin-left:20px;">Delete</a>
             </div>
           
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
         <input id="approve_passport" class="form-check-input" type="radio" name="passport" value="1" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 1) {echo "checked";} ?>>
 <label for="approve_passport" class="form-check-label"><h5>Approve</h5></label>
 <input id="reject_passport" class="form-check-input" type="radio" name="passport" value="2" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 2) {echo "checked";} ?>>
 <label for="reject_passport" class="form-check-label"><h5>Reject</h5></label>
 <input id="pending_passport" class="form-check-input" type="radio" name="passport" value="0" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 0) {echo "checked";} ?>>
 <label for="pending_passport" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+   
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio"  name="passport" value="1" id="option1" <?php if($fetch['passport_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio"   name="passport" value="2"  <?php if($fetch['passport_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio"  name="passport" value="0" <?php if($fetch['passport_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+
+
+
+
       </div>
 
       <!-- Marriage Certificate -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">Marriage Certificate</h4>
         <?php if ($fetch['marriage_certificate'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1152,23 +957,40 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-marriage-certificate" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['marriage_certificate']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-marriage-certificate" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
          
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="1" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 1) {echo "checked";} ?>>
           <label for="approve_marriage_certificate" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="2" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 2) {echo "checked";} ?>>
           <label for="reject_marriage_certificate" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="0" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 0) {echo "checked";} ?>>
           <label for="pending_marriage_certificate" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+
+      
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="marriage_certificate" value="1" id="option1" <?php if($fetch['marriage_certificate_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio"   name="marriage_certificate" value="2"  <?php if($fetch['marriage_certificate_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio"  name="marriage_certificate" value="0" value="0" <?php if($fetch['marriage_certificate_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+
+
+
       </div>
 
       <!-- College Transcript -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">College Transcript</h4>
         <?php if ($fetch['college_transcript'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1179,24 +1001,49 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-college-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['college_transcript']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-college-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
           
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_college_transcript" class="form-check-input" type="radio" name="college_transcript" value="1" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 1) {echo "checked";} ?>>
           <label for="approve_college_transcript" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_college_transcript" class="form-check-input" type="radio" name="college_transcript" value="2" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 2) {echo "checked";} ?>>
           <label for="reject_college_transcript" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_college_transcript"class="form-check-input" type="radio" name="college_transcript" value="0" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 0) {echo "checked";} ?>>
           <label  for="pending_college_transcript" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+
+
+
+        
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="college_transcript" value="1" id="option1" <?php if($fetch['college_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio"  name="college_transcript" value="2" <?php if($fetch['college_transcript_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio"  name="college_transcript" value="0" <?php if($fetch['college_transcript_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+
+
+
+
+
+
+
+
+
       </div>
 
 
       <!-- College Diploma -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">College Diploma</h4>
         <?php if ($fetch['college_diploma'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1207,27 +1054,41 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="250px" height="250px" />
           </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-college-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['college_diploma']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-college-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a href="#"class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
          
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="1" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?>>
           <label for="approve_college_diploma" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="2" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 2) {echo "checked";} ?>>
           <label for="reject_college_diploma" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="0" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 0) {echo "checked";} ?>>
           <label for="pending_college_diploma" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio"  name="college_diploma" value="1" id="option1" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio"  name="college_diploma" value="2" <?php if($fetch['college_diploma_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio"  name="college_diploma" value="0" <?php if($fetch['college_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+
+
       </div>
     </div>
 
-    <div class="row mt-5" style="border:10px solid red;">
+    <div class="row mt-5">
       
 
       <!-- High School Transcript -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">High School Transcript</h4>
         <?php if ($fetch['highschool_transcript'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1238,23 +1099,38 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-highschool-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['highschool_transcript']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-highschool-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
           
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="1" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 1) {echo "checked";} ?>>
           <label for="approve_highschool_transcript" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="2" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 2) {echo "checked";} ?>>
           <label for="reject_highschool_transcript" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="0" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 0) {echo "checked";} ?>>
           <label for="pending_highschool_transcript" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+       
+        
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="highschool_transcript" value="1" id="option1" <?php if($fetch['highschool_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio" name="highschool_transcript" value="2" <?php if($fetch['highschool_transcript_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="highschool_transcript" value="0" <?php if($fetch['highschool_transcript_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+          
+
       </div>
 
       <!-- High School Diploma -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">High School Diploma</h4>
         <?php if ($fetch['highschool_diploma'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1265,23 +1141,36 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-highschool-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['highschool_diploma']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-highschool-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
           
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_highschool_diploma" class="form-check-input" type="radio" name="highschool_diploma" value="1" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 1) {echo "checked";} ?>>
           <label for="approve_highschool_diploma" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_highschool_diploma" class="form-check-input" type="radio" name="highschool_diploma" value="2" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 2) {echo "checked";} ?>>
           <label for="reject_highschool_diploma" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_highschool_diploma" class="form-check-in""put" type="radio" name="highschool_diploma" value="0" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 0) {echo "checked";} ?>>
           <label for="pending_highschool_diploma" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="highschool_diploma" value="1" id="option1" <?php if($fetch['highschool_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio" name="highschool_diploma" value="2" <?php if($fetch['highschool_diploma_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="highschool_diploma" value="0" <?php if($fetch['highschool_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+          
       </div>
 
       <!-- Medium of Instruction -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">Medium of Instruction</h4>
         <?php if ($fetch['medium_of_instruction'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1292,23 +1181,37 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['medium_of_instruction']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+            <a href="#"  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
+             <a href="#" class="btn btn-danger btn-lg" style="text-color:blue;margin-left:20px;">Delete</a>
             </div>
          
         <?php } ?>
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="1" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?>>
           <label for="approve_medium_of_instruction" class="form-check-label"><h5>Approve</h5></label>
           <input id="reject_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="2" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 2) {echo "checked";} ?>>
           <label for="reject_medium_of_instruction" class="form-check-label"><h5>Reject</h5></label>
           <input id="pending_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="0" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 0) {echo "checked";} ?>>
           <label for="pending_medium_of_instruction" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="medium_of_instruction" value="1" id="option1" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio" name="medium_of_instruction" value="2" <?php if($fetch['medium_of_instruction_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="medium_of_instruction" value="0" <?php if($fetch['medium_of_instruction_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
+
+
       </div>
 
       <!-- Resume -->
-      <div class="col-lg-3" style="border:2px solid red;">
+      <div class="col-lg-3">
         <h4 class="text-center">Resume</h4>
         <?php if ($fetch['resume'] == "") { ?>
           <div class="d-flex justify-content-center">
@@ -1319,20 +1222,32 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
             <embed src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="250px" height="250px" />
             </div>
             <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="text-primary" data-toggle="modal" data-target="#pdfModal-resume" data-pdf-url="./images/<?php echo $fetch['image']; ?>"><i class="fas fa-eye"></i></a>
-              <a href="delete.php?file=<?php echo $fetch['resume']; ?>" style="text-color:blue;margin-left:20px;"><i class="fas fa-trash-alt"></i></a>
+           <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#pdfModal-resume" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="margin-left:20px;">View</a>
+            <a href="#" class="btn btn-danger btn-lg" style="margin-left:20px;">Delete</a>
             </div>
           
         <?php } ?>
          
-        <div class="text-center mt-2">
+        <!-- <div class="text-center mt-2">
           <input id="approve_resume" class="form-check-input" type="radio" name="resume" value="1" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_resume" class="form-check-label"><h5>Approve</h5></label>
+          <label for="approve_resume" class="btn btn-primary">Approve</label>
           <input id="reject_resume" class="form-check-input" type="radio" name="resume" value="2" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 2) {echo "checked";} ?>>
           <label for="reject_resume" class="form-check-label"><h5>Reject</h5></label>
           <input id="approve_resume" class="form-check-input" type="radio" name="resume" value="0" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 0) {echo "checked";} ?>>
           <label for="approve_resume" class="form-check-label"><h5>Pending</h5></label>
-        </div>
+        </div> -->
+
+        <div class=" text-center mt-2" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="resume" value="1" id="option1" <?php if($fetch['resume_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
+  </label>
+  <label class="btn btn-danger">
+    <input type="radio" name="resume" value="2" <?php if($fetch['resume_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="resume" value="0" <?php if($fetch['resume_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
+  </label>
+</div>
       </div>
 
 
@@ -1344,7 +1259,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
       <div class="col-lg-4"></div>
     </div>
 
-    <div class="row" style="margin-top:50px; padding-bottom:100px;">
+    <div class="row">
       <div class="col text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -1354,6 +1269,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   <div class="row">
     <div class="col-sm-12">
       <div id="message_login"></div>
+      <div id="loader"></div>
     </div>
   </div>
 </div>
@@ -1530,17 +1446,17 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   });
 </script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Bootstrap JS and Popper.js (optional) -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
 
 <div class="dark-transparent sidebartoggler"></div>
   <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
@@ -1563,6 +1479,36 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/dashboards/dashboard4.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/jvectormap/jquery-jvectormap.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+ 
+  <style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+  
 
   <script>
 $(document).ready(function(){

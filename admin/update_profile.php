@@ -19,15 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insertQuery = mysqli_query($conn, $sql);
                 
             if ($insertQuery) {
-                echo '<div class="alert alert-success" role="alert">Profile updated successfully!</div>';
-                // Show loader
-        echo '<script>
-        alert("Profile Updated Successfully...");
-          document.getElementById("loader").style.display = "block";
-       setTimeout(function() {
-           window.location.href = "students.php";
-       }, 5000); // 5000 milliseconds = 5 seconds
-   </script>';
+                echo '<script>
+                document.getElementById("loader").style.display = "block";
+                 setTimeout(function() {
+                     document.getElementById("loader").style.display = "none";
+                 Swal.fire({
+                         title: "Profile updated successfully!",
+                         text: "Redirecting to students page...",
+                         icon: "success",
+                         timer: 2000,
+                         timerProgressBar: true,
+                         willClose: () => {
+                             window.location.href = "students.php";
+                         }
+                     });
+                 }, 2000); // Show SweetAlert after 1 second
+             </script>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">Failed to update record: ' . mysqli_error($conn) . '</div>';
             }

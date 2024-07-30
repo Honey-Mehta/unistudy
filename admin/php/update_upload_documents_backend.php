@@ -67,12 +67,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updateQuery = mysqli_query($conn, $sql);
 
             if ($updateQuery) {
-                echo '<div class="alert alert-success" role="alert">Documents uploaded Successfully!</div>';
+                
                 echo '<script>
-    alert("Documents uploaded Successfully...");
      document.getElementById("loader").style.display = "block";
     setTimeout(function(){
-        window.location.href="upload_documents.php?id=' . $id . '";
+        document.getElementById("loader").style.display = "none";
+         Swal.fire({
+                    title: "Documents uploaded successfully!",
+                    text: "Documents uploaded successfully...",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    willClose: () => {
+                       window.location.href="upload_documents.php?id=' . $id . '";
+                    }
+                });
+        
     }, 2000);
 </script>';
             } else {

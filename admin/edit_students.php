@@ -1494,8 +1494,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                                             
                                     <div class="form-inline">
     <label class="form-label">Marital Status:</label>
-    <label for="male" style="margin-top:30px;">Single <input type="radio" id="male" name="marital_status" value="single"  <?php if($fetch['marital_status']=='single') {echo "checked";} ?>  ></label>
-    <label for="female" style="margin-top:30px;">Unamarried <input type="radio" id="female" name="marital_status" value="unmarried"  <?php if($fetch['marital_status']=='unmarried') {echo "checked";} ?>  ></label>
+    <label for="male" style="margin-top:30px;">Single <input type="radio" id="male" name="marital_status" value="single"  <?php if($fetch['marital_status']=='single') {echo "checked";} ?>  required></label>
+    <label for="female" style="margin-top:30px;">Unamarried <input type="radio" id="female" name="marital_status" value="unmarried"  <?php if($fetch['marital_status']=='unmarried') {echo "checked";} ?>  required></label>
 </div>
 
                                    
@@ -1792,6 +1792,38 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
 
+<script>
+    const dobInput = document.getElementById('dob');
+
+    dobInput.addEventListener('focus', function () {
+        this.showPicker();
+    });
+
+    dobInput.addEventListener('click', function () {
+        this.showPicker();
+    });
+
+    dobInput.addEventListener('blur', function () {
+        // Optionally, you can add any additional behavior when the input loses focus
+    });
+</script>
+
+<script>
+    const passport_expiry_date = document.getElementById('passport_expiry_date');
+
+    passport_expiry_date.addEventListener('focus', function () {
+        this.showPicker();
+    });
+
+    passport_expiry_date.addEventListener('click', function () {
+        this.showPicker();
+    });
+
+    passport_expiry_date.addEventListener('blur', function () {
+        // Optionally, you can add any additional behavior when the input loses focus
+    });
+</script>
+
 
 
 
@@ -2061,7 +2093,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 
 
 </body>

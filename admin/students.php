@@ -447,42 +447,14 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                         </div>
                         <div class="message-body pb-3">
                           <div class="px-3 pt-3">
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class=" d-flex  align-items-center ">
-                                My Profile
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="javascript:void(0)" class=" d-flex  align-items-center ">
-                                My Projects
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class=" d-flex  align-items-center ">
-                                Inbox
-                              </a>
-                            </div>
+                           
+                           
+                            
                           </div>
-                          <hr>
+                        
                           <div class="px-3">
-                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
-                              <a href="javascript:void(0)" class="">
-                                Mode
-                              </a>
-                              <div>
-                                <a class="moon dark-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                                </a>
-                                <a class="sun light-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                                </a>
-                              </div>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class=" d-flex  align-items-center  ">
-                                Account Settings
-                              </a>
-                            </div>
+                            
+                           
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -1480,7 +1452,7 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 
 
 
-
+<!-- 
 <style>
     .button-container {
         display: flex; /* Use flexbox to align items */
@@ -1496,8 +1468,29 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
   max-height: 500px; /* Set fixed height */
   overflow-y: auto; /* Enable vertical scrolling */
 }
-</style>
+</style> -->
 
+<style>
+.button-container {
+    display: flex; /* Use flexbox to align items */
+    gap: 5px; /* Space between buttons */
+}
+
+/* Style for modal dialog */
+.modal-dialog {
+    max-width: 500px; /* Set fixed width */
+    width: 100%; /* Ensure it’s responsive */
+    margin: auto; /* Center the modal */
+}
+
+/* Style for modal body */
+.modal-body {
+    max-height: 80vh; /* Set height to 80% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 1rem; /* Add padding for better appearance */
+    box-sizing: border-box; /* Ensure padding does not affect the height */
+}
+</style>
 
 
 
@@ -1581,62 +1574,110 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                 <td><?php echo $show['referall_source'];?></td>
                 <td><?php echo $show['country_of_interest'];?></td>
                 <td><?php echo $show['service_of_interest'];?></td>
-                  <td>
-  <?php if ($show['passport_status'] == 1) { ?>
-    <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
-    <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
-</td>
                 <td>
-  <?php if ($show['marriage_certificate_status'] == 1) { ?>
+  <?php 
+  if ($show['passport_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['passport_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
+</td>
+<td>
+  <?php 
+  if ($show['marriage_certificate_status'] == 1) { ?>
+    <button class="btn btn-success">Approved</button>
+  <?php 
+  } else if ($show['marriage_certificate_status'] == 2) { ?>
+    <button class="btn btn-danger">Rejected</button>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
 
-                  <td>
-  <?php if ($show['college_transcript_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['college_transcript_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['college_transcript_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
-                   <td>
-  <?php if ($show['college_diploma_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['college_diploma_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['college_diploma_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
-                      <td>
-  <?php if ($show['highschool_transcript_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['highschool_transcript_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['highschool_transcript_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
-                       <td>
-  <?php if ($show['highschool_diploma_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['highschool_diploma_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['highschool_diploma_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
-                        <td>
-  <?php if ($show['medium_of_instruction_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['medium_of_instruction_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['medium_of_instruction_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
-                         <td>
-  <?php if ($show['resume_status'] == 1) { ?>
+<td>
+  <?php 
+  if ($show['resume_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
-  <?php } else { ?>
+  <?php 
+  } else if ($show['resume_status'] == 2) { ?>
     <button class="btn btn-danger">Rejected</button>
-  <?php } ?>
+  <?php 
+  } else { ?>
+    <button class="btn btn-secondary">Pending</button>
+  <?php 
+  } ?>
 </td>
                 <td>
                     <div class="button-container">
@@ -1756,6 +1797,7 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                                 echo "<p class='card-text'><strong>Passport Number: </strong>{$student['passport_num']}</p>";
                                 echo "<p class='card-text'><strong>Passport Expiry Date: </strong>{$student['passport_expiry_date']}</p>";
                                 echo "<p class='card-text'><strong>Gender: </strong>{$student['gender']}</p>";
+                                echo "<p class='card-text'><strong>Last Edited Date: </strong>{$student['last_edited_date']}</p>";
                                 echo"<a href='edit_students.php?edit={$student['id']}' class='btn btn-primary Edit'> Edit</a>";
 echo "<a onclick='return confirm(\"Are you sure delete?\")' href='?delete_id={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
 echo"<a href='view_documents.php?edit={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;'>View Document</a>";  
@@ -1777,6 +1819,46 @@ echo "</div>";
 </div>
 </div>
 
+<script>
+        // Get today's date
+        var today = new Date();
+
+        // Calculate the date exactly 15 years ago
+        var fifteenYearsAgo = new Date(today.getFullYear() - 15, today.getMonth(), today.getDate());
+        var fifteenYearsAgoFormatted = fifteenYearsAgo.toISOString().split('T')[0];
+
+        // Set the max attribute for the date input
+        var dobInput = document.getElementById('dob');
+        dobInput.setAttribute('max', fifteenYearsAgoFormatted);
+
+        dobInput.addEventListener('focus', function () {
+            this.showPicker();
+        });
+
+        dobInput.addEventListener('click', function () {
+            this.showPicker();
+        });
+
+        dobInput.addEventListener('blur', function () {
+            // Optionally, you can add any additional behavior when the input loses focus
+        });
+    </script>
+
+<script>
+    const passport_expiry_date = document.getElementById('passport_expiry_date');
+
+    passport_expiry_date.addEventListener('focus', function () {
+        this.showPicker();
+    });
+
+    passport_expiry_date.addEventListener('click', function () {
+        this.showPicker();
+    });
+
+    passport_expiry_date.addEventListener('blur', function () {
+        // Optionally, you can add any additional behavior when the input loses focus
+    });
+</script>
 
 
 
@@ -1863,18 +1945,7 @@ $(document).ready(function(){
     toggleView('list');
 </script>
 
-<script>
-        // Get today's date
-        var today = new Date();
-        
-        // Calculate the date exactly 15 years ago
-        var fifteenYearsAgo = new Date(today.getFullYear() - 15, today.getMonth(), today.getDate());
-        var fifteenYearsAgoFormatted = fifteenYearsAgo.toISOString().split('T')[0];
-        
-        // Set the max attribute for the date input
-        var dobInput = document.getElementById('dob');
-        dobInput.setAttribute('max', fifteenYearsAgoFormatted);
-    </script>
+
    <script>
         // Get today's date
         var today = new Date();
@@ -1886,6 +1957,9 @@ $(document).ready(function(){
         var passportExpiryInput = document.getElementById('passport_expiry_date');
         passportExpiryInput.setAttribute('min', todayFormatted);
     </script>
+
+  
+
 
 
 <div class="dark-transparent sidebartoggler"></div>
@@ -1909,3 +1983,7 @@ $(document).ready(function(){
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/dashboards/dashboard4.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/jvectormap/jquery-jvectormap.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  

@@ -238,8 +238,8 @@ Email *</h5>
     animation: spin 2s linear infinite;
     display: none;
     position: fixed;
-    left: 35%;
-    top: 50%;
+    left: 45%;
+    top: 40%;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
@@ -249,6 +249,8 @@ Email *</h5>
     100% { transform: rotate(360deg); }
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 <script>
     $(document).ready(function() {
       $("#msform").on("submit", function(event) {
