@@ -33,9 +33,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
                     <!-- Light Logo icon -->
-                    <img src="/images/logo_with_name.jpeg" alt="homepage" class="light-logo" />
+                    <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
@@ -896,7 +896,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
 
-<div class="container-fluid" style="max-width:100%;">
+<div class="container-fluid" style="max-width:94%;">
   <form id="insertForm" method="POST">
     <input type="hidden" value="<?php echo $id; ?>" name="id">
     
@@ -910,12 +910,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center ">
-            <embed src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="200px" height="200px" />
           </div>
-            <div class="d-flex justify-content-center mt-2" >
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-passport" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a onclick="return confirm('Are you sure delete?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger bt-lg"  style="text-color:blue; margin-left:20px;">Delete</a>
-            </div>
+        
           
         <?php } ?>
         <!-- <div class="text-center mt-2">
@@ -928,7 +925,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
         </div> -->
 
    
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio"  name="passport" value="1" id="option1" <?php if($fetch['passport_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -941,6 +938,12 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 </div>
 
 
+<?php if ($fetch['image'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-passport" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
 
 
       </div>
@@ -954,12 +957,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-marriage-certificate" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
+           
          
         <?php } ?>
         <!-- <div class="text-center mt-2">
@@ -973,7 +973,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
       
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="marriage_certificate" value="1" id="option1" <?php if($fetch['marriage_certificate_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -984,6 +984,14 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
     <input type="radio"  name="marriage_certificate" value="0" value="0" <?php if($fetch['marriage_certificate_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
   </label>
 </div>
+
+    
+<?php if ($fetch['marriage_certificate'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-marriage-certificate" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
 
 
 
@@ -998,12 +1006,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-college-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
+           
           
         <?php } ?>
         <!-- <div class="text-center mt-2">
@@ -1019,7 +1024,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
         
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="college_transcript" value="1" id="option1" <?php if($fetch['college_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1033,6 +1038,12 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
 
+<?php if ($fetch['college_transcript'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-college-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
 
 
 
@@ -1051,13 +1062,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="200px" height="200px" />
           </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-college-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a href="#"class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
-         
+          
         <?php } ?>
         <!-- <div class="text-center mt-2">
           <input id="approve_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="1" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?>>
@@ -1068,7 +1075,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           <label for="pending_college_diploma" class="form-check-label"><h5>Pending</h5></label>
         </div> -->
 
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio"  name="college_diploma" value="1" id="option1" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1079,6 +1086,15 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
     <input type="radio"  name="college_diploma" value="0" <?php if($fetch['college_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
   </label>
 </div>
+ 
+<?php if ($fetch['college_diploma'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-college-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;" >View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
+
+
 
 
       </div>
@@ -1096,12 +1112,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-highschool-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
+          
           
         <?php } ?>
         <!-- <div class="text-center mt-2">
@@ -1114,7 +1127,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
         </div> -->
        
         
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="highschool_transcript" value="1" id="option1" <?php if($fetch['highschool_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1126,6 +1139,18 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   </label>
 </div>
           
+<?php if ($fetch['highschool_transcript'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-highschool-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
+
+
+
+
+
+
 
       </div>
 
@@ -1138,12 +1163,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#" class="btn btn-primary bt-lg" data-toggle="modal" data-target="#pdfModal-highschool-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-              <a href="#" class="btn btn-danger bt-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
+           
           
         <?php } ?>
         <!-- <div class="text-center mt-2">
@@ -1155,7 +1177,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           <label for="pending_highschool_diploma" class="form-check-label"><h5>Pending</h5></label>
         </div> -->
 
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="highschool_diploma" value="1" id="option1" <?php if($fetch['highschool_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1166,6 +1188,14 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
     <input type="radio" name="highschool_diploma" value="0" <?php if($fetch['highschool_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
   </label>
 </div>
+
+<?php if ($fetch['highschool_diploma'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-highschool-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
+
           
       </div>
 
@@ -1178,13 +1208,15 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="250px" height="250px" />
+            <embed src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
-            <div class="d-flex justify-content-center mt-2">
-            <a href="#"  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>">View</a>
-             <a href="#" class="btn btn-danger btn-lg" style="text-color:blue;margin-left:20px;">Delete</a>
-            </div>
+           
          
+           
+
+
+
+
         <?php } ?>
         <!-- <div class="text-center mt-2">
           <input id="approve_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="1" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?>>
@@ -1195,7 +1227,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           <label for="pending_medium_of_instruction" class="form-check-label"><h5>Pending</h5></label>
         </div> -->
 
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="medium_of_instruction" value="1" id="option1" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1207,6 +1239,13 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   </label>
 </div>
 
+         
+<?php if ($fetch['medium_of_instruction'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
 
       </div>
 
@@ -1219,13 +1258,14 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           </div>
         <?php } else { ?>
           <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="250px" height="250px" />
-            </div>
-            <div class="d-flex justify-content-center mt-2">
-           <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#pdfModal-resume" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="margin-left:20px;">View</a>
-            <a href="#" class="btn btn-danger btn-lg" style="margin-left:20px;">Delete</a>
+            <embed src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="200px" height="200px" />
             </div>
           
+          
+
+
+
+
         <?php } ?>
          
         <!-- <div class="text-center mt-2">
@@ -1237,7 +1277,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           <label for="approve_resume" class="form-check-label"><h5>Pending</h5></label>
         </div> -->
 
-        <div class=" text-center mt-2" data-toggle="buttons">
+        <div class=" text-center mt-4" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="resume" value="1" id="option1" <?php if($fetch['resume_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
   </label>
@@ -1248,6 +1288,23 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
     <input type="radio" name="resume" value="0" <?php if($fetch['resume_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
   </label>
 </div>
+
+
+
+
+
+
+<?php if ($fetch['resume'] != "") { ?>
+  <div class="d-flex justify-content-center mt-2">
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
+    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
+  </div>
+<?php } ?>
+
+
+
+
+
       </div>
 
 
@@ -1261,7 +1318,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
     <div class="row">
       <div class="col text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
       </div>
     </div>
   </form>
@@ -1486,6 +1543,9 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
  
   <style>
+
+     
+
 /* Loader CSS */
 #loader {
     border: 16px solid #f3f3f3;

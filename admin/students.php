@@ -1,12 +1,41 @@
-<?php 
-
+<?php
 if(isset($_GET['delete_id'])){
-	$conn=mysqli_connect("localhost","root","","uni_study");
-$sqlDELETE=mysqli_query($conn,"DELETE FROM `student` WHERE `id`='".$_GET['delete_id']."'");
+    $conn = mysqli_connect("localhost", "root", "", "uni_study");
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
 
-echo "<script>alert('delete student..!!');window.location.href='students.php';</script>";
+    $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
+    $sqlDELETE = "DELETE FROM `student` WHERE `id`='$delete_id'";
+
+    if (mysqli_query($conn, $sqlDELETE)) {
+        echo "<script>
+            swal({
+                title: 'Deleted!',
+                text: 'Student has been deleted.',
+                icon: 'success',
+                timer: 3000, // Popup will be visible for 3 seconds
+                buttons: false
+            }).then(function() {
+                window.location.href = 'students.php';
+            });
+        </script>";
+    } else {
+        echo "<script>
+            swal({
+                title: 'Error!',
+                text: 'Failed to delete student.',
+                icon: 'error',
+                timer: 3000, // Popup will be visible for 3 seconds
+                buttons: false
+            }).then(function() {
+                window.location.href = 'students.php';
+            });
+        </script>";
+    }
+
+    mysqli_close($conn);
 }
-
 ?>
 <?php include('header.php'); ?>
 
@@ -25,9 +54,9 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
                     <!-- Light Logo icon -->
-                    <img src="/images/logo_with_name.jpeg" alt="homepage" class="light-logo" />
+                    <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
@@ -67,58 +96,17 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                           <div class="row">
                             <div class="col-6">
                               <div class="position-relative">
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-chat.html" class="d-flex align-items-center pb-9 position-relative ">
-                                  <div class="bg-primary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:chat-line-linear" class="text-primary fs-5"></iconify-icon>
-                                  </div>
-                                  
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-invoice.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-secondary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:bill-list-linear" class="text-secondary fs-5"></iconify-icon>
-                                  </div>
-                                  
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact2.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-success-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:bedside-table-2-linear" class="text-success fs-5"></iconify-icon>
-                                  </div>
-                                 
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-warning-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:letter-unread-linear" class="text-warning fs-5"></iconify-icon>
-                                  </div>
-                                 
-                                </a>
+                               
+                                
+                              
+                               
                               </div>
                             </div>
                             <div class="col-6">
                               <div class="position-relative">
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-danger-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:cart-large-2-linear" class="text-danger fs-5"></iconify-icon>
-                                  </div>
-                                 
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-calendar.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-primary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:calendar-linear" class="text-primary fs-5"></iconify-icon>
-                                  </div>
-                                 
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-secondary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:bedside-table-linear" class="text-secondary fs-5"></iconify-icon>
-                                  </div>
-                                
-                                </a>
-                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html" class="d-flex align-items-center pb-9 position-relative">
-                                  <div class="bg-success-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
-                                    <iconify-icon icon="solar:palette-linear" class="text-success fs-5"></iconify-icon>
-                                  </div>
-                                 
-                                </a>
+                               
+                               
+                              
                               </div>
                             </div>
                           </div>
@@ -1211,8 +1199,8 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 						<!-- Modal Header -->
 						     <div class="modal-header">
 						     	<h4 class="modal-title">Add New Student</h4>
-						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:200px;">&times;</button>
-					    	</div>
+                   <button type="button" class="close" data-dismiss="modal" style="margin-left:200px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
+                   </div>
 						<!-- Modal Body -->
 						<!-- Modal body -->
 					      	<div class="modal-body">
@@ -1375,8 +1363,8 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
         ?>
 									</select>
 								</div>
-								<div style="display: flex; justify-content: center; margin-top: 20px;">
-                  <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
+								<div style="display: flex; justify-content: center; margin-top: 20px;" id="subclose">
+                  <button type="submit" class="btn btn-primary" style="margin-right: 10px;" id="submitBtn">Submit</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 							</form>
@@ -1392,6 +1380,7 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
               </div>
 
               <div class="modal-footer">
+              
 								<!--   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
 						</div>
 
@@ -1422,10 +1411,14 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 
 
 
-
-
-
       <style>
+    
+
+
+
+
+
+
 /* Loader CSS */
 #loader {
     border: 16px solid #f3f3f3;
@@ -1499,7 +1492,7 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 <div class="container-fluid"  style="margin-top:50px; max-width:90%;" >
 <div class="row">
 <div class="col-lg-12">
-<div id="list-view" style="overflow-x:auto;">
+<div id="list-view" style="display:none; overflow-x:auto;">
     <table class="table">
         <thead>
             <tr>
@@ -1681,9 +1674,9 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 </td>
                 <td>
                     <div class="button-container">
-                        <a href="edit_students.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit">Edit</a>
-                        <a onclick="return confirm('Are you sure delete?')" href="?delete_id=<?php echo $show['id']?>" class="btn btn-primary Delete">Delete</a>
-                        <a href="view_documents_copy.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Delete">View Document</a>
+                        <a href="edit_students.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
+                        <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
+                        <a href="view_documents_copy.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Delete" target="_blank">View Document</a>
                     </div>
                 </td>
             </tr>
@@ -1714,12 +1707,15 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 </div>
 
 <style>
-   #grid-view {
+   
+#list-view {
     display: none;
     overflow-x: auto;
     max-height: 600px; /* Set a maximum height for the div */
     overflow-y: auto; /* Enable vertical scrolling */
 }
+
+
 
 .table thead th {
     position: sticky;
@@ -1729,7 +1725,22 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
 }
 </style>
 
-<div id="grid-view"  style="display:none; overflow-x:auto;">
+
+
+<style>
+    .wide-tall-swal-popup {
+        width: 400px !important; /* Adjust the width as needed */
+        height: 400px !important; /* Adjust the height as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .wide-tall-swal-popup .swal2-html-container {
+        height: 100%; /* Ensure content area fits the new height */
+    }
+</style>
+
+<div id="grid-view"  style="overflow-x:auto;">
     <table class="table table-bordered" style="min-width: 3000px;">
         <thead>
             <tr>
@@ -1798,10 +1809,47 @@ echo "<script>alert('delete student..!!');window.location.href='students.php';</
                                 echo "<p class='card-text'><strong>Passport Expiry Date: </strong>{$student['passport_expiry_date']}</p>";
                                 echo "<p class='card-text'><strong>Gender: </strong>{$student['gender']}</p>";
                                 echo "<p class='card-text'><strong>Last Edited Date: </strong>{$student['last_edited_date']}</p>";
-                                echo"<a href='edit_students.php?edit={$student['id']}' class='btn btn-primary Edit'> Edit</a>";
-echo "<a onclick='return confirm(\"Are you sure delete?\")' href='?delete_id={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
-echo"<a href='view_documents.php?edit={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;'>View Document</a>";  
-echo "</div>";
+                              echo"<a href='edit_students.php?edit={$student['id']}' class='btn btn-primary Edit' target='_blank'> Edit</a>";
+                              echo "<a href='#' onclick='confirmDelete(" . $student['id'] . ")' class='btn btn-primary Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
+
+                              echo"<a href='view_documents_copy.php?edit={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;' target='_blank'>View Document</a>";  
+
+
+                              echo "<div class='btn-group'>";
+                              echo "<button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Change status</button>";
+                              echo "<div class='dropdown-menu p-4'>";
+                              echo "<form id='change_status' method='post'>";
+                              echo "<input type='hidden' name='id' value='{$student['id']}'>";
+                              echo "<select class='form-select' id='sel1' name='status'>";
+                              
+                              echo "<option value='' disabled selected>Please Choose a status</option>";
+                              
+                              // Assuming you have established a database connection named $conn
+                              $conn = mysqli_connect("localhost", "root", "", "uni_study");
+                              $sql = "SELECT * FROM status";
+                              $result = mysqli_query($conn, $sql);
+                          
+                              // Check if there are results
+                              if ($result) {
+                                  // Loop through the results and create an option element for each status
+                                  while ($row = mysqli_fetch_assoc($result)) {
+                                      echo '<option value="' . $row['status'] . '">' . $row['status'] . '</option>';
+                                  }
+                              } else {
+                                  echo '<option>No statuses found</option>';
+                              }
+                          
+                              echo "</select>";
+                              echo "<button type='submit' class='btn btn-primary mt-2'>Submit</button>";
+                              echo "</form>";
+                              echo "</div>";
+                              echo "</div>";
+                          
+
+
+                              echo "</div>";
+
+
                         echo "</div>";
                     echo "</td>";
                     } else {
@@ -1894,16 +1942,22 @@ $(document).ready(function(){
     });
 
 
+    $("#change_status").on("submit", function(event){
+     alert("hello");
+     event.preventDefault();
+     $.ajax({
+         url: "php/update_status.php",
+         method: "POST",
+         data: $(this).serialize(),
+         success: function(data){
+                  alert(data);
+             $("#message_login").show().html(data);
+             window.location.reload(); 
+         }
+     });
+ });
 
-
-
-
-
-
-
-
-
-
+    
  $('#country_of_interest').multiselect({
   nonSelectedText: 'Select Country of Interest',
   enableFiltering: true,
@@ -1942,7 +1996,7 @@ $(document).ready(function(){
         }
 
     // Set default view
-    toggleView('list');
+    toggleView('grid');
 </script>
 
 
@@ -1958,7 +2012,22 @@ $(document).ready(function(){
         passportExpiryInput.setAttribute('min', todayFormatted);
     </script>
 
-  
+<script>
+function confirmDelete(id) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this student!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            window.location.href = "?delete_id=" + id;
+        }
+    });
+}
+</script>
 
 
 
@@ -1987,3 +2056,5 @@ $(document).ready(function(){
 
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

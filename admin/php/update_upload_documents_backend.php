@@ -76,10 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     title: "Documents uploaded successfully!",
                     text: "Documents uploaded successfully...",
                     icon: "success",
-                    timer: 2000,
+                    timer: 7000,
                     timerProgressBar: true,
                     willClose: () => {
-                       window.location.href="upload_documents.php?id=' . $id . '";
+                       window.location.href="document_upload_success.php";
                     }
                 });
         

@@ -204,7 +204,12 @@ Email *</h5>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  
+  <div class="container d-flex justify-content-center align-items-center">
+    <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
+</div>
+
+
    </form>
 
   <div class="input-group mb-0" id="message_login">
@@ -238,8 +243,8 @@ Email *</h5>
     animation: spin 2s linear infinite;
     display: none;
     position: fixed;
-    left: 45%;
-    top: 40%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
@@ -250,11 +255,13 @@ Email *</h5>
 }
 </style>
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 <script>
     $(document).ready(function() {
       $("#msform").on("submit", function(event) {
-        alert("hello")
+       
         event.preventDefault();
         var formData = new FormData(this);
         $.ajax({

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          title: "Profile updated successfully!",
                          text: "Redirecting to students page...",
                          icon: "success",
-                         timer: 2000,
+                         timer: 7000,
                          timerProgressBar: true,
                          willClose: () => {
                              window.location.href = "students.php";

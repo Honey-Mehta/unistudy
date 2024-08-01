@@ -25,9 +25,9 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="dark-logo" width="200px" height="50px;" />
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;" />
                     <!-- Light Logo icon -->
-                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="light-logo" />
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
