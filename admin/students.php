@@ -1741,8 +1741,8 @@ if(isset($_GET['delete_id'])){
 </style>
 
 <div id="grid-view"  style="overflow-x:auto;">
-    <table class="table table-bordered" style="min-width: 3000px;">
-        <thead>
+    <table class="table table-bordered" style= "max-width:120px;" >
+        <thead  >
             <tr>
                 <th scope="col" style="background-color:#ffccff; vertical-align:middle; text-align:center;">Rejected</th>
                 <th scope="col" style="background-color: #e0ebeb; vertical-align:middle; text-align:center;">Pending</th>
@@ -1798,8 +1798,8 @@ if(isset($_GET['delete_id'])){
                 foreach ($statuses as $status => $color) {
                     if (isset($studentsByStatus[$status][$i])) {
                         $student = $studentsByStatus[$status][$i];
-                       echo "<td class='card-container>";
-                        echo "<div class='card' >";
+                       echo "<td class='card-container' >";
+                        echo "<div class='card' style='min-width:450px;'>";
                             echo "<div class='card-body'>";
                                 echo "<p class='card-text'><strong>First Name: </strong>{$student['first_name']} {$student['last_name']}</p>";
                                 echo "<p class='card-text'><strong>Middle Name: </strong>{$student['middle_name']}</p>";

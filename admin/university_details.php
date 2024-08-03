@@ -1,7 +1,15 @@
+<?php  
+   $id = $_GET['id'];
+   $conn = mysqli_connect("localhost", "root", "", "uni_study");
+   $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHERE id='$id'"));
+?>
+
+
+
 <?php include('header.php'); ?>
 
-<?php include('sidebar.php'); ?>
-
+<?php include('sidebar.php'); ?>  
+  
 <div class="page-wrapper">
       <!--  Header Start -->
       <header class="topbar rounded-0 border-0 bg-primary">
@@ -15,13 +23,14 @@
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
+                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
                     <!-- Light Logo icon -->
-                    <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
+                    <img src="/images/logo_with_name.jpeg" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
                   <span class="logo-text">
+                    <!-- dark Logo text -->
                     
                   </span>
                 </a>
@@ -29,6 +38,11 @@
 
 
             </div>
+              
+
+             
+     
+
 
             <ul class="navbar-nav gap-2">
 
@@ -47,16 +61,9 @@
               </li>
 
 
-              <li class="nav-item d-none d-lg-block dropdown nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
-                  <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                </a>
-
-              </li>
-
 
             </ul>
-
+                     
             <div class="d-block d-lg-none">
               <div class="brand-logo d-flex align-items-center justify-content-between">
                 <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
@@ -98,193 +105,24 @@
                     </a>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                  
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                       
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
-                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
-                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Launch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
-                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
-                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
-                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Luanch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Notifications</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-
-
-
-
-                    </div>
-                  </li>
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
+                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
                       <div class="notify">
                         <span class="heartbit"></span>
                         <span class="point"></span>
                       </div>
                     </a>
+                 
+                  </li>
+                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
+                  
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
-                      <div class="py-3 px-4 bg-secondary">
-                       
-                      </div>
+                     
                       <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mathew Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Bianca Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Andrew Johnson</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Miyra Strokes</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mark, Stoinus & Rishvi..</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-7.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Eliga Rush</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
+                     
+                  
+                      
                       </div>
                       <div class="p-3">
                         <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
@@ -301,48 +139,16 @@
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
 
-
+                 
 
                   <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
                   <!-- ------------------------------- -->
 
-                  <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                    </a>
-                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                    </a>
-                  </li>
-
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                  
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden dropdown-menu-end" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                        
-                      </div>
-                      <div class="message-body" data-simplebar>
-                       
-                        
-                        
-                       
-                        
-                     
-                      </div>
-                      
+               
 
 
-
-
-                    </div>
-                  </li>
-
-                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                   
-                   
-                  </li>
+               
 
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
@@ -361,7 +167,9 @@
                           <div class="d-flex align-items-center px-3">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" class="rounded-circle round-50" alt="" />
                             <div class="ms-3">
-                              <h5 class="mb-1 fs-4">Admin</h5>
+                              <h5 class="mb-1 fs-4">    
+                                Admin
+                              </h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
                                 markrarn@wrappixel.com
                               </p>
@@ -369,14 +177,11 @@
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                          <div class="px-3 pt-3">
-                            
-                          </div>
+                        
                         
                           <div class="px-3">
-                           
-                            </div>
-                           
+                            
+                            
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -730,37 +535,17 @@
                     </div>
                     <div class="col-4 ms-n7">
                       <div class="position-relative p-3 border-start h-100">
-                        <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
-                        <ul>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html">Pricing Page</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-login.html">Authentication Design</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-register.html">Register Now</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-error.html">404 Error Page</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html">Notes App</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html">User Application</a>
-                          </li>
-                          <li class="mb-3">
-                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html">Account Settings</a>
-                          </li>
-                        </ul>
+                       
+                       
                       </div>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
+            
 
+          
 
             <a class="navbar-toggler nav-icon-hover p-0 border-0 text-white" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="p-2">
@@ -917,7 +702,7 @@
                       </div>
 
 
-
+                    
 
 
                     </div>
@@ -1028,7 +813,7 @@
                     </div>
                   </li>
 
-
+                 
                   <!-- ------------------------------- -->
                   <!-- start profile Dropdown -->
                   <!-- ------------------------------- -->
@@ -1112,307 +897,32 @@
 
 
 
-      <div class="container" style="margin-top:100px;">
-     <form>
-  <input type="text" name="search" placeholder="Search for Programs, Institutions or other keywords">
-</form>
-</div>
-
-
-<div class="container-fluid" style="margin-top:100px;">
- 	<div class="row">
- 		<div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="location" name="location[]" multiple class="form-control">
- 						 <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM location";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['location'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
- 		<div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="program_level" name="program_level[]" multiple class="form-control">
- 					<?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM program_level";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['program_level'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
 
 
 
 
-     <div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="discipline" name="discipline[]" multiple class="form-control">
- 						 <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM discipline";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['course_name'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
 
 
 
 
-     <div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="tuition_fee" name="tuition_fee[]" multiple class="form-control">
- 						 <?php
-        // Assuming you have established a database connection named $conn
 
-        // SQL query to fetch all countries
-        $conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM tuition_fee";
-        $result = mysqli_query($conn, $sql);
+<div class="container mt-5">
+   <div class="row">
+      <div class="col-lg-8">
+    <h4>About</h4>
+     <div><?php echo $fetch['description']; ?></div>
+     </div>
 
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['fee'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
-    
-
-     <div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="english_score" name="english_score[]" multiple class="form-control">
- 					<?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-        $conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM english_score";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['english_score'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
-    
-     <div class="col-sm-2">
- 			<form method="post" id="framework_form">
- 				<div class="form-group">
- 					<select id="intakes" name="intakes[]" multiple class="form-control">
- 						 <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-        $conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM intakes";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<option value="' . $row['id'] . '">' . $row['intakes'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
- 					</select>
- 				</div>
- 			</form>
- 		</div>
-
-
- 	</div>
- </div>
-
-  
- 
-  
- <div class="container-fluid border-div">
-    <div class="flex-container" >
-        <?php
-       $conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM universities";
-        $result = mysqli_query($conn, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-          $fetch_program= mysqli_fetch_assoc(mysqli_query($conn,"select * from programs where university_id='".$row['id']."'"));
-                echo '<div class="flex-item">';
-                echo '<a href="university_details.php?id=' . $row['id'] . '"><div>' . $row['name'] . '</div></a>';
-                echo '<div class="program-info" style="width:250px; font-weight:bold;"><h5>' . $fetch_program['program'] . '</h5></div>';
-                echo '<div></div>';
-                echo '<hr>';
-                echo '<div>Location: </div>'; // Assuming there is a 'location' field in the database
-                 echo '<div>Campus City:</div>'; // Assuming there is a 'location' field in the database
-                 
-                echo '<div>Gross tution fee:</div>'; // Assuming there is a 'location' field in the database
-                echo '<div>Application fee: ' . $fetch_program['application_fees'] . ' </div>'; // Assuming there is a 'location' field in the database
-                echo '<div>Duration:</div>'; // Assuming there is a 'location' field in the database
-                echo '<hr>';
-
-                echo '<div class="success-prediction-container" style="margin-bottom:50px;">';
-                echo 'Success Prediction:';
-                echo '<button class="btn btn-info success-prediction" data-toggle="modal" data-target="#universityModal"
-                
-                 data-university-name="' . $row['name'] . '"
-                     data-program-level="' . $fetch_program['program'] . '"
-                     data-gross-tution-fee="' . $fetch_program['tuition_per_year_approx'] . '"
-                     data-application-fee="' . $fetch_program['application_fees'] . '">
-                   
-                
-                
-                Details</button>';
-                echo '</div>';
-
-                echo '<div class="create-application-container"  style="margin-top:50px; width:100px;">';
-                echo '<button class="btn btn-info create-application" data-toggle="modal" data-target="#createApplicationModal" style="border-radius:10px;"> 
-                    Create Application
-                </button>';
-                echo '</div>';
-
-
-                echo '</div>';
-            }
-        ?>
-    </div>
-</div>
-
+     <div class="col-lg-4">
    
+</div>
+     <div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="universityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog"  style="max-width:50%; margin-top:120px;">
-        <div class="modal-content"  style="border-radius:20px;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Success Prediction</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Success prediction by intake, estimated based on ApplyBoard's historical data. We make no representations, warranties, or guarantees as to the information's accuracy.</p>
-  
-                <ul class="info-list">
-    <li>Conversion is the historical ratio of accepted applications to submitted applications.</li>
-    <li>Turn Around Time is the expected time to receive a letter of acceptance after submitting an application.</li>
-    <li>Seat Availability is the predicted likelihood of a seat being available for the program intake.</li>
-</ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+     <div>
 </div>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="createApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog createApplicationModal" style="height:50%; margin-top:180px;max-width:50%;">
-        <div class="modal-content createApp">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Application</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body createApp">
-            <div class="form-group">
- 					<select id="student " name="student"  class="form-control">
- 						 <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-        $conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM student";
-        $result = mysqli_query($conn, $sql);
-        // Check if there are results
-        if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo '<option value="' . $row['id'] . '">' . $row['first_name'] . ' ' . $row['last_name'] . ' ' . $row['email'] . '</option>';
-            }
-        } else {
-            echo '<option>No Student</option>';
-        }
-        ?>
- 					</select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -1421,257 +931,39 @@
 
 
 <style>
-   .flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px; /* Adjust the gap between items as needed */
-        }
-        .flex-item {
-            flex: 1 1 200px; /* The items will grow and shrink, and have a base width of 200px */
-            border: 1px solid #ccc;
-            padding: 10px;
-            box-sizing: border-box;
-            background-color: white;
-            border-radius: 10px; /* Add border radius for rounded corners */
-        }
-        .flex-item div {
-            margin-bottom: 5px;
-        }
-      
-       
-.flex-item {
-  position: relative;
+input#option1 {
+    vertical-align: middle;
 }
-
-.create-application-container {
-  position: absolute;
-  
-  bottom: 5px;
-   
-}
-
-.create-application{
- 
- width:280px;
- height:50px;
-}
-
 </style>
-    <style>
-
-/* Container Styling */
-.border-div {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-}
-
-/* Box Styling */
-.box {
-    flex: 1;
-    margin: 5px;
-    background-color: lightblue;
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
-
-
-input[type=text] {
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: white;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-}
-
-</style>
-
-<style>
-        .modal-dialog {
-            max-width: 90%; /* Width: 90% of the viewport width */
-            height: 90%; /* Height: 90% of the viewport height */
-            margin: auto;
-        }
-        .modal-content {
-            height: 80%; /* Full height of the modal dialog */
-        }
-        .modal-body {
-            overflow-y: auto; /* Scrollable body content */
-        }
-
-       
-    .info-list {
-        list-style-type: disc;
-        margin-left: 20px;
-    }
-
-    .info-list li {
-        margin-bottom: 10px;
-    }
-
-
-
-
-
-
-    body {
-    font-family: Arial, sans-serif;
-}
-
-#openModalBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-    </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script>
-$(document).ready(function(){
- $('#location').multiselect({
-  nonSelectedText: 'Location',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
- 
- $('#program_level').multiselect({
-  nonSelectedText: 'Program level',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
-
- $('#discipline').multiselect({
-  nonSelectedText: 'Discipline',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
-
-
- $('#tuition_fee').multiselect({
-  nonSelectedText: 'Tuition Fee',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
-
- $('#english_score').multiselect({
-  nonSelectedText: 'English Score',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
-
-
- $('#intakes').multiselect({
-  nonSelectedText: 'Intakes',
-  enableFiltering: true,
-  enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
- });
-
-});
-</script>
-
-
-
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 
 <script>
-$(document).ready(function() {
-    $('#universityModal').on('show.bs.modal', function(event) {
-          var button = $(event.relatedTarget);
-        var universityName = button.data('university-name');
-        var programLevel = button.data('program-level');
-        var location = button.data('location');
-        var campusCity = button.data('campus-city');
-        var grossTutionFee = button.data('gross-tution-fee');
-        var applicationFee = button.data('application-fee');
-        var duration = button.data('duration');
-
-        var modal = $(this);
-        modal.find('#university-name').text('University Name: ' + universityName);
-        modal.find('#program-level').text('Program Level: ' + programLevel);
-        modal.find('#location').text('Location: ' + location);
-        modal.find('#campus-city').text('Campus City: ' + campusCity);
-        modal.find('#gross-tution-fee').text('Gross Tuition Fee: ' + grossTutionFee);
-        modal.find('#application-fee').text('Application Fee: ' + applicationFee);
-        modal.find('#duration').text('Duration: ' + duration);
+  $(document).ready(function() {
+    $('#pdfModal-highschool-transcript-college-diploma-college-transcript-marriage-certificate-passport-passport').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var pdfUrl = button.data('pdf-url'); // Extract info from data-* attributes
+      var modal = $(this);
+      modal.find('#pdfEmbed').attr('src', pdfUrl);
     });
-});
+  });
 </script>
-<script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<div class="dark-transparent sidebartoggler"></div>
+  <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
+  <!-- Import Js Files -->
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -1680,3 +972,58 @@ $(document).ready(function() {
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/sidebarmenu.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/feather.min.js"></script>
+
+  <!-- solar icons -->
+  <script src="../../../../cdn.jsdelivr.net/npm/iconify-icon%401.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/fullcalendar/index.global.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/apps/calendar-init.js"></script>
+
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/dashboards/dashboard4.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+  <script>
+$(document).ready(function(){
+    $("#insertForm").on("submit", function(event){
+       
+        event.preventDefault();
+        $.ajax({
+            url: "php/verify_documents_background_status.php",
+            method: "POST",
+            data: $(this).serialize(),
+            success: function(data){
+           
+                $("#message_login").show().html(data);
+            }
+        });
+    });
+});
+</script>

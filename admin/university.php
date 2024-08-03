@@ -2,7 +2,7 @@
 
 if(isset($_GET['delete_id'])){
 		$conn=mysqli_connect("localhost","root","","uni_study");
-$sqlDELETE=mysqli_query($conn,"DELETE FROM `university` WHERE `id`='".$_GET['delete_id']."'");
+$sqlDELETE=mysqli_query($conn,"DELETE FROM `universities` WHERE `id`='".$_GET['delete_id']."'");
 
 echo "<script>alert('delete university..!!');window.location.href='university.php';</script>";
 }
@@ -1079,50 +1079,27 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                   <form id="insertForm">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-12">
 											<label for="name" style="float:left;">University Name:</label>
-											<input type="text" class="form-control" id="name" name="university_name" required>
+											<input type="text" class="form-control" id="name" name="name" required>
 										</div>
-										<div class="col-sm-6">
-                                        <label for="sel1" class="form-label">Course:</label>
-									<select class="form-select" id="sel1" name="course" class="form-control">
-										<option>---SELECT Course---</option> <?php
-        // Assuming you have established a database connection named $conn
 
-        // SQL query to fetch all countries
-				$conn=mysqli_connect("localhost","root","","uni_study");
-        $sql = "SELECT * FROM discipline";
-        $result = mysqli_query($conn, $sql);
+										<div class="col-sm-12">
+                                        <label for="sel1" class="form-label">Description:</label>
+                                        <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"></textarea>
 
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-              
-                echo '<option value="' . $row['course_name'] . '" ' . $selected . '>' . $row['course_name'] . '</option>';
-            
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
-									</select>
 										</div>
+
+                    <div class="col-sm-12">
+                                        <label for="sel1" class="form-label">URL:</label>
+                                        <textarea id="description" class="form-control" name="url" placeholder="Enter your url here"></textarea>
+
+										</div>
+
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="name" style="float:left;">University Address:</label>
-									<input type="text" class="form-control" id="location" name="location" required>
-								</div>
 								
-							
-								
-								
-							
-								
-								
-								
-								
+					
 							
 								<div style="display: flex; justify-content: center; margin-top: 20px;">
                   <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
@@ -1135,7 +1112,8 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
 									<div class="input-group mb-0" id="message_login">
 										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
 									</div>
-								</div>
+                  <div id="loader"></div>
+                </div>
 							</div>
               </div>
 
@@ -1187,7 +1165,28 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
 }
 </style>
 
+<style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 
   
 
@@ -1202,9 +1201,10 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
         <thead>
             <tr >
                 <th scope="col">#</th>
-                <th scope="col" style="min-width:150px;">Universtiy Name</th>
-                <th scope="col" style="min-width:150px;">Course</th>
-                <th scope="col" style="min-width:150px;">Location</th>
+                <th scope="col" style="min-width:150px;">Name</th>
+                <th scope="col" style="min-width:150px;">Description</th>
+                <th scope="col" style="min-width:150px;">url</th>
+              
                
                 <th scope="col" style="min-width:150px;">Delete</th>
             </tr>
@@ -1212,16 +1212,17 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
         <tbody>
             <?php
          	$conn=mysqli_connect("localhost","root","","uni_study");
-            $sqllogistic=mysqli_query($conn,"SELECT * FROM `university`");
+            $sqllogistic=mysqli_query($conn,"SELECT * FROM `universities` order by id desc");
             $id = 0;
             while($show=mysqli_fetch_assoc($sqllogistic)){
             $id++;
             ?>
             <tr>
                 <td scope="row"><?php echo $id;?></td>
-                <td><?php echo $show['university_name'];?></td>
-                <td ><?php echo $show['course'];?></td>
-                <td><?php echo $show['location'];?></td>
+                <td><?php echo $show['name'];?></td>
+                <td ><?php echo $show['description'];?></td>
+                <td ><a href="<?php echo $show['start_url'];?>">url</a></td>
+               
               
                 <td>
                 <div class="button-container">
@@ -1290,7 +1291,10 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
  
 
 
-
+ <!-- SweetAlert CSS -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
 
 
 
