@@ -45,10 +45,20 @@
                 <span class="hide-menu"> <span style="margin-left:10px;"> University  </span></span>
               </a>
             </li>
+
+            <li class="sidebar-item">
+              <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
+                <a class="sidebar-link" href="courses_programs.php">
+                <iconify-icon icon="solar:box-minimalistic-linear" class="aside-icon"><i class="fas fa-book"></i></iconify-icon>
+                <span class="hide-menu"> <span style="margin-left:10px;"> Courses / Programs  </span></span>
+              </a>
+            </li>
+
+
           
             <li class="sidebar-item">
               <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
-                <a class="sidebar-link" href="bootstrap.php">
+                <a class="sidebar-link" href="programs_and_schools.php">
                 <iconify-icon icon="solar:box-minimalistic-linear" class="aside-icon"><i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
                 <span class="hide-menu"><span style="margin-left:10px;">Programs and Schools</span></span>
               </a>

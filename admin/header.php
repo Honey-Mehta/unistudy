@@ -14,7 +14,7 @@
 
   <!-- Core Css -->
   <link rel="stylesheet" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/css/styles.css" />
-
+  <link rel="stylesheet" href="./css/style.css" />
   <title>Unistudy</title>
 
 </head>

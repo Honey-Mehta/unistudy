@@ -1,5 +1,10 @@
 
-<?php include('header.php'); ?>
+<?php include("./common/config.php");
+
+
+include('header.php');
+
+?>
 <style>
         .custom-button {
             border-radius: 15px; /* Adjust the radius as needed */
@@ -393,7 +398,7 @@
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
+                                <?php echo $_SESSION['admin_email']; ?>
                               </p>
                             </div>
                           </div>

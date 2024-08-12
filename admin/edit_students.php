@@ -1426,7 +1426,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                     <h2 id="heading">Profile</h2>
                     <p>Fill all form fields to go to the next step</p>
                     <form id="msform"  method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php echo  $fetch['id']; ?>"> 
+                    <input type="hidden"  id="student_id" name="id" value="<?php echo  $fetch['id']; ?>"> 
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Personal Information</strong></li>
@@ -1592,7 +1592,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                             <label for="sel1" class="form-label">Country Of Education:</label>
 									<select class="form-select" id="country_of_education" name="country_of_education" class="form-control">
 										<option>---SELECT COUNTRY---</option> <?php
@@ -1607,7 +1607,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         if ($result) {
             // Loop through the results and create an option element for each country
             while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['name'] == $fetch['country']) ? "selected" : "";
+                $selected = ($row['id'] == $fetch['country_of_education']) ? "selected" : "";
                 echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
             
             }
@@ -1618,7 +1618,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 									</select>
 
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                             <label for="sel1" class="form-label">Highest Level Of Education:</label>
 									<select class="form-select" id="highest_level_of_education" name="highest_level_of_education" class="form-control">
 										<option>---Select Program Level---</option> <?php
@@ -1633,8 +1633,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         if ($result) {
             // Loop through the results and create an option element for each country
             while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['program_level'] == $fetch['program_level']) ? "selected" : "";
-                echo '<option value="' . $row['program_level'] . '" ' . $selected . '>' . $row['program_level'] . '</option>';
+              $selected = ($row['id'] == $fetch['highest_level_of_education']) ? "selected" : "";
+              echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['program_level'] . '</option>';
             
             }
         } else {
@@ -1643,6 +1643,46 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         ?>
 									</select>
                                             </div>
+
+
+
+
+
+
+                                            <div class="col-sm-4">
+                                            <label for="sel1" class="form-label">Grading Scheme:</label>
+									<select class="form-select" id="grading_scheme" name="grading_scheme" class="form-control">
+										<option>---Select Program Level---</option> <?php
+        // Assuming you have established a database connection named $conn
+
+        // SQL query to fetch all countries
+		$conn=mysqli_connect("localhost","root","","uni_study");
+        $sql = "SELECT * FROM grading_scheme";
+        $result = mysqli_query($conn, $sql);
+
+        // Check if there are results
+        if ($result) {
+            // Loop through the results and create an option element for each country
+            while ($row = mysqli_fetch_assoc($result)) {
+              $selected = ($row['id'] == $fetch['grading_scheme']) ? "selected" : "";
+              echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['grading_scheme'] . '</option>';
+            
+            }
+        } else {
+            echo '<option>No Program Level found</option>';
+        }
+        ?>
+									</select>
+                                            </div>
+
+
+
+
+
+
+
+
+
                                             
                                         </div>
                                         </div>
@@ -1658,14 +1698,15 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
                                         <div id="dropdown-container"></div>
-    <button type="button" id="add-more-btn">Add More</button>
+    <button type="button" id="add-more-btn" style="margin-top:20px;">Add More</button>
 
 
 <div id="dropdown-template" style="display: none;" class="row">
+   <div class="row">
     <div class="col-sm-4">
   <label>Country of Institution</label>
-    <select class="form-select" name="country_of_institute" class="form-control">
-       
+    <select class="form-select" name="country_of_institute[]" class="form-control">
+    <option value="">---Select Country of institute---</option>
         <?php
         // Assuming you have established a database connection named $conn
         $conn=mysqli_connect("localhost","root","","uni_study");
@@ -1676,7 +1717,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         if ($result) {
             // Loop through the results and create an option element for each country
             while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['name'] == $fetch['country']) ? "selected" : "";
+                $selected = ($row['id'] == $fetch['country_of_institution']) ? "selected" : "";
                 echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
             }
         } else {
@@ -1685,6 +1726,165 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         ?>
     </select>
       </div>
+
+
+
+      <div class="col-sm-4">
+  <label>Name of Institution</label>
+    <input type="text" name="name_of_institute[]" class="form-control">
+      </div>
+
+
+      <div class="col-sm-4">
+  <label>Level of Education</label>
+    <select class="form-select" name="level_of_education[]" class="form-control">
+    <option value="">---Select Level of education---</option>
+        <?php
+        // Assuming you have established a database connection named $conn
+        $conn=mysqli_connect("localhost","root","","uni_study");
+        // SQL query to fetch all countries
+        $sql = "SELECT * FROM program_level";
+        $result = mysqli_query($conn, $sql);
+        // Check if there are results
+        if ($result) {
+            // Loop through the results and create an option element for each country
+            while ($row = mysqli_fetch_assoc($result)) {
+                $selected = ($row['id'] == $fetch['level_of_education']) ? "selected" : "";
+                echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['program_level'] . '</option>';
+            }
+        } else {
+            echo '<option>No countries found</option>';
+        }
+        ?>
+    </select>
+
+  
+
+      </div>
+
+
+
+
+
+
+      <div class="col-sm-4">
+  <label>Primary langauge of instruction</label>
+    
+  <input type="text"  name="primary_language_of_instruction[]" class="form-control">
+
+      </div>
+
+
+      <div class="col-sm-4">
+  <label>Attended Instituion From</label>
+    
+  <input type="date"  name="attended_institution_from[]" class="form-control">
+
+      </div>
+
+
+
+   
+      <div class="col-sm-4">
+  <label>Attended Instituion To</label>
+    
+  <input type="date"  name="attended_institution_to[]" class="form-control">
+
+      </div>
+
+      <div class="col-sm-4">
+  <label>Degree Name</label>
+    
+  <input type="text"  name="degree_name[]" class="form-control">
+
+      </div>
+
+
+
+      <div class="col-sm-4">
+ 
+
+ </div>
+
+  <div class="col-sm-4">
+
+
+ </div>
+
+
+
+<div class="col-sm-4">
+       <label>I have graduated from this institution</label></br>
+       Yes<input type="radio" value="yes" name="graduated[]">
+       No<input type="radio" value="no" name="graduated[]">
+    
+       </div>
+          
+<div class="col-sm-4">
+      
+    
+       </div>
+
+<div class="col-sm-4">
+      
+    
+       </div>
+
+
+ <div class="col-sm-4">
+        <label>Graduation Date</label></br>
+        <input type="date" name="graduation_date[]">
+    
+       </div>
+
+   <div class="col-sm-4">
+      
+    
+       </div>
+
+<div class="col-sm-4">
+      
+    
+       </div>
+
+         <div class="col-sm-4">
+       
+       <input type="checkbox" name="certificate_awarded[]" value="yes">I have physical certificate of this degree
+    
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+      <div class="col-sm-2">
+            <button type="button" class="remove-btn bg-primary btn-lg">Remove</button>
+        </div>
 </div>
 
 
@@ -1837,17 +2037,19 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     <script> 
         $(document).ready(function(){
        
-
+      var student = $("#student_id").val();
           var country = $('#country').val();
-            
-               
+          
             if(country){
                 $.ajax({
                     type:'POST',
-                    url:'fetch_states.php',
-                    data:'country_id='+country,
+                    url:'fetch_student_states.php',
+                    data: {
+                    country_id: country,
+                    student_id: student
+                },
                     success:function(html){
-                        
+                      
                         $('#state').html(html);
                     }
                 }); 
@@ -1860,7 +2062,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
             $('#country').on('change', function(){
             var countryID = $(this).val();
-           
+                            
             if(countryID){
                 $.ajax({
                     type:'POST',
@@ -1909,10 +2111,31 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     });
 
 
+    document.getElementById('add-more-btn').addEventListener('click', function() {
+    // Get the dropdown container
+    var container = document.getElementById('dropdown-container');
+    
+    // Get the hidden dropdown template
+    var template = document.getElementById('dropdown-template').innerHTML;
+    
+    // Create a new div to hold the cloned dropdown
+    var newDropdownWrapper = document.createElement('div');
+    newDropdownWrapper.className = 'dropdown-wrapper';
+    
+    // Set the innerHTML of the new div to the template
+    newDropdownWrapper.innerHTML = template;
+    
+    // Append the new div to the container
+    container.appendChild(newDropdownWrapper);
 
+    // Add event listener for remove button
+   newDropdownWrapper.querySelector('.remove-btn').addEventListener('click', function() {
+       container.removeChild(newDropdownWrapper);
+   });
+});
    
 
-
+   
 
 
 
@@ -2066,32 +2289,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 
   
- 
-<script>
-           document.getElementById('add-more-btn').addEventListener('click', function() {
-    // Get the dropdown container
-    var container = document.getElementById('dropdown-container');
-    
-    // Get the hidden dropdown template
-    var template = document.getElementById('dropdown-template').innerHTML;
-    
-    // Create a new div to hold the cloned dropdown
-    var newDropdownWrapper = document.createElement('div');
-    newDropdownWrapper.className = 'dropdown-wrapper';
-    
-    // Set the innerHTML of the new div to the template
-    newDropdownWrapper.innerHTML = template;
-    
-    // Append the new div to the container
-    container.appendChild(newDropdownWrapper);
 
-    // Add event listener for remove button
-    newDropdownWrapper.querySelector('.remove-btn').addEventListener('click', function() {
-        container.removeChild(newDropdownWrapper);
-    });
-});
-
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 

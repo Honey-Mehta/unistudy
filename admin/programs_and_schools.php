@@ -1,45 +1,3 @@
-<?php include("./common/config.php");
-if(isset($_GET['delete_id'])){
-    
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
-    $sqlDELETE = "DELETE FROM `universities` WHERE `id`='$delete_id'";
-
-    if (mysqli_query($conn, $sqlDELETE)) {
-        echo "<script>
-            swal({
-                title: 'Deleted!',
-                text: 'University has been deleted.',
-                icon: 'success',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    } else {
-        echo "<script>
-            swal({
-                title: 'Error!',
-                text: 'Failed to delete University.',
-                icon: 'error',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    }
-
-    mysqli_close($conn);
-}
-
-
-?>
-
 <?php include('header.php'); ?>
 
 <?php include('sidebar.php'); ?>
@@ -53,7 +11,7 @@ if(isset($_GET['delete_id'])){
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-                
+              
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -64,7 +22,7 @@ if(isset($_GET['delete_id'])){
                   <!--End Logo icon -->
                   <!-- Logo text -->
                   <span class="logo-text">
-                   
+                    
                   </span>
                 </a>
               </div>
@@ -93,7 +51,7 @@ if(isset($_GET['delete_id'])){
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-               
+
               </li>
 
 
@@ -140,13 +98,7 @@ if(isset($_GET['delete_id'])){
                     </a>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
+                  
                     <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
                       <div class="py-3 px-4 bg-primary">
@@ -157,7 +109,13 @@ if(isset($_GET['delete_id'])){
                           <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
                             <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                           </span>
-                        
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Launch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
                         </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
                           <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
@@ -184,9 +142,42 @@ if(isset($_GET['delete_id'])){
                             <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
                           </div>
                         </a>
-                        
-                      
-                       
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
+                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Luanch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Event today</h6>
+                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Settings</h6>
+                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
                       </div>
                       <div class="p-3">
                         <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
@@ -202,11 +193,17 @@ if(isset($_GET['delete_id'])){
                     </div>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                   
+                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
                       <div class="py-3 px-4 bg-secondary">
-                   
+                       
                       </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
@@ -214,9 +211,28 @@ if(isset($_GET['delete_id'])){
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
                             <span class="profile-status bg-success position-absolute rounded-circle"></span>
                           </span>
-                        
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Mathew Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
                         </a>
-                    
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Bianca Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:10 AM</span>
+                            </div>
+
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
                           <span class="user-img position-relative d-inline-block">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
@@ -284,8 +300,10 @@ if(isset($_GET['delete_id'])){
                   <!-- ------------------------------- -->
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
-                                                                               
-                  <!-- ------------------------------- -->                 
+
+
+
+                  <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
                   <!-- ------------------------------- -->
 
@@ -299,24 +317,31 @@ if(isset($_GET['delete_id'])){
                   </li>
 
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                    
-                    
+                  
+                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden dropdown-menu-end" aria-labelledby="drop2">
+
+                      <div class="py-3 px-4 bg-primary">
+                        
+                      </div>
+                      <div class="message-body" data-simplebar>
+                       
+                        
+                        
+                       
+                        
+                     
+                      </div>
+                      
+
+
+
+
+                    </div>
                   </li>
 
                   <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                    
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                     
-                      <div class="message-body" data-simplebar>
-                       
-                       
-                       
-                 
-                      </div>
-                     
-
-                    </div>
+                   
+                   
                   </li>
 
                   <!-- ------------------------------- -->
@@ -338,7 +363,7 @@ if(isset($_GET['delete_id'])){
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                              <?php echo $_SESSION['admin_email']; ?>
+                                markrarn@wrappixel.com
                               </p>
                             </div>
                           </div>
@@ -346,12 +371,11 @@ if(isset($_GET['delete_id'])){
                         <div class="message-body pb-3">
                           <div class="px-3 pt-3">
                             
-                            
-                           
                           </div>
                         
                           <div class="px-3">
-                            
+                           
+                            </div>
                            
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
@@ -1086,264 +1110,296 @@ if(isset($_GET['delete_id'])){
       </header>
       <!--  Header End -->
 
-      <div class="container-fluid" style="margin-top:100px; ">
-	      <div class="row">
-		      <div class="col-sm-8">
-          <h1>University</h1>
-          </div>
-          <div class="col-sm-4" style="margin-top:30px;">
-        
-           
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:10px;"><i class="fa fa-plus mr-4" ></i> Add new University </button>
-           <div class="modal fade" id="myModal" >
-				     <div class="modal-dialog" >
-					    <div class="modal-content">
-						<!-- Modal Header -->
-						     <div class="modal-header">
-						     	<h4 class="modal-title">Add New University</h4>
-						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:150px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
-					    	</div>
-						<!-- Modal Body -->
-						<!-- Modal body -->
-					      	<div class="modal-body">
-                  <form id="insertForm">
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-12">
-											<label for="name" style="float:left;">University Name:</label>
-											<input type="text" class="form-control" id="name" name="name" required>
-										</div>
 
-										<div class="col-sm-12">
-                                        <label for="sel1" class="form-label">Description:</label>
-                                        <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"></textarea>
 
-										</div>
+      <div class="container-fluid" style="margin-top:100px;">
+     <form>
+  <input type="text" name="search" placeholder="Search for Programs, Institutions or other keywords" onkeyup="fireAjax()">
+</form>
+</div>
 
-                    <div class="col-sm-12">
-                                        <label for="sel1" class="form-label">URL:</label>
-                                        <textarea id="description" class="form-control" name="url" placeholder="Enter your url here"></textarea>
 
-										</div>
+<div class="container-fluid" style="margin-top:100px;">
+    <div class="row">
+        <form method="post" id="framework">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="location" name="location[]" multiple class="form-control">
+                        <?php
+                        // Assuming you have established a database connection named $conn
+                        $conn = mysqli_connect("localhost", "root", "", "uni_study");
+                        $sql = "SELECT * FROM location";
+                        $result = mysqli_query($conn, $sql);
 
-									</div>
-								</div>
-								
-					
-							
-								<div style="display: flex; justify-content: center; margin-top: 20px;">
-                  <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each location
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['location'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No locations found</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
-							</form>
-              <div class="row">
-								<div class="col-sm-12">
-									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div> -->
-									<div class="input-group mb-0" id="message_login">
-										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
-									</div>
-                  <div id="loader"></div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="program_level" name="program_level[]" multiple class="form-control">
+                        <?php
+                        // SQL query to fetch all program levels
+                        $sql = "SELECT * FROM program_level";
+                        $result = mysqli_query($conn, $sql);
+
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each program level
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['program_level'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No program levels found</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
-							</div>
-              </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="discipline" name="discipline[]" multiple class="form-control">
+                        <?php
+                        // SQL query to fetch all disciplines
+                        $sql = "SELECT * FROM discipline";
+                        $result = mysqli_query($conn, $sql);
 
-              <div class="modal-footer">
-							<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-						</div>
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each discipline
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['course_name'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No disciplines found</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="tuition_fee" name="tuition_fee[]" multiple class="form-control">
+                        <?php
+                        // SQL query to fetch all tuition fees
+                        $sql = "SELECT * FROM tuition_fee";
+                        $result = mysqli_query($conn, $sql);
 
-      </div>
-      </div>
-      </div>
-      </div>
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each tuition fee
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['fee'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No tuition fees found</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="english_score" name="english_score[]" multiple class="form-control">
+                        <?php
+                        // SQL query to fetch all english scores
+                        $sql = "SELECT * FROM english_score";
+                        $result = mysqli_query($conn, $sql);
 
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each english score
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['english_score'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No english scores found</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select id="intakes" name="intakes[]" multiple class="form-control">
+                        <?php
+                        // SQL query to fetch all intakes
+                        $sql = "SELECT * FROM intakes";
+                        $result = mysqli_query($conn, $sql);
 
+                        // Check if there are results
+                        if ($result) {
+                            // Loop through the results and create an option element for each intake
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['id'] . '">' . $row['intakes'] . '</option>';
+                            }
+                        } else {
+                            echo '<option>No intakes found</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary mt-1 btn-lg" style="margin-right: 10px;">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-
-
-
-
-
-
-          
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-    
   
-<div class="container-fluid" style="margin-top:50px; max-width:90%;">
+ 
+  
+ <div class="container-fluid border-div" >
+    <div class="flex-container" id="search">
+        <?php
+       $conn=mysqli_connect("localhost","root","","uni_study");
+        // Get the total number of universities
+$total_results = mysqli_query($conn, "SELECT COUNT(*) as count FROM universities");
+$total_rows = mysqli_fetch_assoc($total_results)['count'];
 
+// Set the items per page
+$items_per_page = isset($_GET['items_per_page']) ? intval($_GET['items_per_page']) : 10;
 
-<div>
-    <table class="table">
-        <thead>
-            <tr >
-                <th scope="col">#</th>
-                <th scope="col" style="min-width:150px;">Name</th>
-                <th scope="col" style="min-width:150px;">Description</th>
-                <th scope="col" style="min-width:150px;">url</th>
-              
-               
-                <th scope="col" style="min-width:150px;">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-       
-         <?php
+// Calculate total pages
+$total_pages = ceil($total_rows / $items_per_page);
 
-function truncateWords($text, $limit) {
-  $words = explode(' ', $text);
-  if (count($words) > $limit) {
-      return implode(' ', array_slice($words, 0, $limit)) . '...';
-  }
-  return $text;
+// Get the current page or set a default
+$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+if ($current_page < 1) {
+    $current_page = 1;
+} elseif ($current_page > $total_pages) {
+    $current_page = $total_pages;
 }
 
+// Calculate the offset for the query
+$offset = ($current_page - 1) * $items_per_page;
+
+// Fetch the universities with pagination
+$sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
+        $result = mysqli_query($conn, $sql);
+
+       
 
 
 
-         // Set the number of records per page
-         $records_per_page = 10;
-         // Calculate the offset
-         $records_per_page = isset($_GET['items_per_page']) ? (int)$_GET['items_per_page'] : 10; // Default to 10 if not set9sssssssssssssssssssssssssssssssss
-         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-         $offset = ($page - 1) * $records_per_page;
+        while ($row = mysqli_fetch_assoc($result)) {
+          $fetch_program= mysqli_fetch_assoc(mysqli_query($conn,"select * from programs where university_id='".$row['id']."'"));
+                echo '<div class="flex-item">';
+                echo '<div class="flex-item" style="display: flex; align-items: center;">';
+                echo '<img src="images/university.jfif" style="width:50px; height:50px; margin-right:10px; border-radius:50%;">';
+                echo '<span>';
+                echo '<a href="university_details.php?id=' . $row['id'] . '"><div>' . $row['name'] . '</div></a>';
+                echo '</span>';
+                echo '</div>';
+                echo '<div class="program-info" style="width:250px; font-weight:bold;"><h5>' . $fetch_program['program'] . '</h5></div>';
+                echo '<div></div>';
+                echo '<hr>';
+                echo '<div>Location: </div>'; // Assuming there is a 'location' field in the database
+                 echo '<div>Campus City:</div>'; // Assuming there is a 'location' field in the database
+                 
+                echo '<div>Gross tution fee:</div>'; // Assuming there is a 'location' field in the database
+                echo '<div>Application fee: ' . $fetch_program['application_fees'] . ' </div>'; // Assuming there is a 'location' field in the database
+                echo '<div>Duration:</div>'; // Assuming there is a 'location' field in the database
+                echo '<hr>';
 
-         // Fetch the total number of records
-         $total_records_query = "SELECT COUNT(*) FROM `universities`";
-         $total_records_result = mysqli_query($conn, $total_records_query);
-         $total_records_row = mysqli_fetch_array($total_records_result);
-         $total_records = $total_records_row[0];
+                echo '<div class="success-prediction-container" style="margin-bottom:50px;">';
+                echo 'Success Prediction:';
+                echo '<button style="margin-left:20px;" class="btn btn-info success-prediction mb-3" data-toggle="modal" data-target="#universityModal"
+                
+                 data-university-name="' . $row['name'] . '"
+                     data-program-level="' . $fetch_program['program'] . '"
+                     data-gross-tution-fee="' . $fetch_program['tuition_per_year_approx'] . '"
+                     data-application-fee="' . $fetch_program['application_fees'] . '">
+                   
+                
+                
+                Details</button>';
+                echo '</div>';
 
-         // Fetch the records for the current page
-         $sqllogistic = mysqli_query($conn, "SELECT * FROM `universities` ORDER BY id DESC LIMIT $records_per_page OFFSET $offset");
+                echo '<div class="create-application-container"  style="margin-top:50px; width:100px;">';
+                echo '<button class="btn btn-info create-application" data-toggle="modal" data-target="#createApplicationModal" style="border-radius:10px;"
+                
+                data-university-name="' . $row['name'] . '"
+                     data-program-level="' . $fetch_program['program'] . '"
+                     data-gross-tution-fee="' . $fetch_program['tuition_per_year_approx'] . '"
+                     data-application-fee="' . $fetch_program['application_fees'] . '">
+                
+                
+                    Create Application
+                </button>';
+                echo '</div>';
 
-         // Calculate the total number of pages
-         $total_pages = ceil($total_records / $records_per_page);
 
-         $id = $offset;
+                echo '</div>';
+            }
+        ?>
+    </div>
 
     
-       
-           
-            while($show=mysqli_fetch_assoc($sqllogistic)){
-            
-$description = $show['description'];
-$word_limit = 20; // Change this to your desired word limit
-$truncated_description = truncateWords($description, $word_limit);
-            $id++;
-            ?>
-            <tr>
-                <td scope="row"><?php echo $id;?></td>
-                <td><?php echo $show['name'];?></td>
-                <td ><span class="short-description"><?php echo $truncated_description; ?></span>
-    <span class="full-description" style="display: none;"><?php echo $description; ?></span>
-    <?php if (str_word_count($description) > $word_limit) : ?>
-          <button class="read-more-btn btn btn-primary" data-toggle="modal" data-target="#readMoreModal" data-full-description="<?php echo htmlspecialchars($description); ?>">Read more</button>
-    <?php endif; ?></td>
-                <td ><a href="<?php echo $show['start_url'];?>">url</a></td>
-               
-              
-                <td>
-                <div class="button-container">
-                <a href="edit_university.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
-                <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
-                
-                  </td>
-                  </div>
-                
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
 
-
-  <!-- Pagination Controls -->
-  <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
-            <?php endif; ?>
-
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
-                    <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
-            <?php endfor; ?>
-
-            <?php if ($page < $total_pages): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav> -->
-
-
-
-
-
-
-</div>
-
-
+   
   
-<div class="container-fluid">
- <div class="d-flex justify-content-between align-items-center mb-3">
-    <form method="GET" action="" class="d-flex align-items-center">
-        <label for="items_per_page" class="mr-2 mb-0" style="min-width:150px;">Items per page:</label>
-        <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control mr-2">
-            <option value="5" <?php if ($records_per_page == 5) echo 'selected'; ?>>5</option>
-            <option value="10" <?php if ($records_per_page == 10) echo 'selected'; ?>>10</option>
-            <option value="15" <?php if ($records_per_page == 15) echo 'selected'; ?>>15</option>
-            <option value="20" <?php if ($records_per_page == 20) echo 'selected'; ?>>20</option>
-            <option value="40" <?php if ($records_per_page == 40) echo 'selected'; ?>>40</option>
-        </select>
-    </form>
-
-    <!-- Pagination controls -->
-    <div class="pagination">
-       
-            <?php
-            if ($page > 1) {
-                echo '<a href="?page=' . ($page - 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary mr-2">&laquo; Previous</a>';
-            }
-
-            if ($page < $total_pages) {
-                echo '<a href="?page=' . ($page + 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary">Next &raquo;</a>';
-            }
-            ?>
-       
-    </div>
-
-    </div>
-
 
 </div>
 
 
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <form method="GET" action="" class="d-flex align-items-center">
+            <label for="items_per_page">Items per page:</label>
+            <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control " style="margin-left:20px;">
+                <option value="5" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 5) echo 'selected'; ?>>5</option>
+                <option value="10" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 10) echo 'selected'; ?>>10</option>
+                <option value="15" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 15) echo 'selected'; ?>>15</option>
+                <option value="20" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 20) echo 'selected'; ?>>20</option>
+            </select>
+        </form>
 
-<!-- Modal Structure -->
-<div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="pagination">
+            <?php
+            if ($current_page > 1) {
+                echo '<a href="?page=' . ($current_page - 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary mr-2">&laquo; Previous</a>';
+            }
+
+            if ($current_page < $total_pages) {
+                echo '<a href="?page=' . ($current_page + 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary">Next &raquo;</a>';
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="universityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="max-width:50%; margin-top:120px;">
+        <div class="modal-content"  style="border-radius:20px;">
             <div class="modal-header">
-                <h5 class="modal-title" id="readMoreModalLabel">Full Description</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Success Prediction</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="modal-text"></div>
+            <div class="modal-body">
+                <p>Success prediction by intake, estimated based on ApplyBoard's historical data. We make no representations, warranties, or guarantees as to the information's accuracy.</p>
+  
+                <ul class="info-list">
+    <li>Conversion is the historical ratio of accepted applications to submitted applications.</li>
+    <li>Turn Around Time is the expected time to receive a letter of acceptance after submitting an application.</li>
+    <li>Seat Availability is the predicted likelihood of a seat being available for the program intake.</li>
+</ul>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -1351,70 +1407,540 @@ $truncated_description = truncateWords($description, $word_limit);
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    $('#readMoreModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var fullDescription = button.data('full-description'); // Extract info from data-* attributes
-        var modal = $(this);
-        modal.find('.modal-body').text(fullDescription);
-    });
-});
-</script>
 
 
+<!-- Modal -->
+<div class="modal fade" id="createApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog createApplicationModal" style="margin-left:250px">
+        <div class="modal-content createApp" style="height:100%; margin-top:20px; min-width:200%; ">
+            <div class="modal-header" >
+                <h4 class="modal-title" id="exampleModalLabel" >New Application</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left:80px; border-radius: 100px; padding: 10px; width:200px; height:20px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body createApp">
+          
 
 
+                <!-- <div class="card px-0 pt-4 pb-0 mt-3 mb-3"> -->
+                
+                    <form id="msform"  method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo  $fetch['id']; ?>"> 
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active" id="account">Eligibilty</li>
+                            <li id="personal">Prerequisites</li>
+                            <li id="payment">What to Expect</li>
+                            <!-- <li id="confirm"><strong>Finish</strong></li> -->
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> <br>
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="form-card">
+                                
 
+                            
+                <input type="text" class="programlevel" name="programlevel">
+                <input type="text" class="university-name"  name="universityname">
+                
+      
+                               
+              <p id="programlevel">Please select a student to check their eligibility for this program.</p>
+           
 
+             
+              <label>Student</label>
+ 					<select id="students " name="student"  class="form-control student-list">
+ 						 <?php
+        // Assuming you have established a database connection named $conn
 
-
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-
-
-
-  <script>
-$(document).ready(function(){
- 
-    $("#insertForm").on("submit", function(event){
-     
-        event.preventDefault();
-        $.ajax({
-            url: "php/university.php",
-            method: "POST",
-            data: $(this).serialize(),
-            success: function(data){
-              
-                $("#message_login").show().html(data);
+        // SQL query to fetch all countries
+        $conn=mysqli_connect("localhost","root","","uni_study");
+        $sql = "SELECT * FROM student";
+        $result = mysqli_query($conn, $sql);
+        // Check if there are results
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo '<option value="' . $row['id'] . '">' . $row['first_name'] . ' ' . $row['last_name'] . ' ' . $row['email'] . '</option>';
             }
-        });
-    });
+        } else {
+            echo '<option>No Student</option>';
+        }
+        ?>
+ 					</select>
+             
 
 
+                               
+                                
+								
+                               
+
+                                   
+                                            
+                                  
+                                   
+
+
+                              
+
+
+
+
+
+            
+
+        <p id="eligibility_status" style="font-size:20px; background-color:rgb(204, 242, 235); height:50px; border-radius:10px; color:rgb(9, 137, 114);display:none ;text-align: center;
+"></p>
+
+
+
+
+
+                            </div> 
+                            <input type="button" name="next" class="next action-button" value="Next" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                            <div class="row">
+                                    
+
+                                 
+
+                                        
+                <input type="text" class="programlevel" name="programlevel">
+            
+                
+             
+
+
+
+
+
+
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div> 
+                            </div> 
+                            <input type="button" name="next" class="next action-button" value="Next" /> 
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                               
+                                
+
+
+
+                                <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       1. Copy of Education Transcripts
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Please provide a copy of the applicant's original transcripts and English translated transcripts:</strong>
+        <ul class="info-list">
+               <li>acceptable formats: PDF, JPEG or PNG
+               </li>
+               <li>the photocopy / scan to have no cut-off at the edges and is clear to read
+               </li>
+               <li>file size limit of the photocopy is 20MB</li>
+        </ul>
+       </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        2. Copy of Education Certificate
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Please provide a copy of the applicant's original certificate and English translated certificate:</strong>
+        acceptable formats: PDF, JPEG or PNG
+      the photocopy / scan to have no cut-off at the edges and is clear to read
+       file size limit is 20MB
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       3. Emergency Contact
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <p>Please provide the details of the applicant’s emergency contact.</p>
+
+
+
+      <p>The emergency contact must be a family member / guardian OR a friend of the applicant. </p>
+
+
+
+      <p>The emergency contact can NOT be the applicant themselves, a recruitment partner, or other members of a recruitment agency.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       4. Copy of Passport Workflow
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+     <p> Please attach a copy of the applicant's passport - pages that include the applicant's identity information: * Acceptable formats: PDF, JPEG or PNG * the photocopy/scan to have no cut-off at the edges and is clear to read * File size limit is 20MB</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       5. No Deferral Policy Acknowledgement
+    </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <p>Applicant would NOT be able to defer from one intake to the next, if they are unsuccessful in their initial application selection or visa application.</p>
+
+
+
+<p>They would forfeit their application fee and would require to pay for a new application fee and submit a new application for a different intake, if they wish to continue to apply to the college.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       6. English Language Proficiency Test
+    </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+     <p> Please provide a copy of the applicant's english test scores: * acceptable formats: PDF, JPEG or PNG * the photocopy / scan to have no cut-off at the edges and is clear to read * file size limit is 20MB. If the student wishes to provide Duolingo test result, it is required to * Upload a Duolingo certificate with a verification link * Upload a Duolingo Certificate in English format</p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                            </div> 
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                            <button type="submit" class="btn btn-primary mt-1 btn-lg" style="margin-right: 10px;">Submit</button>
+                            <!-- <input type="button" name="next" class="next action-button" value="Submit" />  -->
+                            <input type="button" name="previous" class="previous action-button-previous mt-4" value="Previous" />
+      </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                               
+                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                                <div class="row justify-content-center">
+                                    <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                                </div> <br><br>
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                   
+								<div class="col-sm-12">
+									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div> -->
+									<div class="input-group mb-0" id="message_login">
+										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
+									</div>
+                  <div id="loader"></div>
+							
+							
+
+
+
+
+
+
+
+
+
+
+
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+
+           
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<style>
+  
  
+   .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjust the gap between items as needed */
+        }
+        .flex-item {
+            flex: 1 1 200px; /* The items will grow and shrink, and have a base width of 200px */
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 10px; /* Add border radius for rounded corners */
+        }
+        .flex-item div {
+            margin-bottom: 5px;
+        }
+      
+       
+.flex-item {
+  position: relative;
+}
+
+.create-application-container {
+  position: absolute;
+  
+  bottom: 5px;
+   
+}
+
+.create-application{
  
-});
-</script>
+ width:280px;
+ height:50px;
+}
+
+</style>
+    <style>
+
+/* Container Styling */
+.border-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+/* Box Styling */
+.box {
+    flex: 1;
+    margin: 5px;
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
+</style>
+
+<style>
+        .modal-dialog {
+            max-width: 90%; /* Width: 90% of the viewport width */
+            height: 90%; /* Height: 90% of the viewport height */
+            margin: auto;
+        }
+        .modal-content {
+            height: 80%; /* Full height of the modal dialog */
+        }
+        .modal-body {
+            overflow-y: auto; /* Scrollable body content */
+        }
+
+       
+    .info-list {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+
+    .info-list li {
+        margin-bottom: 10px;
+    }
+
+
+
+
+
+
+    body {
+    font-family: Arial, sans-serif;
+}
+
+#openModalBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+    /* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 70%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+
+    </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 <script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this student!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            window.location.href = "?delete_id=" + id;
-        }
-    });
-}
-</script>
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+  </script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
@@ -1423,11 +1949,318 @@ function confirmDelete(id) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 
-  <div class="dark-transparent sidebartoggler"></div>
-  <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
-  <!-- Import Js Files -->
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+  <script>
+$(document).ready(function(){
+ 
+  $('.student-list').on('change', function() {
+    $("#eligibility_status").text("Student is eligible for the program").show();
+                        
+
+    });
+
+    $("#msform").on("submit", function(event){
+     
+      event.preventDefault();
+     $.ajax({
+         url: "php/create_app.php",
+         method: "POST",
+         data: $(this).serialize(),
+         success: function(data){
+           
+             $("#message_login").html(data);
+         }
+     });
+ });
+
+
+ $("#framework").on("submit", function(event){
+     alert("hello");
+    $.ajax({
+        url: "php/filter_results.php",
+        method: "POST",
+        data: $(this).serialize(),
+        success: function(data){
+            alert(data);
+            $("#search").html(data);
+        }
+    });
+});
+
+
+
+
+
+
+
+ $('#location').multiselect({
+  nonSelectedText: 'Location',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+ 
+ $('#program_level').multiselect({
+  nonSelectedText: 'Program level',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+
+ $('#discipline').multiselect({
+  nonSelectedText: 'Discipline',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+
+
+ $('#tuition_fee').multiselect({
+  nonSelectedText: 'Tuition Fee',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+
+ $('#english_score').multiselect({
+  nonSelectedText: 'English Score',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+
+
+ $('#intakes').multiselect({
+  nonSelectedText: 'Intakes',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'150px'
+ });
+
+
+
+ var current_fs, next_fs, previous_fs; // fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
+
+            setProgressBar(current);
+
+            $(".next").click(function(){
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                // Check if the current fieldset is valid
+                if (isValid(current_fs)) {
+                    // Add Class Active
+                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                    // show the next fieldset
+                    next_fs.show();
+                    // hide the current fieldset with style
+                    current_fs.animate({opacity: 0}, {
+                        step: function(now) {
+                            // for making fieldset appear animation
+                            opacity = 1 - now;
+
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            next_fs.css({'opacity': opacity});
+                        },
+                        duration: 500
+                    });
+                    setProgressBar(++current);
+                }
+            });
+
+            $(".previous").click(function(){
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                // Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                // show the previous fieldset
+                previous_fs.show();
+
+                // hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+                        // for making fieldset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({'opacity': opacity});
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep){
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar").css("width", percent + "%");
+            }
+
+            function isValid(fieldset) {
+                var isValid = true;
+                $(fieldset).find("input[required], textarea[required]").each(function(){
+                    if ($(this).val() === "") {
+                        isValid = false;
+                        $(this).css("border-color", "red");
+                    } else {
+                        $(this).css("border-color", "");
+                    }
+                });
+                return isValid;
+            }
+
+            $(".submit").click(function(){
+                return false;
+            });
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+
+
+
+
+<script>
+$(document).ready(function() {
+    $('#universityModal').on('show.bs.modal', function(event) {
+          var button = $(event.relatedTarget);
+        var universityName = button.data('university-name');
+        var programLevel = button.data('program-level');
+        var location = button.data('location');
+        var campusCity = button.data('campus-city');
+        var grossTutionFee = button.data('gross-tution-fee');
+        var applicationFee = button.data('application-fee');
+        var duration = button.data('duration');
+
+        var modal = $(this);
+        modal.find('#university-name').text('University Name: ' + universityName);
+        modal.find('#program-level').text('Program Level: ' + programLevel);
+        modal.find('#location').text('Location: ' + location);
+        modal.find('#campus-city').text('Campus City: ' + campusCity);
+        modal.find('#gross-tution-fee').text('Gross Tuition Fee: ' + grossTutionFee);
+        modal.find('#application-fee').text('Application Fee: ' + applicationFee);
+        modal.find('#duration').text('Duration: ' + duration);
+        modal.find('.university-name').val('University Name: ' + universityName);
+        
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+
+
+
+
+
+
+    $('#createApplicationModal').on('show.bs.modal', function(event) {
+          var button = $(event.relatedTarget);
+        var universityName = button.data('university-name');
+        var programLevel = button.data('program-level');
+        var location = button.data('location');
+        var campusCity = button.data('campus-city');
+        var grossTutionFee = button.data('gross-tution-fee');
+        var applicationFee = button.data('application-fee');
+        var duration = button.data('duration');
+
+        var modal = $(this);
+      //  modal.find('#university-name').text('University Name: ' + universityName);
+        modal.find('#program-level').text('Program Level: ' + programLevel);
+        modal.find('#location').text('Location: ' + location);
+        modal.find('#campus-city').text('Campus City: ' + campusCity);
+        modal.find('#gross-tution-fee').text('Gross Tuition Fee: ' + grossTutionFee);
+        modal.find('#application-fee').text('Application Fee: ' + applicationFee);
+        modal.find('#duration').text('Duration: ' + duration);
+        modal.find('.programlevel').val(programLevel);
+        modal.find('.university-name').val(universityName);
+    });
+});
+</script>
+
+
+
+     
+<script>
+function fireAjax() {
+    var query = $('input[name="search"]').val();
+         
+    // Perform AJAX request
+    $.ajax({
+        url: 'php/search_box_filter.php', // Replace with your server endpoint
+        method: 'GET',
+        data: { search: query },
+        success: function(response) {
+            
+
+          $('#search').html(response);
+           
+           
+           
+        },
+        error: function(error) {
+            console.error(error);
+        }
+    });
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -1436,16 +2269,6 @@ function confirmDelete(id) {
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/sidebarmenu.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/feather.min.js"></script>
-  
 
 
 
-
-
-
- <!-- SweetAlert CSS -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
-    <!-- SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

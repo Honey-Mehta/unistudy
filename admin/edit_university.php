@@ -1,48 +1,14 @@
-<?php include("./common/config.php");
-if(isset($_GET['delete_id'])){
-    
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
 
-    $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
-    $sqlDELETE = "DELETE FROM `universities` WHERE `id`='$delete_id'";
-
-    if (mysqli_query($conn, $sqlDELETE)) {
-        echo "<script>
-            swal({
-                title: 'Deleted!',
-                text: 'University has been deleted.',
-                icon: 'success',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    } else {
-        echo "<script>
-            swal({
-                title: 'Error!',
-                text: 'Failed to delete University.',
-                icon: 'error',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    }
-
-    mysqli_close($conn);
-}
-
-
+<?php  
+   $id = $_GET['edit'];
+$conn=mysqli_connect("localhost","root","","uni_study");   
+$fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHERE id='$id'"));
 ?>
 
 <?php include('header.php'); ?>
 
 <?php include('sidebar.php'); ?>
+
 
 <div class="page-wrapper">
       <!--  Header Start -->
@@ -338,7 +304,7 @@ if(isset($_GET['delete_id'])){
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                              <?php echo $_SESSION['admin_email']; ?>
+                                markrarn@wrappixel.com
                               </p>
                             </div>
                           </div>
@@ -1086,75 +1052,6 @@ if(isset($_GET['delete_id'])){
       </header>
       <!--  Header End -->
 
-      <div class="container-fluid" style="margin-top:100px; ">
-	      <div class="row">
-		      <div class="col-sm-8">
-          <h1>University</h1>
-          </div>
-          <div class="col-sm-4" style="margin-top:30px;">
-        
-           
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:10px;"><i class="fa fa-plus mr-4" ></i> Add new University </button>
-           <div class="modal fade" id="myModal" >
-				     <div class="modal-dialog" >
-					    <div class="modal-content">
-						<!-- Modal Header -->
-						     <div class="modal-header">
-						     	<h4 class="modal-title">Add New University</h4>
-						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:150px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
-					    	</div>
-						<!-- Modal Body -->
-						<!-- Modal body -->
-					      	<div class="modal-body">
-                  <form id="insertForm">
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-12">
-											<label for="name" style="float:left;">University Name:</label>
-											<input type="text" class="form-control" id="name" name="name" required>
-										</div>
-
-										<div class="col-sm-12">
-                                        <label for="sel1" class="form-label">Description:</label>
-                                        <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"></textarea>
-
-										</div>
-
-                    <div class="col-sm-12">
-                                        <label for="sel1" class="form-label">URL:</label>
-                                        <textarea id="description" class="form-control" name="url" placeholder="Enter your url here"></textarea>
-
-										</div>
-
-									</div>
-								</div>
-								
-					
-							
-								<div style="display: flex; justify-content: center; margin-top: 20px;">
-                  <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-							</form>
-              <div class="row">
-								<div class="col-sm-12">
-									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div> -->
-									<div class="input-group mb-0" id="message_login">
-										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
-									</div>
-                  <div id="loader"></div>
-                </div>
-							</div>
-              </div>
-
-              <div class="modal-footer">
-							<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-						</div>
-
-      </div>
-      </div>
-      </div>
-      </div>
 
 
 
@@ -1162,266 +1059,111 @@ if(isset($_GET['delete_id'])){
 
 
 
-
-
-          
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-    
+ 
   
-<div class="container-fluid" style="margin-top:50px; max-width:90%;">
+      <div class="container-fluid" style="padding-top:100px;" style="max-width:90%;">
+  <div class="row">
+    
 
+    <div class="col-sm-12">
+      <form id="msform" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+      
 
-<div>
-    <table class="table">
-        <thead>
-            <tr >
-                <th scope="col">#</th>
-                <th scope="col" style="min-width:150px;">Name</th>
-                <th scope="col" style="min-width:150px;">Description</th>
-                <th scope="col" style="min-width:150px;">url</th>
-              
-               
-                <th scope="col" style="min-width:150px;">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
+          <div class="form-group">
+          <div class="row">
+          <div class="col-sm-12">
+          <label for="name" style="float:left; font-size:20px;">University Name:</label></br>
+           </div>
+          </div>
+          <input type="text" class="form-control" id="name" name="name" value="<?php echo $fetch['name']; ?>" required>
+         </div>
+      
+            <div class="form-group">
+             <div class="row">
+               <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:20px;">Description:</label></br>
+            </div>
+           </div>
+          <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"><?php echo $fetch['description']; ?></textarea>
+           </div>
        
-         <?php
+          <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:20px;">URL:</label></br>
+            </div>
+           </div>
+          <textarea id="url" class="form-control" name="url" placeholder="Enter your URL here"><?php echo $fetch['start_url']; ?></textarea>
+         </div>
 
-function truncateWords($text, $limit) {
-  $words = explode(' ', $text);
-  if (count($words) > $limit) {
-      return implode(' ', array_slice($words, 0, $limit)) . '...';
-  }
-  return $text;
+       
+        <div class="container d-flex justify-content-center align-items-center">
+          <button type="submit" class="btn btn-primary bt-lg mt-5" style="font-size: 20px;width: 150px;height: 50px">Submit</button>
+        </div>
+      </form>
+
+      <div class="input-group mb-0" id="message_login">
+      </div>
+      <div id="loader"></div>
+    </div>
+
+   
+  </div>
+</div>
+
+<div class="container-fluid" style="padding-top:200px;">
+  <div class="row">
+  </div>
+</div>
+
+<style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 
 
-
-         // Set the number of records per page
-         $records_per_page = 10;
-         // Calculate the offset
-         $records_per_page = isset($_GET['items_per_page']) ? (int)$_GET['items_per_page'] : 10; // Default to 10 if not set9sssssssssssssssssssssssssssssssss
-         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-         $offset = ($page - 1) * $records_per_page;
-
-         // Fetch the total number of records
-         $total_records_query = "SELECT COUNT(*) FROM `universities`";
-         $total_records_result = mysqli_query($conn, $total_records_query);
-         $total_records_row = mysqli_fetch_array($total_records_result);
-         $total_records = $total_records_row[0];
-
-         // Fetch the records for the current page
-         $sqllogistic = mysqli_query($conn, "SELECT * FROM `universities` ORDER BY id DESC LIMIT $records_per_page OFFSET $offset");
-
-         // Calculate the total number of pages
-         $total_pages = ceil($total_records / $records_per_page);
-
-         $id = $offset;
-
-    
-       
-           
-            while($show=mysqli_fetch_assoc($sqllogistic)){
-            
-$description = $show['description'];
-$word_limit = 20; // Change this to your desired word limit
-$truncated_description = truncateWords($description, $word_limit);
-            $id++;
-            ?>
-            <tr>
-                <td scope="row"><?php echo $id;?></td>
-                <td><?php echo $show['name'];?></td>
-                <td ><span class="short-description"><?php echo $truncated_description; ?></span>
-    <span class="full-description" style="display: none;"><?php echo $description; ?></span>
-    <?php if (str_word_count($description) > $word_limit) : ?>
-          <button class="read-more-btn btn btn-primary" data-toggle="modal" data-target="#readMoreModal" data-full-description="<?php echo htmlspecialchars($description); ?>">Read more</button>
-    <?php endif; ?></td>
-                <td ><a href="<?php echo $show['start_url'];?>">url</a></td>
-               
-              
-                <td>
-                <div class="button-container">
-                <a href="edit_university.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
-                <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
-                
-                  </td>
-                  </div>
-                
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
-
-
-  <!-- Pagination Controls -->
-  <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
-            <?php endif; ?>
-
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
-                    <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
-            <?php endfor; ?>
-
-            <?php if ($page < $total_pages): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav> -->
-
-
-
-
-
-
-</div>
-
-
-  
-<div class="container-fluid">
- <div class="d-flex justify-content-between align-items-center mb-3">
-    <form method="GET" action="" class="d-flex align-items-center">
-        <label for="items_per_page" class="mr-2 mb-0" style="min-width:150px;">Items per page:</label>
-        <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control mr-2">
-            <option value="5" <?php if ($records_per_page == 5) echo 'selected'; ?>>5</option>
-            <option value="10" <?php if ($records_per_page == 10) echo 'selected'; ?>>10</option>
-            <option value="15" <?php if ($records_per_page == 15) echo 'selected'; ?>>15</option>
-            <option value="20" <?php if ($records_per_page == 20) echo 'selected'; ?>>20</option>
-            <option value="40" <?php if ($records_per_page == 40) echo 'selected'; ?>>40</option>
-        </select>
-    </form>
-
-    <!-- Pagination controls -->
-    <div class="pagination">
-       
-            <?php
-            if ($page > 1) {
-                echo '<a href="?page=' . ($page - 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary mr-2">&laquo; Previous</a>';
-            }
-
-            if ($page < $total_pages) {
-                echo '<a href="?page=' . ($page + 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary">Next &raquo;</a>';
-            }
-            ?>
-       
-    </div>
-
-    </div>
-
-
-</div>
-
-
-
-<!-- Modal Structure -->
-<div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="readMoreModalLabel">Full Description</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal-text"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    $('#readMoreModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var fullDescription = button.data('full-description'); // Extract info from data-* attributes
-        var modal = $(this);
-        modal.find('.modal-body').text(fullDescription);
-    });
-});
-</script>
-
-
-
-
-
-
-
-
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-
-
-
+<script src="https://cdn.tiny.cloud/1/x6qk2qvw1l1zz92rb24ri8i715fxz988ms6iw3skd5o05iiq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
-$(document).ready(function(){
- 
-    $("#insertForm").on("submit", function(event){
-     
-        event.preventDefault();
-        $.ajax({
-            url: "php/university.php",
-            method: "POST",
-            data: $(this).serialize(),
-            success: function(data){
-              
-                $("#message_login").show().html(data);
-            }
-        });
+    tinymce.init({
+      selector: '#description, #url'
     });
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
- 
- 
-});
-</script>
 
 
-<script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this student!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            window.location.href = "?delete_id=" + id;
-        }
-    });
-}
-</script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
   <div class="dark-transparent sidebartoggler"></div>
@@ -1442,10 +1184,27 @@ function confirmDelete(id) {
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+<script>
+    $(document).ready(function() {
+      $("#msform").on("submit", function(event) {
+       
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+          url: "php/edit_university_backend.php",
+          method: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(data) {
+            $("#message_login").html(data);
+          }
+        });
+      });
+    });
+</script>
 
- <!-- SweetAlert CSS -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
-    <!-- SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+

@@ -1,44 +1,14 @@
-<?php include("./common/config.php");
+<?php 
+
 if(isset($_GET['delete_id'])){
-    
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+		$conn=mysqli_connect("localhost","root","","uni_study");
+$sqlDELETE=mysqli_query($conn,"DELETE FROM `universities` WHERE `id`='".$_GET['delete_id']."'");
 
-    $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
-    $sqlDELETE = "DELETE FROM `universities` WHERE `id`='$delete_id'";
-
-    if (mysqli_query($conn, $sqlDELETE)) {
-        echo "<script>
-            swal({
-                title: 'Deleted!',
-                text: 'University has been deleted.',
-                icon: 'success',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    } else {
-        echo "<script>
-            swal({
-                title: 'Error!',
-                text: 'Failed to delete University.',
-                icon: 'error',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'university.php';
-            });
-        </script>";
-    }
-
-    mysqli_close($conn);
+echo "<script>alert('delete university..!!');window.location.href='university.php';</script>";
 }
 
-
 ?>
+
 
 <?php include('header.php'); ?>
 
@@ -338,7 +308,7 @@ if(isset($_GET['delete_id'])){
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                              <?php echo $_SESSION['admin_email']; ?>
+                                markrarn@wrappixel.com
                               </p>
                             </div>
                           </div>
@@ -1101,7 +1071,7 @@ if(isset($_GET['delete_id'])){
 						<!-- Modal Header -->
 						     <div class="modal-header">
 						     	<h4 class="modal-title">Add New University</h4>
-						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:150px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
+						     	<button type="button" class="close" data-dismiss="modal">&times;</button>
 					    	</div>
 						<!-- Modal Body -->
 						<!-- Modal body -->
@@ -1178,189 +1148,57 @@ if(isset($_GET['delete_id'])){
 
 
 
-    
-  
-<div class="container-fluid" style="margin-top:50px; max-width:90%;">
+      <style>
+    .button-container {
+        display: flex; /* Use flexbox to align items */
+        gap: 5px; /* Space between buttons */
+    }
 
-
-<div>
-    <table class="table">
-        <thead>
-            <tr >
-                <th scope="col">#</th>
-                <th scope="col" style="min-width:150px;">Name</th>
-                <th scope="col" style="min-width:150px;">Description</th>
-                <th scope="col" style="min-width:150px;">url</th>
-              
-               
-                <th scope="col" style="min-width:150px;">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-       
-         <?php
-
-function truncateWords($text, $limit) {
-  $words = explode(' ', $text);
-  if (count($words) > $limit) {
-      return implode(' ', array_slice($words, 0, $limit)) . '...';
-  }
-  return $text;
+    .modal-dialog {
+  max-width: 500px; /* Set fixed width */
+  width: 100%; /* Ensure it’s responsive */
 }
 
+.modal-body {
+  max-height: 500px; /* Set fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+</style>
 
+<style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-         // Set the number of records per page
-         $records_per_page = 10;
-         // Calculate the offset
-         $records_per_page = isset($_GET['items_per_page']) ? (int)$_GET['items_per_page'] : 10; // Default to 10 if not set9sssssssssssssssssssssssssssssssss
-         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-         $offset = ($page - 1) * $records_per_page;
-
-         // Fetch the total number of records
-         $total_records_query = "SELECT COUNT(*) FROM `universities`";
-         $total_records_result = mysqli_query($conn, $total_records_query);
-         $total_records_row = mysqli_fetch_array($total_records_result);
-         $total_records = $total_records_row[0];
-
-         // Fetch the records for the current page
-         $sqllogistic = mysqli_query($conn, "SELECT * FROM `universities` ORDER BY id DESC LIMIT $records_per_page OFFSET $offset");
-
-         // Calculate the total number of pages
-         $total_pages = ceil($total_records / $records_per_page);
-
-         $id = $offset;
-
-    
-       
-           
-            while($show=mysqli_fetch_assoc($sqllogistic)){
-            
-$description = $show['description'];
-$word_limit = 20; // Change this to your desired word limit
-$truncated_description = truncateWords($description, $word_limit);
-            $id++;
-            ?>
-            <tr>
-                <td scope="row"><?php echo $id;?></td>
-                <td><?php echo $show['name'];?></td>
-                <td ><span class="short-description"><?php echo $truncated_description; ?></span>
-    <span class="full-description" style="display: none;"><?php echo $description; ?></span>
-    <?php if (str_word_count($description) > $word_limit) : ?>
-          <button class="read-more-btn btn btn-primary" data-toggle="modal" data-target="#readMoreModal" data-full-description="<?php echo htmlspecialchars($description); ?>">Read more</button>
-    <?php endif; ?></td>
-                <td ><a href="<?php echo $show['start_url'];?>">url</a></td>
-               
-              
-                <td>
-                <div class="button-container">
-                <a href="edit_university.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
-                <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
-                
-                  </td>
-                  </div>
-                
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
-
-
-  <!-- Pagination Controls -->
-  <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
-            <?php endif; ?>
-
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
-                    <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
-            <?php endfor; ?>
-
-            <?php if ($page < $total_pages): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav> -->
-
-
-
-
-
-
-</div>
-
-
-  
-<div class="container-fluid">
- <div class="d-flex justify-content-between align-items-center mb-3">
-    <form method="GET" action="" class="d-flex align-items-center">
-        <label for="items_per_page" class="mr-2 mb-0" style="min-width:150px;">Items per page:</label>
-        <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control mr-2">
-            <option value="5" <?php if ($records_per_page == 5) echo 'selected'; ?>>5</option>
-            <option value="10" <?php if ($records_per_page == 10) echo 'selected'; ?>>10</option>
-            <option value="15" <?php if ($records_per_page == 15) echo 'selected'; ?>>15</option>
-            <option value="20" <?php if ($records_per_page == 20) echo 'selected'; ?>>20</option>
-            <option value="40" <?php if ($records_per_page == 40) echo 'selected'; ?>>40</option>
-        </select>
-    </form>
-
-    <!-- Pagination controls -->
-    <div class="pagination">
-       
-            <?php
-            if ($page > 1) {
-                echo '<a href="?page=' . ($page - 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary mr-2">&laquo; Previous</a>';
-            }
-
-            if ($page < $total_pages) {
-                echo '<a href="?page=' . ($page + 1) . '&items_per_page=' . $records_per_page . '" class="btn btn-secondary">Next &raquo;</a>';
-            }
-            ?>
-       
-    </div>
-
-    </div>
-
-
-</div>
-
-
-
-<!-- Modal Structure -->
-<div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="readMoreModalLabel">Full Description</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal-text"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    $('#readMoreModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var fullDescription = button.data('full-description'); // Extract info from data-* attributes
-        var modal = $(this);
-        modal.find('.modal-body').text(fullDescription);
-    });
-});
-</script>
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+</style>
 
 
 
@@ -1370,7 +1208,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 
 
 
@@ -1399,53 +1237,5 @@ $(document).ready(function(){
 </script>
 
 
-<script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this student!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            window.location.href = "?delete_id=" + id;
-        }
-    });
-}
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
 
 
-  <div class="dark-transparent sidebartoggler"></div>
-  <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
-  <!-- Import Js Files -->
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.minisidebar.init.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/theme.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/sidebarmenu.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/feather.min.js"></script>
-  
-
-
-
-
-
-
- <!-- SweetAlert CSS -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
-    <!-- SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

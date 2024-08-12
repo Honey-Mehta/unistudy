@@ -1411,35 +1411,12 @@ if(isset($_GET['delete_id'])){
 
 
 
-      <style>
-    
+   
 
 
 
 
 
-
-/* Loader CSS */
-#loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 150px;
-    height: 150px;
-    animation: spin 2s linear infinite;
-    display: none;
-    position: fixed;
-    left: 35%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
 
 
 
@@ -1463,28 +1440,7 @@ if(isset($_GET['delete_id'])){
 }
 </style> -->
 
-<style>
-.button-container {
-    display: flex; /* Use flexbox to align items */
-    gap: 5px; /* Space between buttons */
-}
-
-/* Style for modal dialog */
-.modal-dialog {
-    max-width: 500px; /* Set fixed width */
-    width: 100%; /* Ensure it’s responsive */
-    margin: auto; /* Center the modal */
-}
-
-/* Style for modal body */
-.modal-body {
-    max-height: 80vh; /* Set height to 80% of the viewport height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 1rem; /* Add padding for better appearance */
-    box-sizing: border-box; /* Ensure padding does not affect the height */
-}
-</style>
-
+  
 
 
 
@@ -1705,40 +1661,9 @@ if(isset($_GET['delete_id'])){
         </ul>
     </nav>
 </div>
-
-<style>
    
-#list-view {
-    display: none;
-    overflow-x: auto;
-    max-height: 600px; /* Set a maximum height for the div */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
 
 
-
-.table thead th {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: inherit;
-}
-</style>
-
-
-
-<style>
-    .wide-tall-swal-popup {
-        width: 400px !important; /* Adjust the width as needed */
-        height: 400px !important; /* Adjust the height as needed */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .wide-tall-swal-popup .swal2-html-container {
-        height: 100%; /* Ensure content area fits the new height */
-    }
-</style>
 
 <div id="grid-view"  style="overflow-x:auto;">
     <table class="table table-bordered" style= "max-width:120px;" >
@@ -1943,7 +1868,7 @@ $(document).ready(function(){
 
 
     $("#change_status").on("submit", function(event){
-     alert("hello");
+    
      event.preventDefault();
      $.ajax({
          url: "php/update_status.php",

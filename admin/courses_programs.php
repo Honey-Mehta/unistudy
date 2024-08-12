@@ -1,43 +1,41 @@
-<?php include("./common/config.php");
+<?php
 if(isset($_GET['delete_id'])){
-    
+    $conn = mysqli_connect("localhost", "root", "", "uni_study");
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
     $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
-    $sqlDELETE = "DELETE FROM `universities` WHERE `id`='$delete_id'";
+    $sqlDELETE = "DELETE FROM `programs` WHERE `id`='$delete_id'";
 
     if (mysqli_query($conn, $sqlDELETE)) {
         echo "<script>
             swal({
                 title: 'Deleted!',
-                text: 'University has been deleted.',
+                text: 'Program has been deleted.',
                 icon: 'success',
                 timer: 3000, // Popup will be visible for 3 seconds
                 buttons: false
             }).then(function() {
-                window.location.href = 'university.php';
+                window.location.href = 'courses_programs.php';
             });
         </script>";
     } else {
         echo "<script>
             swal({
                 title: 'Error!',
-                text: 'Failed to delete University.',
+                text: 'Failed to delete Program.',
                 icon: 'error',
                 timer: 3000, // Popup will be visible for 3 seconds
                 buttons: false
             }).then(function() {
-                window.location.href = 'university.php';
+                window.location.href = 'courses_programs.php';
             });
         </script>";
     }
 
     mysqli_close($conn);
 }
-
-
 ?>
 
 <?php include('header.php'); ?>
@@ -338,7 +336,7 @@ if(isset($_GET['delete_id'])){
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                              <?php echo $_SESSION['admin_email']; ?>
+                                markrarn@wrappixel.com
                               </p>
                             </div>
                           </div>
@@ -1089,18 +1087,18 @@ if(isset($_GET['delete_id'])){
       <div class="container-fluid" style="margin-top:100px; ">
 	      <div class="row">
 		      <div class="col-sm-8">
-          <h1>University</h1>
+          <h1>Program</h1>
           </div>
           <div class="col-sm-4" style="margin-top:30px;">
         
            
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:10px;"><i class="fa fa-plus mr-4" ></i> Add new University </button>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:10px;"><i class="fa fa-plus mr-4" ></i> Add New Program </button>
            <div class="modal fade" id="myModal" >
 				     <div class="modal-dialog" >
 					    <div class="modal-content">
 						<!-- Modal Header -->
 						     <div class="modal-header">
-						     	<h4 class="modal-title">Add New University</h4>
+						     	<h4 class="modal-title">Add Program</h4>
 						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:150px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
 					    	</div>
 						<!-- Modal Body -->
@@ -1109,20 +1107,56 @@ if(isset($_GET['delete_id'])){
                   <form id="insertForm">
 								<div class="form-group">
 									<div class="row">
+
+    <div class="col-sm-12">
+  <label>Select University</label>
+    <select class="form-select" name="university_id" class="form-control">
+       
+        <?php
+        // Assuming you have established a database connection named $conn
+        $conn=mysqli_connect("localhost","root","","uni_study");
+        // SQL query to fetch all countries
+        $sql = "SELECT * FROM universities";
+        $result = mysqli_query($conn, $sql);
+        // Check if there are results
+        if ($result) {
+            // Loop through the results and create an option element for each country
+            while ($row = mysqli_fetch_assoc($result)) {
+              ///  $selected = ($row['name'] == $fetch['country']) ? "selected" : "";
+                echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
+            }
+        } else {
+            echo '<option>No University found</option>';
+        }
+        ?>
+    </select>
+      </div>
+
+
+
+
+
 										<div class="col-sm-12">
-											<label for="name" style="float:left;">University Name:</label>
-											<input type="text" class="form-control" id="name" name="name" required>
+											<label for="name" style="float:left;">Program Name:</label>
+											<input type="text" class="form-control" id="name" name="program_name" required>
 										</div>
 
 										<div class="col-sm-12">
-                                        <label for="sel1" class="form-label">Description:</label>
-                                        <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"></textarea>
+                                        <label for="sel1" class="form-label">Fee:</label>
+                                        <input type="text" class="form-control" id="name" name="fee" required>
 
 										</div>
 
                     <div class="col-sm-12">
-                                        <label for="sel1" class="form-label">URL:</label>
-                                        <textarea id="description" class="form-control" name="url" placeholder="Enter your url here"></textarea>
+                                        <label for="sel1" class="form-label">Tution Per Year Approx:</label>
+                                        <input type="text" class="form-control" id="name" name="tution_per_year_approx" required>
+
+										</div>
+
+
+                    <div class="col-sm-12">
+                                        <label for="sel1" class="form-label">Application Fees:</label>
+                                        <input type="text" class="form-control" id="name" name="application_fees" required>
 
 										</div>
 
@@ -1180,7 +1214,7 @@ if(isset($_GET['delete_id'])){
 
     
   
-<div class="container-fluid" style="margin-top:50px; max-width:90%;">
+      <div class="container-fluid" style="margin-top:50px; max-width:90%;">
 
 
 <div>
@@ -1189,9 +1223,10 @@ if(isset($_GET['delete_id'])){
             <tr >
                 <th scope="col">#</th>
                 <th scope="col" style="min-width:150px;">Name</th>
-                <th scope="col" style="min-width:150px;">Description</th>
-                <th scope="col" style="min-width:150px;">url</th>
-              
+                <th scope="col" style="min-width:150px;">Programs</th>
+                <th scope="col" style="min-width:150px;">Fee</th>
+                <th scope="col" style="min-width:150px;">Tution Per Year Approx</th>
+                <th scope="col" style="min-width:150px;">Application Fees</th>
                
                 <th scope="col" style="min-width:150px;">Delete</th>
             </tr>
@@ -1199,63 +1234,60 @@ if(isset($_GET['delete_id'])){
         <tbody>
        
          <?php
+         $conn=mysqli_connect("localhost","root","","uni_study");
 
-function truncateWords($text, $limit) {
-  $words = explode(' ', $text);
-  if (count($words) > $limit) {
-      return implode(' ', array_slice($words, 0, $limit)) . '...';
-  }
-  return $text;
-}
+// Set the number of records per page
+$records_per_page = isset($_GET['items_per_page']) ? (int)$_GET['items_per_page'] : 10; // Default to 10 if not set
 
+// Calculate the offset
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $records_per_page;
 
+// Fetch the total number of records
+$total_records_query = "SELECT COUNT(*) FROM `programs`";
+$total_records_result = mysqli_query($conn, $total_records_query);
+$total_records_row = mysqli_fetch_array($total_records_result);
+$total_records = $total_records_row[0];
 
+// Fetch the records for the current page
+$sqllogistic = mysqli_query($conn, "SELECT * FROM `programs` ORDER BY id desc LIMIT $records_per_page OFFSET $offset");
 
-         // Set the number of records per page
-         $records_per_page = 10;
-         // Calculate the offset
-         $records_per_page = isset($_GET['items_per_page']) ? (int)$_GET['items_per_page'] : 10; // Default to 10 if not set9sssssssssssssssssssssssssssssssss
-         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-         $offset = ($page - 1) * $records_per_page;
-
-         // Fetch the total number of records
-         $total_records_query = "SELECT COUNT(*) FROM `universities`";
-         $total_records_result = mysqli_query($conn, $total_records_query);
-         $total_records_row = mysqli_fetch_array($total_records_result);
-         $total_records = $total_records_row[0];
-
-         // Fetch the records for the current page
-         $sqllogistic = mysqli_query($conn, "SELECT * FROM `universities` ORDER BY id DESC LIMIT $records_per_page OFFSET $offset");
-
-         // Calculate the total number of pages
-         $total_pages = ceil($total_records / $records_per_page);
-
-         $id = $offset;
-
+// Calculate the total number of pages
+$total_pages = ceil($total_records / $records_per_page);
     
-       
+       $id=0;
            
             while($show=mysqli_fetch_assoc($sqllogistic)){
-            
-$description = $show['description'];
-$word_limit = 20; // Change this to your desired word limit
-$truncated_description = truncateWords($description, $word_limit);
+         $fetch_university_name=mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `universities` where id='".$show['university_id']."'"));
             $id++;
             ?>
             <tr>
                 <td scope="row"><?php echo $id;?></td>
-                <td><?php echo $show['name'];?></td>
-                <td ><span class="short-description"><?php echo $truncated_description; ?></span>
-    <span class="full-description" style="display: none;"><?php echo $description; ?></span>
-    <?php if (str_word_count($description) > $word_limit) : ?>
-          <button class="read-more-btn btn btn-primary" data-toggle="modal" data-target="#readMoreModal" data-full-description="<?php echo htmlspecialchars($description); ?>">Read more</button>
-    <?php endif; ?></td>
-                <td ><a href="<?php echo $show['start_url'];?>">url</a></td>
+                <td> <?php 
+  if ($fetch_university_name) {
+      echo htmlspecialchars($fetch_university_name['name']);
+  } 
+  ?></td>
+                <td ><?php echo $show['program'];?></td>
+
+                <td ><?php echo $show['fee']; ?></td>
+                <td ><?php 
+  
+      echo $show['tuition_per_year_approx'];
+  
+
+?></td>
+
+
+
+              
+
+<td><?php echo $show['application_fees'];?></td>
                
               
                 <td>
                 <div class="button-container">
-                <a href="edit_university.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
+                <a href="edit_programs.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
                 <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
                 
                   </td>
@@ -1269,7 +1301,7 @@ $truncated_description = truncateWords($description, $word_limit);
 
 
   <!-- Pagination Controls -->
-  <!-- <nav aria-label="Page navigation example">
+ <!--  <nav aria-label="Page navigation example">
         <ul class="pagination">
             <?php if ($page > 1): ?>
                 <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
@@ -1287,9 +1319,9 @@ $truncated_description = truncateWords($description, $word_limit);
                 <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
             <?php endif; ?>
         </ul>
-    </nav> -->
+    </nav>-->
 
-
+ 
 
 
 
@@ -1301,7 +1333,7 @@ $truncated_description = truncateWords($description, $word_limit);
 <div class="container-fluid">
  <div class="d-flex justify-content-between align-items-center mb-3">
     <form method="GET" action="" class="d-flex align-items-center">
-        <label for="items_per_page" class="mr-2 mb-0" style="min-width:150px;">Items per page:</label>
+        <label for="items_per_page" class="mr-2 mb-0" style="min-width:150px;" >Items per page:</label>
         <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control mr-2">
             <option value="5" <?php if ($records_per_page == 5) echo 'selected'; ?>>5</option>
             <option value="10" <?php if ($records_per_page == 10) echo 'selected'; ?>>10</option>
@@ -1328,39 +1360,14 @@ $truncated_description = truncateWords($description, $word_limit);
 
     </div>
 
-
 </div>
 
 
 
-<!-- Modal Structure -->
-<div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="readMoreModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="readMoreModalLabel">Full Description</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal-text"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    $('#readMoreModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var fullDescription = button.data('full-description'); // Extract info from data-* attributes
-        var modal = $(this);
-        modal.find('.modal-body').text(fullDescription);
-    });
-});
-</script>
+  
+
+
 
 
 
@@ -1382,7 +1389,7 @@ $(document).ready(function(){
      
         event.preventDefault();
         $.ajax({
-            url: "php/university.php",
+            url: "php/add_programs_backend.php",
             method: "POST",
             data: $(this).serialize(),
             success: function(data){
