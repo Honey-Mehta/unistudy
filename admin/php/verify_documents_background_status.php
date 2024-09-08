@@ -1,5 +1,5 @@
 <?php
-include('../common/config.php');
+include('../../common/config.php');
 extract($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            document.getElementById("loader").style.display = "block";
             setTimeout(function() {
                 document.getElementById("loader").style.display = "none";
-            Swal.fire({
+                Swal.fire({
                     title: "Document verified successfully!",
                     text: "Redirecting to students page...",
                     icon: "success",

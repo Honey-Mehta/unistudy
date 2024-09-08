@@ -1,5 +1,8 @@
 <?php
 function getRegistrationSuccessEmailBody($firstName, $last_id) {
+    // Encode the last_id in Base64
+    $encoded_last_id = base64_encode($last_id);
+
     return "
     <html>
     <head>
@@ -53,9 +56,8 @@ function getRegistrationSuccessEmailBody($firstName, $last_id) {
                     <li><a href='#'>Your Dashboard</a></li>
                     <li><a href='#'>Support</a></li>
                     <li><a href='#'>Contact Us</a></li>
-           
                 </ul>
-                <a class='button' href='localhost/Uni-Study2/admin/upload_documents.php?id=$last_id'>Go to Dashboard, Please Upload Your Documents here</a>
+                <a class='button' href='https://mehtasoftwares.rf.gd/Uni_Study2/admin/upload_documents.php?id=$encoded_last_id'>Go to Dashboard, Please Upload Your Documents here</a>
                 <p>Best regards,<br>Uni-Study Team</p>
             </div>
             <div class='email-footer'>

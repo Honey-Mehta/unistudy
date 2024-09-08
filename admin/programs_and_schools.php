@@ -1,8 +1,29 @@
+<?php include('../common/config.php'); ?>
 <?php include('header.php'); ?>
 
-<?php include('sidebar.php'); ?>
+<style>
+.your-element {
+    display: none; /* Hide the element by default */
+}
 
-<div class="page-wrapper">
+/* Show the element for viewports with a max-width of 1299px */
+@media (max-width: 1300px) {
+    .your-element {
+        display: block;
+    }
+}
+</style>
+
+
+<!-- Preloader -->
+  <div class="preloader">
+    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-icon.svg" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper" style="min-height:0vh;">
+    <!-- Sidebar Start -->
+   <?php include('sidebar.php'); ?>
+    <!--  Sidebar End -->
+    <div class="page-wrapper">
       <!--  Header Start -->
       <header class="topbar rounded-0 border-0 bg-primary">
         <div class="with-vertical"><!-- ---------------------------------- -->
@@ -11,7 +32,7 @@
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-              
+             
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -23,6 +44,7 @@
                   <!-- Logo text -->
                   <span class="logo-text">
                     
+                   
                   </span>
                 </a>
               </div>
@@ -32,8 +54,8 @@
 
             <ul class="navbar-nav gap-2">
 
-              <li class="nav-item nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+              <li class="nav-item nav-icon-hover-bg rounded-circle your-element">
+                <a class="nav-link nav-icon-hover sidebartoggler navbar-toggler-icon" id="headerCollapse" href="javascript:void(0)">
                   <iconify-icon icon="solar:list-bold"></iconify-icon>
                 </a>
               </li>
@@ -51,7 +73,7 @@
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-
+              
               </li>
 
 
@@ -98,99 +120,14 @@
                     </a>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
+                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
                   
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                       
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
-                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
-                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Launch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
-                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
-                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
-                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Luanch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Notifications</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-
-
-
-
-                    </div>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
@@ -202,9 +139,6 @@
                     </a>
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
-                      <div class="py-3 px-4 bg-secondary">
-                       
-                      </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
                           <span class="user-img position-relative d-inline-block">
@@ -287,10 +221,7 @@
                         </a>
                       </div>
                       <div class="p-3">
-                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Messages</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
+                       
                       </div>
 
                     </div>
@@ -300,7 +231,6 @@
                   <!-- ------------------------------- -->
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
-
 
 
                   <!-- ------------------------------- -->
@@ -316,32 +246,10 @@
                     </a>
                   </li>
 
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                  
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden dropdown-menu-end" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                        
-                      </div>
-                      <div class="message-body" data-simplebar>
-                       
-                        
-                        
-                       
-                        
-                     
-                      </div>
-                      
-
-
-
-
-                    </div>
-                  </li>
-
+                 
                   <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
                    
-                   
+                    
                   </li>
 
                   <!-- ------------------------------- -->
@@ -363,20 +271,19 @@
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
+                                  <?php echo  $_SESSION['email']; ?>
                               </p>
                             </div>
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                          <div class="px-3 pt-3">
-                            
-                          </div>
+                         
                         
                           <div class="px-3">
                            
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              
                             </div>
-                           
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -1109,17 +1016,711 @@
         </div>
       </header>
       <!--  Header End -->
+      <aside class="left-sidebar with-horizontal">
+        <!-- Sidebar scroll-->
+        <div>
+          <!-- Sidebar navigation-->
+          <nav id="sidebarnavh" class="sidebar-nav scroll-sidebar container-fluid">
+            <ul id="sidebarnav">
+              <!-- ============================= -->
+              <!-- Home -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Home</span>
+              </li>
+              <!-- =================== -->
+              <!-- Dashboard -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Dashboard</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Modern Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Awesome Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Classy Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="index4.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Analytical Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index5.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Minimal Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index6.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">General Dashboard</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Apps -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Apps</span>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link two-column has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:archive-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Apps</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-calendar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Calendar</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-kanban.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Kanban</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-chat.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Chat</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" aria-expanded="false">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Email</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Contact Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Contact List</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Notes</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-invoice.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Invoice</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">User Profile</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/blog-posts.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Posts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/blog-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Detail</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-shop.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Shop</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-shop-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Shop Detail</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-product-list.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">List</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-checkout.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Checkout</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-add-product.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Add Product</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-edit-product.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Edit Product</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- PAGES -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">PAGES</span>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:programming-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Pages</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-faq.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">FAQ</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Account Setting</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pricing</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-cards.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Card</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-banners.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Banner</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-charts.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Charts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/landingpage/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Landing Page</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- UI -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">UI</span>
+              </li>
+              <!-- =================== -->
+              <!-- UI Elements -->
+              <!-- =================== -->
+              <li class="sidebar-item mega-dropdown">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:text-underline-cross-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">UI</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-accordian.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Accordian</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-badge.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Badge</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-buttons.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Buttons</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-dropdowns.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Dropdowns</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-modals.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Modals</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-tab.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tab</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-tooltip-popover.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tooltip & Popover</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-notification.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Alerts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-progressbar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Progressbar</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-pagination.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pagination</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-typography.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Typography</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-bootstrap-ui.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bootstrap UI</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-breadcrumb.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Breadcrumb</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-offcanvas.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Offcanvas</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-lists.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Lists</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-grid.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Grid</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-carousel.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Carousel</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-scrollspy.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Scrollspy</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-spinner.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Spinner</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-link.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Forms -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Forms</span>
+              </li>
+              <!-- =================== -->
+              <!-- Forms -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link two-column has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:book-2-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Forms</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <!-- form elements -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-inputs.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Forms Input</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-input-groups.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Input Groups</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-input-grid.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Input Grid</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-checkbox-radio.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Checkbox & Radios</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-bootstrap-switch.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bootstrap Switch</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-select2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Select2</span>
+                    </a>
+                  </li>
+                  <!-- form inputs -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Form</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-vertical.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Vertical</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-horizontal.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Horizontal</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-actions.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Actions</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-row-separator.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Row Separator</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-bordered.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Bordered</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Detail</span>
+                    </a>
+                  </li>
+                  <!-- form wizard -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-wizard.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Wizard</span>
+                    </a>
+                  </li>
+                  <!-- Quill Editor -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-editor-quill.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Quill Editor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Tables -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Tables</span>
+              </li>
+              <!-- =================== -->
+              <!-- Bootstrap Table -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:sidebar-minimalistic-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Tables</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-dark-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Dark Basic Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-sizing.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Sizing Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-layout-coloured.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Coloured Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Initialisation</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-api.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">API</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-advanced.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Advanced Initialisation</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Charts -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Charts</span>
+              </li>
+              <!-- =================== -->
+              <!-- Apex Chart -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:pie-chart-3-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Charts</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-line.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Line Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-area.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Area Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-bar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bar Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-pie.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pie Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-radial.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Radial Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-radar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Radar Chart</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Icons -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Icons</span>
+              </li>
+              <!-- =================== -->
+              <!-- Tabler Icon -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:pie-chart-3-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Icon</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/icon-tabler.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tabler Icon</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/icon-solar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Solar Icon</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- multi level -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:layers-minimalistic-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Multi DD</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/docs/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Documentation</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 1</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link has-arrow">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 2</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse second-level">
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.1</span>
+                        </a>
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.2</span>
+                        </a>
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.3</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 3</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+      </aside>
+
+    </div>
+    <!--  Search Bar -->
+   
+
+  </div>
+      <!--  Header End -->
 
 
 
-      <div class="container-fluid" style="margin-top:100px;">
+      <div class="container-fluid" style="margin-top:100px;max-width:90%;">
      <form>
-  <input type="text" name="search" placeholder="Search for Programs, Institutions or other keywords" onkeyup="fireAjax()">
+  <input type="text" name="search" placeholder="Search for Programs, Institutions or other keywords" onkeyup="fireAjax()" class="top-search-box ">
 </form>
 </div>
 
 
-<div class="container-fluid" style="margin-top:100px;">
+<div class="container-fluid" style="margin-top:100px;max-width:90%;">
     <div class="row">
         <form method="post" id="framework">
             <div class="col-sm-2">
@@ -1127,7 +1728,7 @@
                     <select id="location" name="location[]" multiple class="form-control">
                         <?php
                         // Assuming you have established a database connection named $conn
-                        $conn = mysqli_connect("localhost", "root", "", "uni_study");
+                        
                         $sql = "SELECT * FROM location";
                         $result = mysqli_query($conn, $sql);
 
@@ -1249,9 +1850,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary mt-1 btn-lg" style="margin-right: 10px;">Submit</button>
-            </div>
+           
         </form>
     </div>
 </div>
@@ -1259,16 +1858,16 @@
   
  
   
- <div class="container-fluid border-div" >
+ <div class="container-fluid border-div" style="max-width:90%; margin-top:50px;">
     <div class="flex-container" id="search">
         <?php
-       $conn=mysqli_connect("localhost","root","","uni_study");
-        // Get the total number of universities
+         
+       // Get the total number of universities
 $total_results = mysqli_query($conn, "SELECT COUNT(*) as count FROM universities");
 $total_rows = mysqli_fetch_assoc($total_results)['count'];
 
 // Set the items per page
-$items_per_page = isset($_GET['items_per_page']) ? intval($_GET['items_per_page']) : 10;
+$items_per_page = isset($_GET['items_per_page']) ? intval($_GET['items_per_page']) : 12;
 
 // Calculate total pages
 $total_pages = ceil($total_rows / $items_per_page);
@@ -1286,30 +1885,36 @@ $offset = ($current_page - 1) * $items_per_page;
 
 // Fetch the universities with pagination
 $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
+     
         $result = mysqli_query($conn, $sql);
-
-       
-
-
 
         while ($row = mysqli_fetch_assoc($result)) {
           $fetch_program= mysqli_fetch_assoc(mysqli_query($conn,"select * from programs where university_id='".$row['id']."'"));
+
                 echo '<div class="flex-item">';
-                echo '<div class="flex-item" style="display: flex; align-items: center;">';
-                echo '<img src="images/university.jfif" style="width:50px; height:50px; margin-right:10px; border-radius:50%;">';
-                echo '<span>';
-                echo '<a href="university_details.php?id=' . $row['id'] . '"><div>' . $row['name'] . '</div></a>';
-                echo '</span>';
-                echo '</div>';
-                echo '<div class="program-info" style="width:250px; font-weight:bold;"><h5>' . $fetch_program['program'] . '</h5></div>';
+
+                  echo '<div class="flex-item" style="display: flex; align-items: center;">';
+
+if ($row['image'] == "") {
+    echo '<img src="images/university.jfif" style="width:50px; height:50px; margin-right:10px; border-radius:50%;">';
+} else {
+    echo '<img src="images/' . $row['image'] . '" style="width:50px; height:50px; margin-right:10px; border-radius:50%;">';
+}
+
+echo '<span>';
+echo '<a href="university_details.php?id=' . $row['id'] . '"><div>' . $row['name'] . '</div></a>';
+echo '</span>';
+
+echo '</div>';
+                echo '<a href="graduate_program_details.php?id=' . $fetch_program['id'] . '"><div class="program-info" style="width:250px; font-weight:bold;"><h5>' . $fetch_program['program'] . '</h5></div></a>';
                 echo '<div></div>';
                 echo '<hr>';
-                echo '<div>Location: </div>'; // Assuming there is a 'location' field in the database
-                 echo '<div>Campus City:</div>'; // Assuming there is a 'location' field in the database
+                echo '<div>Location: ' . $row['location'] . ' </div>'; // Assuming there is a 'location' field in the database
+                 echo '<div>Campus City: ' . $row['campus_city'] . '</div>'; // Assuming there is a 'location' field in the database
                  
-                echo '<div>Gross tution fee:</div>'; // Assuming there is a 'location' field in the database
+                echo '<div>Gross tution fee: ' . $fetch_program['tuition_per_year_approx'] . '</div>'; // Assuming there is a 'location' field in the database
                 echo '<div>Application fee: ' . $fetch_program['application_fees'] . ' </div>'; // Assuming there is a 'location' field in the database
-                echo '<div>Duration:</div>'; // Assuming there is a 'location' field in the database
+                echo '<div>Duration: ' . $fetch_program['duration'] . ' </div>'; // Assuming there is a 'location' field in the database
                 echo '<hr>';
 
                 echo '<div class="success-prediction-container" style="margin-bottom:50px;">';
@@ -1344,41 +1949,36 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
             }
         ?>
     </div>
-
-    
-
-   
-  
-
 </div>
 
 
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <form method="GET" action="" class="d-flex align-items-center">
-            <label for="items_per_page">Items per page:</label>
+            <label for="items_per_page"  style="min-width:150px;" >Items per page:</label>
             <select id="items_per_page" name="items_per_page" onchange="this.form.submit()" class="form-control " style="margin-left:20px;">
-                <option value="5" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 5) echo 'selected'; ?>>5</option>
-                <option value="10" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 10) echo 'selected'; ?>>10</option>
-                <option value="15" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 15) echo 'selected'; ?>>15</option>
-                <option value="20" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 20) echo 'selected'; ?>>20</option>
+                <option value="12" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 12) echo 'selected'; ?>>12</option>
+                <option value="24" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 24) echo 'selected'; ?>>24</option>
+                <option value="36" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 36) echo 'selected'; ?>>36</option>
+                <option value="48" <?php if (isset($_GET['items_per_page']) && $_GET['items_per_page'] == 20) echo 'selected'; ?>>48</option>
             </select>
         </form>
 
         <div class="pagination">
             <?php
             if ($current_page > 1) {
-                echo '<a href="?page=' . ($current_page - 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary mr-2">&laquo; Previous</a>';
+                echo '<a href="?page=' . ($current_page - 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary mr-2" style="background-color:#6c757d;">&laquo; Previous</a>';
             }
 
             if ($current_page < $total_pages) {
-                echo '<a href="?page=' . ($current_page + 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary">Next &raquo;</a>';
+                echo '<a href="?page=' . ($current_page + 1) . '&items_per_page=' . $items_per_page . '" class="btn btn-secondary" style="background-color:#6c757d;">Next &raquo;</a>';
             }
             ?>
         </div>
     </div>
 </div>
 
+   
 
 
 <!-- Modal -->
@@ -1410,16 +2010,16 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 
 
 <!-- Modal -->
-<div class="modal fade" id="createApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog createApplicationModal" style="margin-left:250px">
-        <div class="modal-content createApp" style="height:100%; margin-top:20px; min-width:200%; ">
-            <div class="modal-header" >
-                <h4 class="modal-title" id="exampleModalLabel" >New Application</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left:80px; border-radius: 100px; padding: 10px; width:200px; height:20px;">
+<div class="modal fade" id="createApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog createApplicationModal">
+        <div class="modal-content createApp">
+            <div class="modal-header">
+                <h3>New Application</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border-radius: 100px; width:200px; height:50px;">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body createApp">
+            <div class="modal-body createAppmodalbody">
           
 
 
@@ -1429,9 +2029,9 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
                     <input type="hidden" name="id" value="<?php echo  $fetch['id']; ?>"> 
                         <!-- progressbar -->
                         <ul id="progressbar">
-                            <li class="active" id="account">Eligibilty</li>
-                            <li id="personal">Prerequisites</li>
-                            <li id="payment">What to Expect</li>
+                            <li class="active" id="account">Eligibilty</strong></li>
+                            <li id="personal"><strong>Prerequisites</strong></li>
+                            <li id="payment"><strong>What to Expect</strong></li>
                             <!-- <li id="confirm"><strong>Finish</strong></li> -->
                         </ul>
                         <div class="progress">
@@ -1441,37 +2041,42 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
                         <fieldset>
                             <div class="form-card">
                                 
+              
+
+
+                <div class="mb-2">           
+                <input type="text" class="form-control programlevel" name="programlevel">
+              
+
+
+                <input type="text" class="form-control university-name"  name="universityname">
+                 </div>
 
                             
-                <input type="text" class="programlevel" name="programlevel">
-                <input type="text" class="university-name"  name="universityname">
-                
-      
-                               
               <p id="programlevel">Please select a student to check their eligibility for this program.</p>
-           
+            
 
-             
-              <label>Student</label>
+            
+              <label class="form-label">Student</label></br>
  					<select id="students " name="student"  class="form-control student-list">
  						 <?php
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-        $conn=mysqli_connect("localhost","root","","uni_study");
+         
         $sql = "SELECT * FROM student";
         $result = mysqli_query($conn, $sql);
         // Check if there are results
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-              echo '<option value="' . $row['id'] . '">' . $row['first_name'] . ' ' . $row['last_name'] . ' ' . $row['email'] . '</option>';
+              echo '<option value="' . $row['id'] . '">[' . $row['id'] . '] ' . $row['first_name'] . ' ' . $row['last_name'] . ' ' . $row['email'] . '</option>';
             }
         } else {
             echo '<option>No Student</option>';
         }
         ?>
  					</select>
-             
+           
 
 
                                
@@ -1481,7 +2086,7 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 
                                    
                                             
-                                  
+<p id="eligibility_status"></p>
                                    
 
 
@@ -1493,29 +2098,35 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 
             
 
-        <p id="eligibility_status" style="font-size:20px; background-color:rgb(204, 242, 235); height:50px; border-radius:10px; color:rgb(9, 137, 114);display:none ;text-align: center;
-"></p>
-
 
 
 
 
                             </div> 
-                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="next" class="next action-button" value="Next" onclick="nextStep()" style="background-color:#6c757d;" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                             <div class="row">
-                                    
+                                   
+
 
                                  
 
-                                        
-                <input type="text" class="programlevel" name="programlevel">
+                                        <div class="mb-3">
+                <input type="text" class="form-control programlevel" name="programlevel">
             
                 
-             
+              </div>
 
+
+
+             
+                                        <div class="mb-3">
+                <input type="text" class="form-control confirmFirstName" name="student_name" >
+            
+                
+              </div>
 
 
 
@@ -1544,13 +2155,13 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 
                                 </div> 
                             </div> 
-                            <input type="button" name="next" class="next action-button" value="Next" /> 
+                            <input type="button" name="next" class="next action-button" value="Next" style="background-color:#6c757d;" /> 
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
-                               
-                                
+                              
+
 
 
 
@@ -1675,15 +2286,22 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 
                                 
                             </div> 
-                            <div style="display: flex; justify-content: center; align-items: center;">
-                            <button type="submit" class="btn btn-primary mt-1 btn-lg" style="margin-right: 10px;">Submit</button>
+                             <div style="display: flex; justify-content: center; align-items: center;">
+                            <button type="submit" class="btn btn-primary btn-lg" style="margin-right: 10px; background-color: rgba(27, 132, 255, 1); color:white;">Submit</button>
                             <!-- <input type="button" name="next" class="next action-button" value="Submit" />  -->
-                            <input type="button" name="previous" class="previous action-button-previous mt-4" value="Previous" />
-      </div>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                            </div>
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
-                               
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Finish:</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 4 - 4</h2>
+                                    </div>
+                                </div> <br><br>
                                 <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
                                 <div class="row justify-content-center">
                                     <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
@@ -1793,35 +2411,50 @@ $sql = "SELECT * FROM universities LIMIT $offset, $items_per_page";
 }
 
 
-input[type=text] {
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: white;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-}
+
 
 </style>
 
 <style>
-        .modal-dialog {
-            max-width: 90%; /* Width: 90% of the viewport width */
-            height: 90%; /* Height: 90% of the viewport height */
-            margin: auto;
+          .createApplicationModal {
+           min-width:70%;
+           height:100%;
+        
+          //  margin: auto;
         }
-        .modal-content {
-            height: 80%; /* Full height of the modal dialog */
-        }
-        .modal-body {
-            overflow-y: auto; /* Scrollable body content */
-        }
+       .createApp{
+          height: 80%; /* Full height of the modal dialog */
+      }
+     .createAppmodalbody {
+           overflow-y: auto; /* Scrollable body content */
+       } */ */
 
        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .info-list {
         list-style-type: disc;
         margin-left: 20px;
@@ -1840,38 +2473,11 @@ input[type=text] {
     font-family: Arial, sans-serif;
 }
 
-#openModalBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-}
 
 
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-
-    /* Loader CSS */
+          /* Loader CSS */
 #loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -1881,8 +2487,8 @@ input[type=text] {
     animation: spin 2s linear infinite;
     display: none;
     position: fixed;
-    left: 70%;
-    top: 40%;
+    left: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
@@ -1892,54 +2498,10 @@ input[type=text] {
     100% { transform: rotate(360deg); }
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
 
-.pagination a {
-    color: black;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    margin: 0 4px;
-}
-
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
-}
 
 
     </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-<script>
-
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-  </script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -1956,36 +2518,48 @@ input[type=text] {
 
   <script>
 $(document).ready(function(){
- 
+
   $('.student-list').on('change', function() {
+    
     $("#eligibility_status").text("Student is eligible for the program").show();
-                        
+              $("#eligibility_status").css({
+                    'font-size': '20px',
+                    'background-color': 'rgb(180, 230, 200)',
+                    'color': 'rgb(10, 120, 90)',
+                    'border': '2px solid rgb(10, 120, 90)', // Example of adding a border
+                      'border-radius': '10px',
+                       'text-align': 'center',
+            'display': 'flex',
+            'justify-content': 'center',
+            'align-items': 'center'
+        
+                });           
 
     });
 
     $("#msform").on("submit", function(event){
-     
+       
+        
       event.preventDefault();
      $.ajax({
-         url: "php/create_app.php",
+         url: "create_app.php",
          method: "POST",
          data: $(this).serialize(),
          success: function(data){
-           
+          
              $("#message_login").html(data);
          }
      });
  });
 
-
  $("#framework").on("submit", function(event){
-     alert("hello");
+    
     $.ajax({
         url: "php/filter_results.php",
         method: "POST",
         data: $(this).serialize(),
         success: function(data){
-            alert(data);
+          
             $("#search").html(data);
         }
     });
@@ -1996,26 +2570,25 @@ $(document).ready(function(){
 
 
 
-
  $('#location').multiselect({
   nonSelectedText: 'Location',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
  
  $('#program_level').multiselect({
   nonSelectedText: 'Program level',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
 
  $('#discipline').multiselect({
   nonSelectedText: 'Discipline',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
 
 
@@ -2023,14 +2596,14 @@ $(document).ready(function(){
   nonSelectedText: 'Tuition Fee',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
 
  $('#english_score').multiselect({
   nonSelectedText: 'English Score',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
 
 
@@ -2038,12 +2611,19 @@ $(document).ready(function(){
   nonSelectedText: 'Intakes',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'150px'
+  buttonWidth:'180px'
  });
 
 
+$('.student-list').multiselect({
+  nonSelectedText: 'Intakes',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'1030px'
+ });
 
- var current_fs, next_fs, previous_fs; // fieldsets
+
+var current_fs, next_fs, previous_fs; // fieldsets
             var opacity;
             var current = 1;
             var steps = $("fieldset").length;
@@ -2150,16 +2730,23 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
 });
 </script>
 
+<script>
+function nextStep() {
+     // Get the text of the selected option in the dropdown
+    var studentDropdown = document.querySelector(".student-list");
+    var selectedStudentText = studentDropdown.options[studentDropdown.selectedIndex].text;
 
+    // Set the text value to the second text box
+    document.querySelector(".confirmFirstName").value = selectedStudentText;
+
+    
+}
+
+
+</script>
 
 
 
@@ -2183,8 +2770,6 @@ $(document).ready(function() {
         modal.find('#gross-tution-fee').text('Gross Tuition Fee: ' + grossTutionFee);
         modal.find('#application-fee').text('Application Fee: ' + applicationFee);
         modal.find('#duration').text('Duration: ' + duration);
-        modal.find('.university-name').val('University Name: ' + universityName);
-        
     });
 });
 </script>
@@ -2207,7 +2792,7 @@ $(document).ready(function() {
         var duration = button.data('duration');
 
         var modal = $(this);
-      //  modal.find('#university-name').text('University Name: ' + universityName);
+      /// modal.find('#university-name').text('University Name: ' + universityName);
         modal.find('#program-level').text('Program Level: ' + programLevel);
         modal.find('#location').text('Location: ' + location);
         modal.find('#campus-city').text('Campus City: ' + campusCity);
@@ -2215,12 +2800,14 @@ $(document).ready(function() {
         modal.find('#application-fee').text('Application Fee: ' + applicationFee);
         modal.find('#duration').text('Duration: ' + duration);
         modal.find('.programlevel').val(programLevel);
-        modal.find('.university-name').val(universityName);
+            modal.find('.university-name').val(universityName);
     });
 });
 </script>
 
 
+
+     
 
      
 <script>

@@ -1,5 +1,5 @@
 <?php
-include('../common/config.php');
+include('../../common/config.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updateQuery = mysqli_query($conn, $sql);
 
             if ($updateQuery) {
-                
+               
                 echo '<script>
      document.getElementById("loader").style.display = "block";
     setTimeout(function(){

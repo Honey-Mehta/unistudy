@@ -1,10 +1,10 @@
 <?php 
 
 if(isset($_GET['delete_id'])){
-		$conn=mysqli_connect("localhost","root","","uni_study");
-$sqlDELETE=mysqli_query($conn,"DELETE FROM `universities` WHERE `id`='".$_GET['delete_id']."'");
+		$conn=mysqli_connect("sql211.infinityfree.com","if0_36845122","kwTxRyVkymsQm","if0_36845122_Uni_Study");
+$sqlDELETE=mysqli_query($conn,"DELETE FROM `university` WHERE `id`='".$_GET['delete_id']."'");
 
-echo "<script>alert('delete university..!!');window.location.href='university.php';</script>";
+echo "<script>alert('delete student..!!');window.location.href='university.php';</script>";
 }
 
 ?>
@@ -23,18 +23,21 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-                
+                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="dark-logo" />
                     <!-- Light Logo icon -->
-                    <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
                   <span class="logo-text">
-                   
+                    <!-- dark Logo text -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" alt="homepage" class="dark-logo ps-2" />
+                    <!-- Light Logo text -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" class="light-logo ps-2" alt="homepage" />
                   </span>
                 </a>
               </div>
@@ -63,7 +66,138 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-               
+                <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0 overflow-hidden" aria-labelledby="drop2">
+                  <div class="row align-items-center">
+                    <div class="col-8">
+                      <div class="ps-3 pt-3">
+                        <div class="border-bottom">
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="position-relative">
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-chat.html" class="d-flex align-items-center pb-9 position-relative ">
+                                  <div class="bg-primary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:chat-line-linear" class="text-primary fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block ">
+                                    <h6 class="mb-0 bg-hover-primary">Chat Application</h6>
+                                    <span class="fs-3 d-block text-muted">New messages arrived</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-invoice.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-secondary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:bill-list-linear" class="text-secondary fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Invoice App</h6>
+                                    <span class="fs-3 d-block text-muted">Get latest invoice</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact2.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-success-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:bedside-table-2-linear" class="text-success fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Contact Application</h6>
+                                    <span class="fs-3 d-block text-muted">2 Unsaved Contacts</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-warning-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:letter-unread-linear" class="text-warning fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Email App</h6>
+                                    <span class="fs-3 d-block text-muted">Get new emails</span>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="position-relative">
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-danger-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:cart-large-2-linear" class="text-danger fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">User Profile</h6>
+                                    <span class="fs-3 d-block text-muted">learn more information</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-calendar.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-primary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:calendar-linear" class="text-primary fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Calendar App</h6>
+                                    <span class="fs-3 d-block text-muted">Get dates</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-secondary-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:bedside-table-linear" class="text-secondary fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Contact List Table</h6>
+                                    <span class="fs-3 d-block text-muted">Add new contact</span>
+                                  </div>
+                                </a>
+                                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <div class="bg-success-subtle rounded-circle round-40 me-3 p-6 d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:palette-linear" class="text-success fs-5"></iconify-icon>
+                                  </div>
+                                  <div class="d-inline-block">
+                                    <h6 class="mb-0 bg-hover-primary">Notes Application</h6>
+                                    <span class="fs-3 d-block text-muted">To-do and Daily tasks</span>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row align-items-center py-3 pb-1">
+                          <div class="col-8">
+                            <a class="text-dark d-flex align-items-center lh-1 fs-3 bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-faq.html">
+                              <i class="ti ti-help fs-6 me-2"></i>Frequently Asked Questions
+                            </a>
+                          </div>
+                          <div class="col-4">
+                            <div class="d-flex justify-content-end pe-4">
+                              <button class="btn btn-primary rounded-pill fs-3">Check</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4 ms-n7">
+                      <div class="position-relative p-3 border-start h-100">
+                        <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
+                        <ul>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html">Pricing Page</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-login.html">Authentication Design</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-register.html">Register Now</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-error.html">404 Error Page</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html">Notes App</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html">User Application</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html">Account Settings</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </li>
 
 
@@ -120,14 +254,21 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                     <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
                       <div class="py-3 px-4 bg-primary">
-                       
+                        <div class="mb-0 fs-6 fw-medium text-white">Notifications</div>
+                        <div class="mb-0 fs-2 fw-medium text-white">You have 4 Notifications</div>
                       </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
                           <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
                             <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                           </span>
-                        
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Launch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
                         </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
                           <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
@@ -154,9 +295,42 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                             <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
                           </div>
                         </a>
-                        
-                      
-                       
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
+                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Luanch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Event today</h6>
+                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Settings</h6>
+                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
                       </div>
                       <div class="p-3">
                         <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
@@ -172,11 +346,18 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                     </div>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                   
+                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
                       <div class="py-3 px-4 bg-secondary">
-                   
+                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
+                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
                       </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
@@ -184,9 +365,28 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
                             <span class="profile-status bg-success position-absolute rounded-circle"></span>
                           </span>
-                        
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Mathew Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
                         </a>
-                    
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Bianca Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:10 AM</span>
+                            </div>
+
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
                           <span class="user-img position-relative d-inline-block">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
@@ -254,8 +454,43 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                   <!-- ------------------------------- -->
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
-                                                                               
-                  <!-- ------------------------------- -->                 
+
+                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
+                    <a class="nav-link" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-en.svg" alt="" width="20px" height="20px" class="round-20" />
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                      <div class="message-body">
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
+                          <div class="position-relative">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-en.svg" alt="" width="20px" height="20px" class="round-20" />
+                          </div>
+                          <p class="mb-0 fs-3">English</p>
+                        </a>
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
+                          <div class="position-relative">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-cn.svg" alt="" width="20px" height="20px" class="round-20" />
+                          </div>
+                          <p class="mb-0 fs-3">Chinese</p>
+                        </a>
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
+                          <div class="position-relative">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-fr.svg" alt="" width="20px" height="20px" class="round-20" />
+                          </div>
+                          <p class="mb-0 fs-3">French</p>
+                        </a>
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
+                          <div class="position-relative">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-sa.svg" alt="" width="20px" height="20px" class="round-20" />
+                          </div>
+                          <p class="mb-0 fs-3">Arabic</p>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+
+
+                  <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
                   <!-- ------------------------------- -->
 
@@ -269,22 +504,209 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                   </li>
 
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                    
-                    
+                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
+                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden dropdown-menu-end" aria-labelledby="drop2">
+
+                      <div class="py-3 px-4 bg-primary">
+                        <div class="mb-0 fs-6 fw-medium text-white">Notifications</div>
+                        <div class="mb-0 fs-2 fw-medium text-white">You have 4 Notifications</div>
+                      </div>
+                      <div class="message-body" data-simplebar>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
+                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
+                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Launch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
+                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Event today</h6>
+                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
+                            </div>
+
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
+                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Settings</h6>
+                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
+                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Luanch Admin</h6>
+                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Event today</h6>
+                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
+                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Settings</h6>
+                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="p-3">
+                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
+                          <span>Check all Notifications</span>
+                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
+                        </a>
+                      </div>
+
+
+
+
+
+                    </div>
                   </li>
 
                   <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                    
+                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
 
-                     
-                      <div class="message-body" data-simplebar>
-                       
-                       
-                       
-                 
+                      <div class="py-3 px-4 bg-secondary">
+                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
+                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
                       </div>
-                     
+                      <div class="message-body" data-simplebar>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Mathew Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Bianca Anderson</h6>
+                              <span class="fs-2 d-block text-muted">9:10 AM</span>
+                            </div>
+
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Andrew Johnson</h6>
+                              <span class="fs-2 d-block text-muted">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Miyra Strokes</h6>
+                              <span class="fs-2 d-block text-muted">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Mark, Stoinus & Rishvi..</h6>
+                              <span class="fs-2 d-block text-muted">9:10 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-7.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Eliga Rush</h6>
+                              <span class="fs-2 d-block text-muted">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="p-3">
+                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
+                          <span>Check all Messages</span>
+                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
+                        </a>
+                      </div>
 
                     </div>
                   </li>
@@ -306,7 +728,7 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                           <div class="d-flex align-items-center px-3">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" class="rounded-circle round-50" alt="" />
                             <div class="ms-3">
-                              <h5 class="mb-1 fs-4">Admin</h5>
+                              <h5 class="mb-1 fs-4">Markarn Doe</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
                                 markrarn@wrappixel.com
                               </p>
@@ -315,14 +737,42 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                         </div>
                         <div class="message-body pb-3">
                           <div class="px-3 pt-3">
-                            
-                            
-                           
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class=" d-flex  align-items-center ">
+                                My Profile
+                              </a>
+                            </div>
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              <a href="javascript:void(0)" class=" d-flex  align-items-center ">
+                                My Projects
+                              </a>
+                            </div>
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class=" d-flex  align-items-center ">
+                                Inbox
+                              </a>
+                            </div>
                           </div>
-                        
+                          <hr>
                           <div class="px-3">
-                            
-                           
+                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
+                              <a href="javascript:void(0)" class="">
+                                Mode
+                              </a>
+                              <div>
+                                <a class="moon dark-layout" href="javascript:void(0)">
+                                  <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
+                                </a>
+                                <a class="sun light-layout" href="javascript:void(0)">
+                                  <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class=" d-flex  align-items-center  ">
+                                Account Settings
+                              </a>
+                            </div>
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -1079,27 +1529,50 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
                   <form id="insertForm">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-sm-12">
+										<div class="col-sm-6">
 											<label for="name" style="float:left;">University Name:</label>
-											<input type="text" class="form-control" id="name" name="name" required>
+											<input type="text" class="form-control" id="name" name="university_name" required>
 										</div>
+										<div class="col-sm-6">
+                                        <label for="sel1" class="form-label">Course:</label>
+									<select class="form-select" id="sel1" name="course" class="form-control">
+										<option>---SELECT Course---</option> <?php
+        // Assuming you have established a database connection named $conn
 
-										<div class="col-sm-12">
-                                        <label for="sel1" class="form-label">Description:</label>
-                                        <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"></textarea>
+        // SQL query to fetch all countries
+				$conn=mysqli_connect("sql211.infinityfree.com","if0_36845122","kwTxRyVkymsQm","if0_36845122_Uni_Study");
+        $sql = "SELECT * FROM discipline";
+        $result = mysqli_query($conn, $sql);
 
+        // Check if there are results
+        if ($result) {
+            // Loop through the results and create an option element for each country
+            while ($row = mysqli_fetch_assoc($result)) {
+              
+                echo '<option value="' . $row['course_name'] . '" ' . $selected . '>' . $row['course_name'] . '</option>';
+            
+            }
+        } else {
+            echo '<option>No countries found</option>';
+        }
+        ?>
+									</select>
 										</div>
-
-                    <div class="col-sm-12">
-                                        <label for="sel1" class="form-label">URL:</label>
-                                        <textarea id="description" class="form-control" name="url" placeholder="Enter your url here"></textarea>
-
-										</div>
-
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="name" style="float:left;">University Address:</label>
+									<input type="text" class="form-control" id="location" name="location" required>
+								</div>
 								
-					
+							
+								
+								
+							
+								
+								
+								
+								
 							
 								<div style="display: flex; justify-content: center; margin-top: 20px;">
                   <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
@@ -1112,8 +1585,7 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
 									<div class="input-group mb-0" id="message_login">
 										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
 									</div>
-                  <div id="loader"></div>
-                </div>
+								</div>
 							</div>
               </div>
 
@@ -1165,46 +1637,190 @@ echo "<script>alert('delete university..!!');window.location.href='university.ph
 }
 </style>
 
-<style>
-/* Loader CSS */
-#loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 150px;
-    height: 150px;
-    animation: spin 2s linear infinite;
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
 
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
-}
-</style>
+  
 
 
 
 
+<div class="container-fluid" style="margin-top:50px;">
 
 
+<div id="list-view" style="overflow-x:auto;">
+    <table class="table">
+        <thead>
+            <tr >
+                <th scope="col">#</th>
+                <th scope="col" style="min-width:150px;">Universtiy Name</th>
+                <th scope="col" style="min-width:150px;">Course</th>
+                <th scope="col" style="min-width:150px;">Location</th>
+               
+                <th scope="col" style="min-width:150px;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+         	$conn=mysqli_connect("sql211.infinityfree.com","if0_36845122","kwTxRyVkymsQm","if0_36845122_Uni_Study");
+            $sqllogistic=mysqli_query($conn,"SELECT * FROM `university`");
+            $id = 0;
+            while($show=mysqli_fetch_assoc($sqllogistic)){
+            $id++;
+            ?>
+            <tr>
+                <td scope="row"><?php echo $id;?></td>
+                <td><?php echo $show['university_name'];?></td>
+                <td ><?php echo $show['course'];?></td>
+                <td><?php echo $show['location'];?></td>
+              
+                <td>
+                <div class="button-container">
+                
+                    <a onclick="return confirm ('Are you sure delete?')" href="?delete_id=<?php echo $show['id']?>"  class="btn btn-primary Delete">Delete</a>
+                  
+                  </td>
+                  </div>
+                
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="grid-view" style="display:none; overflow-x:auto;">
+    <table class="table table-bordered "  style="min-width: 3000px;" >
+        <thead>
+            <tr >
+                <th scope="col" style="background-color:#ffccff;  vertical-align:middle; text-align:center;">Rejected</th>
+                <th scope="col" style="background-color: #e0ebeb;  vertical-align:middle; text-align:center;">Pending</th>
+                <th scope="col" style="background-color: #cdb398;  vertical-align:middle; text-align:center; ">App fee paid</th>
+                <th scope="col" style="background-color: #cc6666;  vertical-align:middle; text-align:center;">Offer Letter Received</th>
+                <th scope="col" style="background-color: #ffbf80; vertical-align:middle; text-align:center; ">LOA Received</th>
+                <th scope="col" style="background-color: #ffffcc;  vertical-align:middle; text-align:center;">Waiting for approval</th>
+                <th scope="col" style="background-color: #ffe6ff; vertical-align:middle; text-align:center; ">Approved</th>
+                <th scope="col" style="background-color: #ffe6cc;  vertical-align:middle; text-align:center;">On hold</th>
+                <th scope="col" style="background-color: #b3ffcc;  vertical-align:middle; text-align:center; ">Cancelled Application</th>
+                <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Abandoned</th>
+                <th scope="col" style="background-color: #f0f5f5;  vertical-align:middle; text-align:center; ">New Lead</th>
+                <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center; ">Follow up</th>
+                <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center; ">Ready to Apply</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $statuses = [
+                'Rejected' => '',
+                'Pending' => '',
+                'App fee paid' => '',
+                'Offer Letter Received' => '',
+                'LOA Received' => '',
+                'Waiting for approval' => '',
+                'Approved' => '',
+                'On hold' => '',
+                'Cancelled Application' => '',
+                'Abandoned' => '',
+                'New Lead' => '',
+                'Follow up' => '',
+                'Ready to Apply' => ''
+            ];
+
+            // Fetch all students and organize by status
+            $studentsByStatus = [];
+            $sqllogistic = mysqli_query($conn, "SELECT * FROM `student`");
+            while ($show = mysqli_fetch_assoc($sqllogistic)) {
+                $studentsByStatus[$show['status']][] = $show;
+            }
+
+            // Determine the maximum number of rows needed
+            $maxRows = 0;
+            foreach ($studentsByStatus as $students) {
+                if (count($students) > $maxRows) {
+                    $maxRows = count($students);
+                }
+            }
+
+            // Display rows
+            for ($i = 0; $i < $maxRows; $i++) {
+                echo "<tr>";
+                foreach ($statuses as $status => $color) {
+                    if (isset($studentsByStatus[$status][$i])) {
+                        $student = $studentsByStatus[$status][$i];
+                        echo "<td class='card-container'>";
+                        echo "<div class='card'>";
+                            echo "<div class='card-body'>";
+                                echo "<p class='card-text'><strong>First Name: </strong>{$student['first_name']} {$student['last_name']}</p>";
+                                echo "<p class='card-text'><strong>Middle Name: </strong>{$student['middle_name']}</p>";
+                                echo "<p class='card-text'><strong>DOB: </strong>{$student['dob']}</p>";
+                                echo "<p class='card-text'><strong>Country: </strong>{$student['country']}</p>";
+                                echo "<p class='card-text'><strong>Passport Number: </strong>{$student['passport_num']}</p>";
+                                echo "<p class='card-text'><strong>Passport Expiry Date: </strong>{$student['passport_expiry_date']}</p>";
+                                echo "<p class='card-text'><strong>Gender: </strong>{$student['gender']}</p>";
+                               
+                                echo"<a href='edit_students.php?edit={$student['id']}' class='btn btn-primary Edit'> Edit</a>";
+echo "<a onclick='return confirm(\"Are you sure delete?\")' href='?delete_id={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
+                                echo "</div>";
+                        echo "</div>";
+                    echo "</td>";
+                    } else {
+                        echo "<td></td>";
+                    }
+                }
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!---Font Awesome cdn links start here--->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!---Font Awesome cdn links ends here--->
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+
+  <!-- solar icons -->
+  <script src="../../../../cdn.jsdelivr.net/npm/iconify-icon%401.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/fullcalendar/index.global.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/apps/calendar-init.js"></script>
+
+
+<div class="dark-transparent sidebartoggler"></div>
+  <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
+  <!-- Import Js Files -->
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.minisidebar.init.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/theme.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/feather.min.js"></script>
+
+
+ 
 
 
 
@@ -1231,11 +1847,54 @@ $(document).ready(function(){
     });
 
 
+
+
+
+
+
+
+
+
+
+
+ $('#country_of_interest').multiselect({
+  nonSelectedText: 'Select Country of Interest',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'465px'
+ });
+ 
+ 
+ $('#service_of_interest').multiselect({
+  nonSelectedText: 'Select Service of Interest',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'465px'
+ });
+ 
+
+
  
  
 });
 </script>
 
 
+<script>
+         function toggleView(view) {
+            var listView = document.getElementById('list-view');
+            var gridView = document.getElementById('grid-view');
+            
+            if(view === 'list') {
+                listView.style.display = 'block';
+                gridView.style.display = 'none';
+            } else {
+                listView.style.display = 'none';
+                gridView.style.display = 'block';
+            }
+        }
 
+    // Set default view
+    toggleView('list');
+</script>
 

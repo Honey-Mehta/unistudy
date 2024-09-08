@@ -1,7 +1,6 @@
 <?php
 // Connect to the database
-	$conn=mysqli_connect("localhost","root","","uni_study");
-
+include("../common/config.php");
 // Check if country_id is set and not empty
 if (isset($_POST['country_id']) && !empty($_POST['country_id'])&& isset($_POST['student_id']) && !empty($_POST['student_id'])) {
     // Sanitize the input to avoid SQL injection
@@ -30,4 +29,3 @@ if (isset($_POST['country_id']) && !empty($_POST['country_id'])&& isset($_POST['
     echo '<option value="">Select Country first</option>';
 }
 ?>
-

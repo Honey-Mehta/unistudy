@@ -1,18 +1,20 @@
-<?php include('../common/config.php');
-
+<?php
+include('../../common/config.php');
 extract($_POST);
+
 $us = mysqli_query($conn, "SELECT * FROM `admin` WHERE `email`='$email' AND `password`='$password'");
 $us_count = mysqli_num_rows($us);
-$us_fetch=mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `admin` WHERE `email`='$email' AND `password`='$password'"));
+$us_fetch=mysqli_fetch_assoc($us);
 if ($us_count) {
-    $_SESSION['admin_email']=$us_fetch['email'];
+   $_SESSION['admin_id']=$us_fetch['id'];
+   $_SESSION['email']=$us_fetch['email'];
     echo '<div class="alert alert-success" style="">
     
     <strong> Successfully Login. Please Wait... </strong></div>';
     echo "<script>
         setTimeout(function() {
             window.location.href = 'index.php';
-        }, 2000); // 5000 milliseconds = 5 seconds
+        }, 5000); // 5000 milliseconds = 5 seconds
     </script>";
 } else {
     echo '<div class="alert alert-danger" style="">

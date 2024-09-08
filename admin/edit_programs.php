@@ -1,7 +1,7 @@
 
 <?php  
    $id = $_GET['edit'];
-$conn=mysqli_connect("localhost","root","","uni_study");   
+include("../common/config.php");
 $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id='$id'"));
 ?>
 
@@ -1060,8 +1060,10 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
 
 
  
+  
 
-<div class="container-fluid" style="padding-top:100px;">
+
+<div class="container-fluid" style="padding-top:100px;" style="max-width:90%;">
  <div class="row">
   
 
@@ -1069,18 +1071,17 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
    <form id="msform" method="post" enctype="multipart/form-data">
    <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-
    <div class="form-group">
-   <div class="row">
+    <div class="row">
    <div class="col-sm-12">
   <label style="float:left; font-size:15px;">Select University</label>
-  </div>
-  </div>
+   </div>
+   </div>
     <select class="form-select" name="university_id" class="form-control">
        
         <?php
         // Assuming you have established a database connection named $conn
-        $conn=mysqli_connect("localhost","root","","uni_study");
+          $conn=mysqli_connect("sql211.infinityfree.com","if0_36845122","kwTxRyVkymsQm","if0_36845122_Uni_Study");
         // SQL query to fetch all countries
         $sql = "SELECT * FROM universities";
         $result = mysqli_query($conn, $sql);
@@ -1112,42 +1113,44 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
 
 
 
-      <div class="form-group">
-      <div class="row">
-   <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="row">
+                                        <div class="col-sm-12">
 											<label for="name" style="float:left; font-size:15px;">Program:</label>
-                      </div>
-                      </div>
+                                            </div>
+                                            </div>
 											<input type="text" class="form-control" id="name" name="program" value="<?php echo $fetch['program']; ?>" required>
 										</div>
 
-                    <div class="form-group">
-                    <div class="row">
+
+
+                                       <div class="form-group">
+                                      <div class="row">
 										<div class="col-sm-12">
                                         <label for="sel1" style="float:left; font-size:15px;">Fee:</label>
-                                        </div>
-                      </div>
+                                          </div>
+                                            </div>
                                         <input type="text" class="form-control" id="name" name="fee" value="<?php echo $fetch['fee']; ?>" required>
-
 										</div>
 
-
-                    <div class="form-group">
-                    <div class="row">
+                       <div class="form-group">
+                                      <div class="row">
                     <div class="col-sm-12">
                                         <label for="sel1" style="float:left; font-size:15px;">Tuition Per Year Approx:</label>
-                                        </div>
-                                        </div>
+                                           </div>
+                                            </div>
                                         <input type="text" class="form-control" id="name" name="tuition_per_year_approx" value="<?php echo $fetch['tuition_per_year_approx']; ?>" required>
 
 										</div>
 
-                    <div class="form-group">
-                    <div class="row">
+
+
+                                         <div class="form-group">
+                                      <div class="row">
                                         <div class="col-sm-12">
                                         <label for="sel1" style="float:left; font-size:15px;">Application Fees:</label>
-                                        </div>
-                                        </div>
+                                           </div>
+                                            </div>
                                         <input type="text" class="form-control" id="name" name="application_fees" value="<?php echo $fetch['application_fees']; ?>" required>
 
 										</div>
@@ -1162,7 +1165,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
 
   
   <div class="container d-flex justify-content-center align-items-center">
-    <button type="submit" class="btn btn-primary btn-lg" style="font-size: 20px;width: 150px;height: 50px;">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg mt-5" style="font-size: 20px;width: 150px;height: 50px;">Submit</button>
 </div>
 
 
@@ -1206,6 +1209,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
 }
 </style>
 
+
+
 <script src="https://cdn.tiny.cloud/1/x6qk2qvw1l1zz92rb24ri8i715fxz988ms6iw3skd5o05iiq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
     tinymce.init({
@@ -1213,10 +1218,6 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM programs WHERE id
     });
   </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
-
-
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">

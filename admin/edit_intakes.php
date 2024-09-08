@@ -1,25 +1,15 @@
-<?php 
-     $id=   $_GET['delete_id'];
-if(isset($_GET['delete_id'])){
-	$conn=mysqli_connect("localhost","root","","uni_study");
-$sqlDELETE=mysqli_query($conn,"DELETE image FROM `student` WHERE `id`='".$_GET['delete_id']."'");
-
-echo "<script>alert('delete student..!!');window.location.href='view_documents_copy.php?edit=$id';</script>";
-}
-
-?>
 
 <?php  
    $id = $_GET['edit'];
-   $conn=mysqli_connect("localhost","root","","uni_study");   
-   $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id='$id'"));
+include("../common/config.php");
+$fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM acadmic_intakes WHERE id='$id'"));
 ?>
-
 
 <?php include('header.php'); ?>
 
-<?php include('sidebar.php'); ?>  
-  
+<?php include('sidebar.php'); ?>
+
+
 <div class="page-wrapper">
       <!--  Header Start -->
       <header class="topbar rounded-0 border-0 bg-primary">
@@ -29,7 +19,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-              
+                
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -40,19 +30,13 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                   <!--End Logo icon -->
                   <!-- Logo text -->
                   <span class="logo-text">
-                    <!-- dark Logo text -->
-                    
+                   
                   </span>
                 </a>
               </div>
 
 
             </div>
-              
-
-             
-      
-
 
             <ul class="navbar-nav gap-2">
 
@@ -75,70 +59,231 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-                <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0 overflow-hidden" aria-labelledby="drop2">
-                  <div class="row align-items-center">
-                    <div class="col-8">
-                      <div class="ps-3 pt-3">
-                        <div class="border-bottom">
-                          <div class="row">
-                            <div class="col-6">
-                              <div class="position-relative">
-                               
-                               
-                              
-                              </div>
-                            </div>
-                            <div class="col-6">
-                              <div class="position-relative">
-                               
-                               
-                              
-                                
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                       
-                      </div>
-                    </div>
-                  
-                  </div>
-                </div>
+               
               </li>
 
 
             </ul>
-            <div class="container justify-content-center">
 
-<h1 class="text-white">Document Verification</h1>
+            <div class="d-block d-lg-none">
+              <div class="brand-logo d-flex align-items-center justify-content-between">
+                <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
+                  <b class="logo-icon">
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="dark-logo" />
+                    <!-- Light Logo icon -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-icon.svg" alt="homepage" class="light-logo" />
+                  </b>
+                  <!--End Logo icon -->
+                  <!-- Logo text -->
+                  <span class="logo-text">
+                    <!-- dark Logo text -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" alt="homepage" class="dark-logo ps-2" />
+                    <!-- Light Logo text -->
+                    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-light-text.svg" class="light-logo ps-2" alt="homepage" />
+                  </span>
+                </a>
+              </div>
 
-</div>
-           
+
+            </div>
+            <ul class="navbar-nav flex-row  gap-2 align-items-center justify-content-center d-flex d-lg-none">
+              <li class="nav-item dropdown nav-icon-hover-bg rounded-circle">
+                <a class="navbar-toggler nav-link text-white nav-icon-hover border-0" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="">
+                    <i class="ti ti-dots fs-7"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between py-2 py-lg-0">
+                <ul class="navbar-nav flex-row  align-items-center justify-content-center d-flex d-lg-none">
+                  <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="nav-link d-flex d-lg-none align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobilenavbar" aria-controls="offcanvasWithBothOptions">
+                      <iconify-icon icon="solar:menu-dots-circle-linear"></iconify-icon>
+                    </a>
+                  </li>
+                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
+                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
+                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
+                      <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                      </div>
+                    </a>
+                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
+
+                      <div class="py-3 px-4 bg-primary">
+                       
+                      </div>
+                      <div class="message-body" data-simplebar>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
+                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
+                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
+                          </span>
+                        
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
+                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Event today</h6>
+                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
+                            </div>
+
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
+                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
+                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Settings</h6>
+                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                        
+                      
+                       
+                      </div>
+                      <div class="p-3">
+                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
+                          <span>Check all Notifications</span>
+                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
+                        </a>
+                      </div>
 
 
-            
-          
+
+
+
+                    </div>
+                  </li>
+                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
+                   
+                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
+
+                      <div class="py-3 px-4 bg-secondary">
+                   
+                      </div>
+                      <div class="message-body" data-simplebar>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                        
+                        </a>
+                    
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Andrew Johnson</h6>
+                              <span class="fs-2 d-block text-muted">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Miyra Strokes</h6>
+                              <span class="fs-2 d-block text-muted">9:30 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Mark, Stoinus & Rishvi..</h6>
+                              <span class="fs-2 d-block text-muted">9:10 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                          </div>
+                        </a>
+                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
+                          <span class="user-img position-relative d-inline-block">
+                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-7.jpg" alt="user" class="rounded-circle w-100 round-40" />
+                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
+                          </span>
+                          <div class="w-80">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h6 class="mb-1">Eliga Rush</h6>
+                              <span class="fs-2 d-block text-muted">9:08 AM</span>
+                            </div>
+                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="p-3">
+                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
+                          <span>Check all Messages</span>
+                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
+                        </a>
+                      </div>
+
+                    </div>
+                  </li>
+                </ul>
                 <ul class="navbar-nav gap-2 flex-row ms-auto align-items-center justify-content-center">
                   <!-- ------------------------------- -->
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
+                                                                               
+                  <!-- ------------------------------- -->                 
+                  <!-- end language Dropdown -->
+                  <!-- ------------------------------- -->
 
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                   
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                      <div class="message-body">
-                     
-                       
-                        
-                      </div>
-                    </div>
+                  <li class="nav-item nav-icon-hover-bg rounded-circle">
+                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
+                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
+                    </a>
+                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
+                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
+                    </a>
                   </li>
 
+                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
+                    
+                    
+                  </li>
 
-                
+                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
+                    
+                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
 
+                     
+                      <div class="message-body" data-simplebar>
+                       
+                       
+                       
+                 
+                      </div>
+                     
 
-               
+                    </div>
+                  </li>
 
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
@@ -157,9 +302,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                           <div class="d-flex align-items-center px-3">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" class="rounded-circle round-50" alt="" />
                             <div class="ms-3">
-                              <h5 class="mb-1 fs-4">    
-                                Admin
-                              </h5>
+                              <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
                                 markrarn@wrappixel.com
                               </p>
@@ -167,11 +310,15 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                        
+                          <div class="px-3 pt-3">
+                            
+                            
+                           
+                          </div>
                         
                           <div class="px-3">
                             
-                            
+                           
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -525,17 +672,37 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                     </div>
                     <div class="col-4 ms-n7">
                       <div class="position-relative p-3 border-start h-100">
-                       
-                       
+                        <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
+                        <ul>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html">Pricing Page</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-login.html">Authentication Design</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-register.html">Register Now</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-error.html">404 Error Page</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html">Notes App</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html">User Application</a>
+                          </li>
+                          <li class="mb-3">
+                            <a class="text-dark bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html">Account Settings</a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
-            
 
-          
 
             <a class="navbar-toggler nav-icon-hover p-0 border-0 text-white" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="p-2">
@@ -692,7 +859,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                       </div>
 
 
-                    
+
 
 
                     </div>
@@ -803,7 +970,7 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
                     </div>
                   </li>
 
-                 
+
                   <!-- ------------------------------- -->
                   <!-- start profile Dropdown -->
                   <!-- ------------------------------- -->
@@ -888,634 +1055,156 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
 
 
 
-
-
-
-
-
-
-
-
-<div class="container-fluid" style="max-width:94%;">
-  <form id="insertForm" method="POST">
-    <input type="hidden" value="<?php echo $id; ?>" name="id">
-    
-    <div class="row">
-      <!-- Passport -->
-      <div class="col-lg-3">
-        <h4 class="text-center">Passport</h4>
-        <?php if ($fetch['image'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center ">
-            <embed src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="200px" height="200px" />
-          </div>
-        
-          
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-        <input id="approve_passport" class="form-check-input" type="radio" name="passport" value="1" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 1) {echo "checked";} ?>>
-<label for="approve_passport" class="form-check-label"><h5>Approve</h5></label>
-<input id="reject_passport" class="form-check-input" type="radio" name="passport" value="2" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 2) {echo "checked";} ?>>
-<label for="reject_passport" class="form-check-label"><h5>Reject</h5></label>
-<input id="pending_passport" class="form-check-input" type="radio" name="passport" value="0" required style="border:2px solid black;" <?php if($fetch['passport_status'] == 0) {echo "checked";} ?>>
-<label for="pending_passport" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-   
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio"  name="passport" value="1" id="option1" <?php if($fetch['passport_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio"   name="passport" value="2"  <?php if($fetch['passport_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio"  name="passport" value="0" <?php if($fetch['passport_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-
-<?php if ($fetch['image'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-passport" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-      </div>
-
-      <!-- Marriage Certificate -->
-      <div class="col-lg-3">
-        <h4 class="text-center">Marriage Certificate</h4>
-        <?php if ($fetch['marriage_certificate'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png"  width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-           
-         
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="1" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_marriage_certificate" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="2" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_marriage_certificate" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_marriage_certificate" class="form-check-input" type="radio" name="marriage_certificate" value="0" required style="border:2px solid black;" <?php if($fetch['marriage_certificate_status'] == 0) {echo "checked";} ?>>
-          <label for="pending_marriage_certificate" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-
-      
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="marriage_certificate" value="1" id="option1" <?php if($fetch['marriage_certificate_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio"   name="marriage_certificate" value="2"  <?php if($fetch['marriage_certificate_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio"  name="marriage_certificate" value="0" value="0" <?php if($fetch['marriage_certificate_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-    
-<?php if ($fetch['marriage_certificate'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-marriage-certificate" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-
-      </div>
-
-      <!-- College Transcript -->
-      <div class="col-lg-3">
-        <h4 class="text-center">College Transcript</h4>
-        <?php if ($fetch['college_transcript'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-           
-          
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_college_transcript" class="form-check-input" type="radio" name="college_transcript" value="1" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_college_transcript" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_college_transcript" class="form-check-input" type="radio" name="college_transcript" value="2" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_college_transcript" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_college_transcript"class="form-check-input" type="radio" name="college_transcript" value="0" required style="border:2px solid black;" <?php if($fetch['college_transcript_status'] == 0) {echo "checked";} ?>>
-          <label  for="pending_college_transcript" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-
-
-
-        
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="college_transcript" value="1" id="option1" <?php if($fetch['college_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio"  name="college_transcript" value="2" <?php if($fetch['college_transcript_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio"  name="college_transcript" value="0" <?php if($fetch['college_transcript_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-
-
-<?php if ($fetch['college_transcript'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-college-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-
-
-
-
-      </div>
-
-
-      <!-- College Diploma -->
-      <div class="col-lg-3">
-        <h4 class="text-center">College Diploma</h4>
-        <?php if ($fetch['college_diploma'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="200px" height="200px" />
-          </div>
-          
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="1" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_college_diploma" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="2" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_college_diploma" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_college_diploma" class="form-check-input" type="radio" name="college_diploma" value="0" required style="border:2px solid black;" <?php if($fetch['college_diploma_status'] == 0) {echo "checked";} ?>>
-          <label for="pending_college_diploma" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio"  name="college_diploma" value="1" id="option1" <?php if($fetch['college_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio"  name="college_diploma" value="2" <?php if($fetch['college_diploma_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio"  name="college_diploma" value="0" <?php if($fetch['college_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
- 
-<?php if ($fetch['college_diploma'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-college-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;" >View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      
-
-      <!-- High School Transcript -->
-      <div class="col-lg-3">
-        <h4 class="text-center">High School Transcript</h4>
-        <?php if ($fetch['highschool_transcript'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-          
-          
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="1" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_highschool_transcript" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="2" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_highschool_transcript" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_highschool_transcript" class="form-check-input" type="radio" name="highschool_transcript" value="0" required style="border:2px solid black;" <?php if($fetch['highschool_transcript_status'] == 0) {echo "checked";} ?>>
-          <label for="pending_highschool_transcript" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-       
-        
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="highschool_transcript" value="1" id="option1" <?php if($fetch['highschool_transcript_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio" name="highschool_transcript" value="2" <?php if($fetch['highschool_transcript_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="highschool_transcript" value="0" <?php if($fetch['highschool_transcript_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-          
-<?php if ($fetch['highschool_transcript'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-highschool-transcript" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-
-
-
-
-
-      </div>
-
-      <!-- High School Diploma -->
-      <div class="col-lg-3">
-        <h4 class="text-center">High School Diploma</h4>
-        <?php if ($fetch['highschool_diploma'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-           
-          
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_highschool_diploma" class="form-check-input" type="radio" name="highschool_diploma" value="1" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_highschool_diploma" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_highschool_diploma" class="form-check-input" type="radio" name="highschool_diploma" value="2" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_highschool_diploma" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_highschool_diploma" class="form-check-in""put" type="radio" name="highschool_diploma" value="0" required style="border:2px solid black;" <?php if($fetch['highschool_diploma_status'] == 0) {echo "checked";} ?>>
-          <label for="pending_highschool_diploma" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="highschool_diploma" value="1" id="option1" <?php if($fetch['highschool_diploma_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio" name="highschool_diploma" value="2" <?php if($fetch['highschool_diploma_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="highschool_diploma" value="0" <?php if($fetch['highschool_diploma_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-<?php if ($fetch['highschool_diploma'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-highschool-diploma" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-          
-      </div>
-
-      <!-- Medium of Instruction -->
-      <div class="col-lg-3">
-        <h4 class="text-center">Medium of Instruction</h4>
-        <?php if ($fetch['medium_of_instruction'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-           
-         
-           
-
-
-
-
-        <?php } ?>
-        <!-- <div class="text-center mt-2">
-          <input id="approve_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="1" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_medium_of_instruction" class="form-check-label"><h5>Approve</h5></label>
-          <input id="reject_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="2" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_medium_of_instruction" class="form-check-label"><h5>Reject</h5></label>
-          <input id="pending_medium_of_instruction" class="form-check-input" type="radio" name="medium_of_instruction" value="0" required style="border:2px solid black;" <?php if($fetch['medium_of_instruction_status'] == 0) {echo "checked";} ?>>
-          <label for="pending_medium_of_instruction" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="medium_of_instruction" value="1" id="option1" <?php if($fetch['medium_of_instruction_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio" name="medium_of_instruction" value="2" <?php if($fetch['medium_of_instruction_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="medium_of_instruction" value="0" <?php if($fetch['medium_of_instruction_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-         
-<?php if ($fetch['medium_of_instruction'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-      </div>
-
-      <!-- Resume -->
-      <div class="col-lg-3">
-        <h4 class="text-center">Resume</h4>
-        <?php if ($fetch['resume'] == "") { ?>
-          <div class="d-flex justify-content-center">
-            <img src="./images/pdf.png" width="150px" height="150px" style="margin-top:50px;">
-          </div>
-        <?php } else { ?>
-          <div class="d-flex justify-content-center">
-            <embed src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="200px" height="200px" />
-            </div>
-          
-          
-
-
-
-
-        <?php } ?>
-         
-        <!-- <div class="text-center mt-2">
-          <input id="approve_resume" class="form-check-input" type="radio" name="resume" value="1" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 1) {echo "checked";} ?>>
-          <label for="approve_resume" class="btn btn-primary">Approve</label>
-          <input id="reject_resume" class="form-check-input" type="radio" name="resume" value="2" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 2) {echo "checked";} ?>>
-          <label for="reject_resume" class="form-check-label"><h5>Reject</h5></label>
-          <input id="approve_resume" class="form-check-input" type="radio" name="resume" value="0" required style="border:2px solid black;" <?php if($fetch['resume_status'] == 0) {echo "checked";} ?>>
-          <label for="approve_resume" class="form-check-label"><h5>Pending</h5></label>
-        </div> -->
-
-        <div class=" text-center mt-4" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="resume" value="1" id="option1" <?php if($fetch['resume_status'] == 1) {echo "checked";} ?> autocomplete="off"> Approve
-  </label>
-  <label class="btn btn-danger">
-    <input type="radio" name="resume" value="2" <?php if($fetch['resume_status'] == 2) {echo "checked";} ?> autocomplete="off"> Reject
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="resume" value="0" <?php if($fetch['resume_status'] == 0) {echo "checked";} ?> autocomplete="off"> Pending
-  </label>
-</div>
-
-
-
-
-
-
-<?php if ($fetch['resume'] != "") { ?>
-  <div class="d-flex justify-content-center mt-2">
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal-mediumof-instruction" data-pdf-url="./images/<?php echo $fetch['image']; ?>" style="width: 80px; height: 40px;">View</a>
-    <a onclick="return confirm('Are you sure you want to delete this?')" href="?delete_id=<?php echo $fetch['id']; ?>" class="btn btn-danger" style="width: 80px; height: 40px; margin-left: 20px;">Delete</a>
-  </div>
-<?php } ?>
-
-
-
-
-
-      </div>
-
-
-    </div>
-
-    <div class="row mt-5" >
-      
-      <!-- Empty Column to Balance Layout (If necessary) -->
-      <div class="col-lg-4"></div>
-    </div>
-
-    <div class="row">
-      <div class="col text-center">
-        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-      </div>
-    </div>
-  </form>
-
+<div class="container-fluid" style="padding-top:100px;" style="max-width:90%;">
   <div class="row">
+    
+
     <div class="col-sm-12">
-      <div id="message_login"></div>
+      <form id="msform" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+      
+
+          <div class="form-group">
+          <div class="row">
+          <div class="col-sm-12">
+          <label for="name" style="float:left; font-size:15px;">Year:</label></br>
+           </div>
+          </div>
+          <input type="text" class="form-control" id="name" name="year" value="<?php echo $fetch['year']; ?>" required style="height:40px;">
+         </div>
+      
+            <div class="form-group">
+             <div class="row">
+               <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Success Score:</label></br>
+            </div>
+           </div>
+          <input type="text" class="form-control" id="name" name="success_score" value="<?php echo $fetch['success_score']; ?>" required style="height:40px;">
+           </div>
+       
+         
+
+            <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Intake Status:</label></br>
+            </div>
+           </div>
+           <select name="intake_status" class="form-control" style="height:40px;">
+                                              <option value="Open">--Select Option--</option>
+                                                <option value="Open" <?php if($fetch['intake_status']=="Open") { echo "Selected";  } ?>>Open</option>
+                                                 <option value="Will Open" <?php if($fetch['intake_status']=="Will Open") { echo "Selected";  } ?>>Will Open</option>
+                                                  <option value="Likely Open" <?php if($fetch['Likely Open']=="Will Open") { echo "Selected";  } ?>>Likely Open</option>
+                                          </select>
+         </div>
+
+
+        
+
+
+            <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Submission Deadline:</label></br>
+            </div>
+           </div>
+          <input type="date" class="form-control" id="submission_deadline" name="submission_deadline" value="<?php echo $fetch['submission_deadline']; ?>" required style="height:40px;">
+         </div>
+
+
+          
+
+
+
+       
+        <div class="container d-flex justify-content-center align-items-center">
+          <button type="submit" class="btn btn-primary bt-lg mt-5" style="font-size: 20px;width: 150px;height: 50px;">Submit</button>
+        </div>
+      </form>
+
+      <div class="input-group mb-0" id="message_login">
+      </div>
       <div id="loader"></div>
     </div>
+
+   
   </div>
 </div>
 
-
-<div class="modal fade" id="pdfModal-passport" tabindex="-1" role="dialog" aria-labelledby="pdfModal-passportLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-passportLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="modal fade" id="pdfModal-marriage-certificate" tabindex="-1" role="dialog" aria-labelledby="pdfModal-marriage-certificateLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-marriage-certificateLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="pdfModal-college-transcript" tabindex="-1" role="dialog" aria-labelledby="pdfModal-college-transcriptLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-college-transcriptLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="pdfModal-college-diploma" tabindex="-1" role="dialog" aria-labelledby="pdfModal-college-diplomaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-college-diplomaLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="pdfModal-highschool-transcript" tabindex="-1" role="dialog" aria-labelledby="pdfModal-highschool-transcriptLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-highschool-transcriptLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+<div class="container-fluid" style="padding-top:200px;">
+  <div class="row">
   </div>
 </div>
 
 
 
 
-<div class="modal fade" id="pdfModal-highschool-diploma" tabindex="-1" role="dialog" aria-labelledby="pdfModal-highschool-diplomaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-highschool-diplomaLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+ 
+  
 
 
 
-<div class="modal fade" id="pdfModal-mediumof-instruction" tabindex="-1" role="dialog" aria-labelledby="pdfModal-mediumof-instructionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-mediumof-instructionLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="modal fade" id="pdfModal-resume" tabindex="-1" role="dialog" aria-labelledby="pdfModal-resumeLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pdfModal-resumeLabel">PDF Viewer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <embed id="pdfEmbed" src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="100%" height="600px" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+<style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 
-<script>
-  $(document).ready(function() {
-    $('#pdfModal-highschool-transcript-college-diploma-college-transcript-marriage-certificate-passport-passport').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var pdfUrl = button.data('pdf-url'); // Extract info from data-* attributes
-      var modal = $(this);
-      modal.find('#pdfEmbed').attr('src', pdfUrl);
-    });
-  });
-</script>
+  <script>
+       
+  
+        var submission_deadline = document.getElementById('submission_deadline');
+      
+        submission_deadline.addEventListener('focus', function () {
+            this.showPicker();
+        });
+
+        submission_deadline.addEventListener('click', function () {
+            this.showPicker();
+        });
+
+        submission_deadline.addEventListener('blur', function () {
+            // Optionally, you can add any additional behavior when the input loses focus
+        });
+    </script>
 
 
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="dark-transparent sidebartoggler"></div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+  <div class="dark-transparent sidebartoggler"></div>
   <!-- <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/vendor.min.js"></script> -->
   <!-- Import Js Files -->
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/breadcrumb/breadcrumbChart.js"></script>
@@ -1527,63 +1216,33 @@ echo "<script>alert('delete student..!!');window.location.href='view_documents_c
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/app.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/sidebarmenu.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/theme/feather.min.js"></script>
-
-  <!-- solar icons -->
-  <script src="../../../../cdn.jsdelivr.net/npm/iconify-icon%401.0.8/dist/iconify-icon.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/fullcalendar/index.global.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/apps/calendar-init.js"></script>
-
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/dashboards/dashboard4.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/jvectormap/jquery-jvectormap.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-
-
-
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
- 
-  <style>
-
-     
-
-/* Loader CSS */
-#loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 150px;
-    height: 150px;
-    animation: spin 2s linear infinite;
-    display: none;
-    position: fixed;
-    left: 45%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
-
   
 
-  <script>
-$(document).ready(function(){
-    $("#insertForm").on("submit", function(event){
-       
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+<script>
+    $(document).ready(function() {
+      $("#msform").on("submit", function(event) {
+       alert("hello");
         event.preventDefault();
+        var formData = new FormData(this);
         $.ajax({
-            url: "php/verify_documents_background_status.php",
-            method: "POST",
-            data: $(this).serialize(),
-            success: function(data){
-           
-                $("#message_login").show().html(data);
-            }
+          url: "php/edit_intakes_backend.php",
+          method: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(data) {
+            $("#message_login").html(data);
+          }
         });
+      });
     });
-});
 </script>
+
+
+
+

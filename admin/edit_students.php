@@ -1,5 +1,7 @@
+<?php include("../common/config.php");?>
+
 <?php 
-include("./common/config.php");
+
 
 // Fetch the student record from the database
 $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id='" . $_GET['edit'] . "'"));
@@ -21,17 +23,19 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-               
+              
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;" />
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
                     <!-- Light Logo icon -->
-                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
+                   <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
-                 
+                  <span class="logo-text">
+                    
+                  </span>
                 </a>
               </div>
 
@@ -40,63 +44,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
             <ul class="navbar-nav gap-2">
 
-              <li class="nav-item nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover sidebartoggler" id="headerCollapse" href="javascript:void(0)">
-                  <iconify-icon icon="solar:list-bold"></iconify-icon>
-                </a>
-              </li>
-              <!-- ------------------------------- -->
-              <!-- start notification Dropdown -->
-              <!-- ------------------------------- -->
-              <li class="nav-item d-none d-lg-block search-box nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover d-none d-md-flex waves-effect waves-dark" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <iconify-icon icon="solar:magnifer-linear"></iconify-icon>
-                </a>
-              </li>
 
-
-              <li class="nav-item d-none d-lg-block dropdown nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
-                  <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                </a>
-                <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0 overflow-hidden" aria-labelledby="drop2">
-                  <div class="row align-items-center">
-                    <div class="col-8">
-                      <div class="ps-3 pt-3">
-                        <div class="border-bottom">
-                          <div class="row">
-                            <div class="col-6">
-                              <div class="position-relative">
-                               
-                              </div>
-                            </div>
-                            <div class="col-6">
-                              <div class="position-relative">
-                              
-                              
-                              
-                               
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row align-items-center py-3 pb-1">
-                          
-                          <div class="col-4">
-                         
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4 ms-n7">
-                      <div class="position-relative p-3 border-start h-100">
-                       
-                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
+            
 
 
             </ul>
@@ -142,18 +91,11 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                     </a>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
+           
                     <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
                       <div class="py-3 px-4 bg-primary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Notifications</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 4 Notifications</div>
+                        
                       </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
@@ -173,62 +115,28 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                             <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
                           </span>
                           <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
+                         
+                           
                           </div>
                         </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
                           <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
                             <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
                           </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
+                         
                         </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
                           <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
                             <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
                           </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Luanch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
+                         
                         </a>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
                           <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
                             <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
                           </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
+                         
+                      
                       </div>
                       <div class="p-3">
                         <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
@@ -244,33 +152,12 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                     </div>
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
+                  
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
-                      <div class="py-3 px-4 bg-secondary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
-                      </div>
+                      
                       <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mathew Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
+                       
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
                           <span class="user-img position-relative d-inline-block">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
@@ -353,53 +240,15 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
 
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                      <div class="message-body">
-                       
-                       
-                       
-                       
-                      </div>
-                    </div>
-                  </li>
-
+              
 
                   <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
                   <!-- ------------------------------- -->
 
-                  <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                    </a>
-                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                    </a>
-                  </li>
 
-                
+                  
 
-                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                   
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                      
-                      <div class="message-body" data-simplebar>
-                      
-                       
-                      
-                        
-                      
-                     
-                      </div>
-                     
-
-                    </div>
-                  </li>
 
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
@@ -420,49 +269,17 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
+                                 <?php echo  $_SESSION['email']; ?>
                               </p>
                             </div>
                           </div>
                         </div>
                         <div class="message-body pb-3">
                           <div class="px-3 pt-3">
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class=" d-flex  align-items-center ">
-                                My Profile
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="javascript:void(0)" class=" d-flex  align-items-center ">
-                                My Projects
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class=" d-flex  align-items-center ">
-                                Inbox
-                              </a>
-                            </div>
-                          </div>
-                          <hr>
+                         
                           <div class="px-3">
-                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
-                              <a href="javascript:void(0)" class="">
-                                Mode
-                              </a>
-                              <div>
-                                <a class="moon dark-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                                </a>
-                                <a class="sun light-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                                </a>
-                              </div>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class=" d-flex  align-items-center  ">
-                                Account Settings
-                              </a>
-                            </div>
+                            
+                            
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -1343,7 +1160,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         #progressbar li {
             list-style-type: none;
             font-size: 15px;
-            width: 25%;
+            width: 30%;
             float: left;
             position: relative;
             font-weight: 400;
@@ -1432,7 +1249,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                             <li class="active" id="account"><strong>Personal Information</strong></li>
                             <li id="personal"><strong>Education Information</strong></li>
                             <li id="payment"><strong>Upload Document</strong></li>
-                            <li id="confirm"><strong>Finish</strong></li>
+                           
                         </ul>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -1463,7 +1280,6 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
 
@@ -1532,7 +1348,6 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
 
@@ -1577,7 +1392,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
                             </div> 
-                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="next" class="next action-button" value="Next" style="background-color:#6c757d;"/>
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
@@ -1599,7 +1414,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
 
@@ -1625,7 +1440,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM program_level";
         $result = mysqli_query($conn, $sql);
 
@@ -1656,7 +1471,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+	
         $sql = "SELECT * FROM grading_scheme";
         $result = mysqli_query($conn, $sql);
 
@@ -1698,7 +1513,10 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
                                         <div id="dropdown-container"></div>
+
+    <div class="col-sm-4">                              
     <button type="button" id="add-more-btn" style="margin-top:20px;">Add More</button>
+    </div>
 
 
 <div id="dropdown-template" style="display: none;" class="row">
@@ -1706,10 +1524,9 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     <div class="col-sm-4">
   <label>Country of Institution</label>
     <select class="form-select" name="country_of_institute[]" class="form-control">
-    <option value="">---Select Country of institute---</option>
+    <option value="0">---Select Country of institute---</option>
         <?php
         // Assuming you have established a database connection named $conn
-        $conn=mysqli_connect("localhost","root","","uni_study");
         // SQL query to fetch all countries
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
@@ -1738,10 +1555,10 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
       <div class="col-sm-4">
   <label>Level of Education</label>
     <select class="form-select" name="level_of_education[]" class="form-control">
-    <option value="">---Select Level of education---</option>
+       <option value="">---Level of Education---</option>
         <?php
         // Assuming you have established a database connection named $conn
-        $conn=mysqli_connect("localhost","root","","uni_study");
+         
         // SQL query to fetch all countries
         $sql = "SELECT * FROM program_level";
         $result = mysqli_query($conn, $sql);
@@ -1788,7 +1605,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
       <div class="col-sm-4">
   <label>Attended Instituion To</label>
     
-  <input type="date"  name="attended_institution_to[]" class="form-control">
+  <input type="date"  name="attended_institution_to[]" class="form-control"  id="attendedinstitution">
 
       </div>
 
@@ -1800,86 +1617,65 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
       </div>
 
 
-
-      <div class="col-sm-4">
+        <div class="col-sm-4">
  
 
- </div>
+      </div>
 
-  <div class="col-sm-4">
+       <div class="col-sm-4">
+ 
 
-
- </div>
-
-
-
-<div class="col-sm-4">
-       <label>I have graduated from this institution</label></br>
-       Yes<input type="radio" value="yes" name="graduated[]">
-       No<input type="radio" value="no" name="graduated[]">
-    
-       </div>
-          
-<div class="col-sm-4">
-      
-    
-       </div>
-
-<div class="col-sm-4">
-      
-    
-       </div>
+      </div>
 
 
- <div class="col-sm-4">
-        <label>Graduation Date</label></br>
-        <input type="date" name="graduation_date[]">
-    
-       </div>
 
    <div class="col-sm-4">
-      
-    
-       </div>
+            <label>I have graduated from this institution</label></br>Yes<input type="radio" value="yes" name="graduated[]">No<input type="radio" value="no" name="graduated[]">
+         
+            </div>
+               
+   <div class="col-sm-4">
+           
+         
+            </div>
 
-<div class="col-sm-4">
-      
-    
-       </div>
-
-         <div class="col-sm-4">
-       
-       <input type="checkbox" name="certificate_awarded[]" value="yes">I have physical certificate of this degree
-    
-       </div>
-
+     <div class="col-sm-4">
+           
+         
+            </div>
 
 
+      <div class="col-sm-4">
+             <label>Graduation Date</label></br>
+             <input type="date" name="graduation_date[]" id="graduation_date">
+         
+            </div>
 
+        <div class="col-sm-4">
+           
+         
+            </div>
 
+     <div class="col-sm-4">
+           
+         
+            </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <div class="col-sm-4">
+            
+         <p>I have physical certificate of this degree<span><input type="checkbox" name="certificate_awarded[]"  value="yes"></span></p>
+         
+            </div>
 
 
 
 
       </div>
+
+     
+ 
+     
+    
 
 
       <div class="col-sm-2">
@@ -1908,8 +1704,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
                                 </div> 
                             </div> 
-                            <input type="button" name="next" class="next action-button" value="Next" /> 
-                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                            <input type="button" name="next" class="next action-button" value="Next" style="background-color:#6c757d;"/> 
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" style="background-color:#6c757d;" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
@@ -1929,7 +1725,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                             </div> 
                             <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
                             <!-- <input type="button" name="next" class="next action-button" value="Submit" />  -->
-                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" style="background-color:#6c757d;"/>
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
@@ -2024,7 +1820,18 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     });
 </script>
 
+<script>
+    const graduation_date = document.getElementById('graduation_date');
 
+    graduation_date.addEventListener('focus', function () {
+        this.showPicker();
+    });
+
+    graduation_date.addEventListener('click', function () {
+        this.showPicker();
+    });
+
+</script>
 
 
 
@@ -2061,6 +1868,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
    
 
             $('#country').on('change', function(){
+                 
             var countryID = $(this).val();
                             
             if(countryID){
@@ -2094,9 +1902,10 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
             $("#msform").on("submit", function(event){
+              
         event.preventDefault();
         var formData = new FormData(this);
-        
+     
         $.ajax({
             url: "update_profile.php",
             method: "POST",

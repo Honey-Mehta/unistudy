@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php 
 // Database connection parameters
 $servername = "localhost";
 $username = "root";

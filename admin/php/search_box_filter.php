@@ -1,5 +1,5 @@
 <?php
-include('../common/config.php');
+include('../../common/config.php');
 
 // Get the search query
 $search = $_GET['search'] ?? '';

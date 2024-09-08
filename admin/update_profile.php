@@ -1,6 +1,6 @@
 <?php 
-include('./common/config.php');
-
+// include('./common/config.php');
+include('../common/config.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 
@@ -18,12 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $degree_name_string = implode(",", $degree_name);
    $attended_institution_from_string = implode(",", $attended_institution_from);
    $attended_institution_to_string = implode(",", $attended_institution_to);
+
+$graduated_string = implode(",", $graduated);
+$graduation_date_string = implode(",", $graduation_date);
+$certificate_awarded_string = implode(",", $certificate_awarded);
+
+
     // Other form processing...
-  $graduated_string = implode(",", $graduated);
-  $graduation_date_string = implode(",", $graduation_date);
- $certificate_awarded_string = implode(",", $certificate_awarded);
-
-
 
     $last_edited_date = date("Y-m-d H:i:s");
 
@@ -54,17 +55,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     `highest_level_of_education` = '$highest_level_of_education',
                     `last_edited_date` = '$last_edited_date',
                     `country_of_institution` = '$country_of_institute_string',
+                     `name_of_institution` = '$name_of_institute_string',
                     `level_of_education` = '$level_of_education_string',
                     `primary_language_of_instruction` = '$primary_language_of_instruction_string',
                     `attended_institution_from`= '$attended_institution_from_string',
                      `attended_institution_to`= '$attended_institution_to_string',
                      `degree_name`='$degree_name_string',
-                    `grading_scheme` = '$grading_scheme',
-                     `graduated`='$graduated_string',
+                    `grading_scheme`='$grading_scheme',
+                    `graduated`='$graduated_string',
                     `graduation_date`='$graduation_date_string',
                     `certificate_awarded`='$certificate_awarded_string'
-
-                WHERE `id` = '$id'";
+                    
+                     WHERE `id` = '$id'";
 
             $insertQuery = mysqli_query($conn, $sql);
                 

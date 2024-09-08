@@ -1,6 +1,6 @@
 <?php  
    $id = $_GET['id'];
-   $conn = mysqli_connect("localhost", "root", "", "uni_study");
+    include("../common/config.php");
    $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHERE id='$id'"));
 ?>
 
@@ -23,9 +23,9 @@
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./images/logo_with_name.jpeg" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
+                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;"/>
                     <!-- Light Logo icon -->
-                    <img src="/images/logo_with_name.jpeg" alt="homepage" class="light-logo" />
+                    <img src="/images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
@@ -898,19 +898,196 @@
 
 
 
+  <div class="container-fluid  mt-7">
+<nav class="navbar navbar-expand-sm bg-light">
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#features">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#location">Location</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#">Programs</a>
+      </li>
+    </ul>
+ 
+</nav>
+ </div>
+
+  
 
 
 
 
 
-
-
-
-<div class="container mt-5">
+<div class="container-fluid mt-5">
    <div class="row">
       <div class="col-lg-8">
-    <h4>About</h4>
+    <h4 id="about" >About</h4>
      <div><?php echo $fetch['description']; ?></div>
+     </div>
+
+
+  <div class="col-lg-4">
+
+  <div id="institution_details">
+    <p>Institution Details</p>
+    <div style="border: 1px solid silver; border-radius: 5px; width: 400px; height: 250px; display: flex; flex-direction: column; justify-content: center;">
+        <label>Founded</label><br>
+        <label>School ID</label><br>
+        <label>DLI Number</label><br>
+        <label>Institution Type</label><br>
+    </div>
+  </div>
+
+   <div id="cost_and_duration">
+    <p>Cost and Duration</p>
+    <div style="border: 1px solid silver; border-radius: 5px; width: 400px; height: 250px; display: flex; flex-direction: column; justify-content: center;">
+        <label>Founded</label><br>
+        <label>School ID</label><br>
+        <label>DLI Number</label><br>
+        <label>Institution Type</label><br>
+    </div>
+  </div>
+
+
+
+</div>
+ <div>
+
+    
+</div>
+
+<div class="container-fluid mt-5">
+<div class="row">
+<div class="col-lg-8">
+<h4 id="features">Features</h4>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Post Graduation Permit
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Co-op / Internship Participation
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Work While Studying
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Conditional Offer Letter 
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+
+
+
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       Accomodations
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-4">
+
+ <div id="cost_and_duration">
+    <p>Average Time to Receive Letter of Acceptance</p>
+    <div style="border: 1px solid silver; border-radius: 5px; width: 400px; height: 250px; display: flex; flex-direction: column; justify-content: center;">
+        <label>Founded</label><br>
+        <label>School ID</label><br>
+        <label>DLI Number</label><br>
+        <label>Institution Type</label><br>
+    </div>
+  </div>
+
+ <div id="top_decipline">
+    <p>Top Decipline</p>
+    <div style="border: 1px solid silver; border-radius: 5px; width: 400px; height: 250px; display: flex; flex-direction: column; justify-content: center;">
+        <label>Founded</label><br>
+        <label>School ID</label><br>
+        <label>DLI Number</label><br>
+        <label>Institution Type</label><br>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+<div class="container-fluid mt-5" style="height:200px;">
+   <div class="row">
+      <div class="col-lg-8">
+    <h4 id="location" >Location</h4>
+   <?php 
+if($fetch['location_url']=="")
+{
+   ?>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2746.3569470842986!2d-84.2898194!3d46.5010443!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1723211223272!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+ <?php } else { ?>
+
+<iframe src="<?php echo $fetch['location_url']; ?>" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+   <?php } ?>
+
+
      </div>
 
      <div class="col-lg-4">
@@ -920,8 +1097,6 @@
 
      <div>
 </div>
-
-
 
 
 

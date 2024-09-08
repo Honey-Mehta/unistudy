@@ -1,3 +1,7 @@
+
+
+<div class="test-div">Visible on 992px and larger</div>
+
 <aside class="left-sidebar with-vertical">
       <div><!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
@@ -16,7 +20,7 @@
                   d-block
                   position-relative
                 " id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
-             
+            
             </div>
           </div>
           <!-----------Profile End------------------>
@@ -32,10 +36,21 @@
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
               <a class="sidebar-link" href="#" id="get-url">
-                <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"><i class="fa fa-home" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
+                <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"> <i class="fa fa-home" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
                 <span class="hide-menu"> <span style="margin-left:10px;">Home</span></span>
               </a>
             </li>
+
+
+            <li class="sidebar-item">
+              <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
+                <a class="sidebar-link" href="intakes.php">
+                <iconify-icon icon="solar:box-minimalistic-linear" class="aside-icon"><i class="fas fa-calendar" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
+                <span class="hide-menu"> <span style="margin-left:10px;"> Intakes  </span></span>
+              </a>
+            </li>
+
+
 
 
                 <li class="sidebar-item">
@@ -46,15 +61,14 @@
               </a>
             </li>
 
-            <li class="sidebar-item">
+
+             <li class="sidebar-item">
               <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
                 <a class="sidebar-link" href="courses_programs.php">
                 <iconify-icon icon="solar:box-minimalistic-linear" class="aside-icon"><i class="fas fa-book"></i></iconify-icon>
                 <span class="hide-menu"> <span style="margin-left:10px;"> Courses / Programs  </span></span>
               </a>
             </li>
-
-
           
             <li class="sidebar-item">
               <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
@@ -63,14 +77,24 @@
                 <span class="hide-menu"><span style="margin-left:10px;">Programs and Schools</span></span>
               </a>
             </li>
+           
+            <!--  <li class="sidebar-item">-->
+              <!-- <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html"> -->
+               <!-- <a class="sidebar-link" href="view_applications.php">
+                <iconify-icon icon="solar:box-minimalistic-linear" class="aside-icon"><i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
+                <span class="hide-menu"><span style="margin-left:10px;">View all Aplications</span></span>
+              </a>
+            </li>-->
+
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="students.php">
-                <iconify-icon icon="solar:buildings-2-linear" class="aside-icon"><i class="fa-solid fa-user"  aria-hidden="true" style="font-size: 20px;"></i><span style="margin-left:10px;"></iconify-icon>
+                <iconify-icon icon="solar:buildings-2-linear" class="aside-icon"><i class="fa-solid fa-user"  aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
                 <span class="hide-menu"><span style="margin-left:10px;">Students</span></span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#">
+              <a class="sidebar-link" href="view_applications.php">
                 <iconify-icon icon="solar:basketball-linear" class="aside-icon"><i class="fa-solid fa-file-lines" aria-hidden="true" style="font-size: 20px;"></i></iconify-icon>
                 <span class="hide-menu"><span style="margin-left:10px;">Applications</span></span>
               </a>
@@ -104,23 +128,18 @@
             </li>
             
             
-          <!--    <li class="sidebar-item">
-              <a class="sidebar-link" href="#">
-                <iconify-icon icon="solar:cart-large-2-linear" class="aside-icon"></iconify-icon>
-                <span class="hide-menu">Offers Dashboard</span>
-              </a>
-            </li>-->
 
 
              
               </ul>
-            </li>
+            </nav>
 
     
         <!-- End Sidebar scroll-->
       </div>
     </aside>
 
-    // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+

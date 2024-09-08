@@ -1,10 +1,5 @@
-
-<?php include("./common/config.php");
-
-
-include('header.php');
-
-?>
+<?php include('../common/config.php'); ?>
+<?php include('header.php'); ?>
 <style>
         .custom-button {
             border-radius: 15px; /* Adjust the radius as needed */
@@ -19,8 +14,21 @@ include('header.php');
   max-height: 500px; /* Set fixed height */
   overflow-y: auto; /* Enable vertical scrolling */
 }
+
+.your-element {
+    display: none; /* Hide the element by default */
+}
+
+/* Show the element for viewports with a max-width of 1299px */
+@media (max-width: 1300px) {
+    .your-element {
+        display: block;
+    }
+}
+
     </style>
 
+ 
 <body>
   <!-- Preloader -->
   <div class="preloader">
@@ -39,7 +47,7 @@ include('header.php');
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-             
+              
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -50,7 +58,7 @@ include('header.php');
                   <!--End Logo icon -->
                   <!-- Logo text -->
                   <span class="logo-text">
-                    
+                   
                   </span>
                 </a>
               </div>
@@ -60,9 +68,12 @@ include('header.php');
 
             <ul class="navbar-nav gap-2">
 
-              <li class="nav-item nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover sidebartoggler" id="headerCollapse" href="javascript:void(0)">
-                  <iconify-icon icon="solar:list-bold"></iconify-icon>
+        
+                 <li class="nav-item nav-icon-hover-bg rounded-circle your-element">
+                <a class="nav-link nav-icon-hover sidebartoggler navbar-toggler-icon " id="headerCollapse" href="javascript:void(0)">
+                  <iconify-icon icon="solar:list-bold">
+        
+                  </iconify-icon>
                 </a>
               </li>
               <!-- ------------------------------- -->
@@ -79,9 +90,13 @@ include('header.php');
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-              
+                
               </li>
 
+
+
+
+             
 
             </ul>
 
@@ -337,48 +352,13 @@ include('header.php');
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
 
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                   
-                  </li>
-
 
                   <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
                   <!-- ------------------------------- -->
 
-                  <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                    </a>
-                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                    </a>
-                  </li>
 
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                   
-                    
-                  </li>
-
-                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                  
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-secondary">
-                        
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        
-                    
-                  
-                   
-                      
-                      </div>
-                    
-
-                    </div>
-                  </li>
-
+               
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
                   <!-- ------------------------------- -->
@@ -398,19 +378,21 @@ include('header.php');
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                <?php echo $_SESSION['admin_email']; ?>
+                               <?php echo  $_SESSION['email']; ?>
                               </p>
                             </div>
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                          
+                          <div class="px-3 pt-3">
+                           
+                           
+                           
+                          </div>
+                         
                           <div class="px-3">
-                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
-                            
-                             
-                            </div>
-                            
+                           
+                          
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -801,344 +783,7 @@ include('header.php');
                 <i class="ti ti-dots fs-7"></i>
               </span>
             </a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <div class="d-flex align-items-center justify-content-between">
-                <ul class="navbar-nav gap-2 flex-row ms-auto align-items-center justify-content-center">
-                  <!-- ------------------------------- -->
-                  <!-- start language Dropdown -->
-                  <!-- ------------------------------- -->
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-en.svg" alt="" width="20px" height="20px" class="round-20" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                      <div class="message-body">
-                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
-                          <div class="position-relative">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-en.svg" alt="" width="20px" height="20px" class="round-20" />
-                          </div>
-                          <p class="mb-0 fs-3">English</p>
-                        </a>
-                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
-                          <div class="position-relative">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-cn.svg" alt="" width="20px" height="20px" class="round-20" />
-                          </div>
-                          <p class="mb-0 fs-3">Chinese</p>
-                        </a>
-                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
-                          <div class="position-relative">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-fr.svg" alt="" width="20px" height="20px" class="round-20" />
-                          </div>
-                          <p class="mb-0 fs-3">French</p>
-                        </a>
-                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-2 px-4 dropdown-item">
-                          <div class="position-relative">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/svgs/icon-flag-sa.svg" alt="" width="20px" height="20px" class="round-20" />
-                          </div>
-                          <p class="mb-0 fs-3">Arabic</p>
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- ------------------------------- -->
-                  <!-- end language Dropdown -->
-                  <!-- ------------------------------- -->
-                  <li class="nav-item nav-icon-hover-bg rounded-circle">
-                    <a class="nav-link nav-icon-hover moon dark-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                    </a>
-                    <a class="nav-link nav-icon-hover sun light-layout" href="javascript:void(0)">
-                      <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                    </a>
-                  </li>
-
-
-
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle  d-none d-lg-block">
-                    <a class="nav-link nav-icon-hover waves-effect waves-dark" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:bell-bing-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Notifications</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 4 Notifications</div>
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
-                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
-                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Launch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
-                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
-                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
-                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Luanch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Notifications</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-
-
-
-
-                    </div>
-                  </li>
-
-                  <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <iconify-icon icon="solar:inbox-line-line-duotone"></iconify-icon>
-                      <div class="notify">
-                        <span class="heartbit"></span>
-                        <span class="point"></span>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up  dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-secondary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mathew Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Bianca Anderson</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Andrew Johnson</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Miyra Strokes</h6>
-                              <span class="fs-2 d-block text-muted">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Mark, Stoinus & Rishvi..</h6>
-                              <span class="fs-2 d-block text-muted">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
-                          <span class="user-img position-relative d-inline-block">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-7.jpg" alt="user" class="rounded-circle w-100 round-40" />
-                            <span class="profile-status bg-success position-absolute rounded-circle"></span>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Eliga Rush</h6>
-                              <span class="fs-2 d-block text-muted">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Messages</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-                    </div>
-                  </li>
-
-
-                  <!-- ------------------------------- -->
-                  <!-- start profile Dropdown -->
-                  <!-- ------------------------------- -->
-                  <li class="nav-item hover-dd dropdown">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
-                      <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
-                    </a>
-                    <div class="dropdown-menu pt-0 content-dd overflow-hidden pt-0 dropdown-menu-end user-dd" aria-labelledby="drop2">
-                      <div class="profile-dropdown position-relative" data-simplebar>
-                        <div class=" py-3 border-bottom">
-                          <div class="d-flex align-items-center px-3">
-                            <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" class="rounded-circle round-50" alt="" />
-                            <div class="ms-3">
-                              <h5 class="mb-1 fs-4">Markarn Doe</h5>
-                              <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="message-body pb-3">
-                          <div class="px-3 pt-3">
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class=" d-flex  align-items-center ">
-                                My Profile
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="javascript:void(0)" class=" d-flex  align-items-center ">
-                                My Projects
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" class=" d-flex  align-items-center ">
-                                Inbox
-                              </a>
-                            </div>
-                          </div>
-                          <hr>
-                          <div class="px-3">
-                            <div class="py-8 px-3 d-flex justify-content-between dropdown-item align-items-center h6 mb-0  rounded-2 link">
-                              <a href="javascript:void(0)" class="">
-                                Mode
-                              </a>
-                              <div>
-                                <a class="moon dark-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:moon-line-duotone" class="moon"></iconify-icon>
-                                </a>
-                                <a class="sun light-layout" href="javascript:void(0)">
-                                  <iconify-icon icon="solar:sun-2-line-duotone" class="sun"></iconify-icon>
-                                </a>
-                              </div>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class=" d-flex  align-items-center  ">
-                                Account Settings
-                              </a>
-                            </div>
-                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
-                              <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/authentication-login.html" class=" d-flex  align-items-center ">
-                                Sign Out
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </li>
-
-                  <!-- ------------------------------- -->
-                  <!-- end profile Dropdown -->
-                  <!-- ------------------------------- -->
-                </ul>
-              </div>
-            </div>
+           
           </nav>
         </div>
       </header>
@@ -1840,6 +1485,11 @@ include('header.php');
             <div class="card-body px-0">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
+
+
+               
+
+
                   <h1 class="font-weight-medium fs-14 mb-0">Welcome, Admissions Unistudy !</h1>
                   <!-- <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -1913,7 +1563,7 @@ include('header.php');
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
 
@@ -1978,7 +1628,7 @@ include('header.php');
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM status";
         $result = mysqli_query($conn, $sql);
 
@@ -2028,7 +1678,7 @@ include('header.php');
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM country_of_interest";
         $result = mysqli_query($conn, $sql);
 
@@ -2056,7 +1706,7 @@ include('header.php');
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
+		
         $sql = "SELECT * FROM services_of_interest";
         $result = mysqli_query($conn, $sql);
 
@@ -2138,17 +1788,20 @@ include('header.php');
           <div class="card-group">
             <!-- Column -->
             <div class="card">
-              <div class="card-body text-center">
+              <a href="view_applications.php" style="text-decoration:none;"> <div class="card-body text-center">
                 <h4 class="text-center">Applications</h4>
                 <div class="d-flex justify-content-center mt-3">
-                  <div id="unique-visit" class="w-120"></div>
+                    <img src="images/application.png" style="width:100px; height:100px;">
                 </div>
               </div>
               <div class="p-2 rounded border-top text-center">
                 <h4 class=" mb-0">
-                  <i class="ti-angle-up text-success"></i> 12456
+                  <i class="ti-angle-up text-success"></i> <?php 
+                  $create_application_count=mysqli_num_rows(mysqli_query($conn,"select * from `create_application`"));
+                    echo $create_application_count;
+                  ?>
                 </h4>
-              </div>
+              </div></a>
             </div>
             <!-- Column -->
             <!-- Column -->
@@ -2156,7 +1809,7 @@ include('header.php');
               <div class="card-body text-center">
                 <h4 class="text-center">Accepted</h4>
                 <div class="d-flex justify-content-center mt-3">
-                  <div id="total-visit" class="w-120"></div>
+                   <img src="images/accepted.png" style="width:100px; height:100px;">
                 </div>
               </div>
               <div class="p-2 rounded border-top text-center">
@@ -2167,38 +1820,80 @@ include('header.php');
             </div>
             <!-- Column -->
             <!-- Column -->
-            <div class="card">
-              <div class="card-body text-center">
-                <h4 class="text-center">Rejected</h4>
-                <div class="d-flex justify-content-center mt-3">
-                  <div id="bounce-rate" class="w-120"></div>
-                </div>
-              </div>
-              <div class="p-2 rounded border-top text-center">
-                <h4 class=" mb-0">
-                  <i class="ti-angle-up text-success"></i> 12456
-                </h4>
-              </div>
-            </div>
+           
             <!-- Column -->
             <!-- Column -->
             <div class="card">
-              <div class="card-body text-center">
+             <a href="students.php" style="text-decoration:none;"><div class="card-body text-center">
                 <h4 class="text-center">Students</h4>
                 <div class="d-flex justify-content-center mt-3">
-                  <div id="page-views" class="w-120"></div>
+              
+                   <img src="images/student.png" style="width:100px; height:100px;">
                 </div>
               </div>
               <div class="p-2 rounded border-top text-center">
                 <h4 class=" mb-0">
                   <i class="ti-angle-down text-danger"></i><?php 
-                  $conn=mysqli_connect("localhost","root","","uni_study");
-                  $count=mysqli_num_rows(mysqli_query($conn,"select * from `student`"));
-                    echo $count;
+                  $student_count=mysqli_num_rows(mysqli_query($conn,"select * from `student`"));
+                    echo $student_count;
                   ?>
                 </h4>
-              </div>
+              </div></a>
             </div>
+             
+           <div class="card">
+  <a href="university.php" style="text-decoration:none;">
+    <div class="card-body text-center">
+      <h4 class="text-center">University</h4>
+      <div class="d-flex justify-content-center mt-3">
+        <img src="images/university.png" style="width:100px; height:100px;">
+      </div>
+    </div>
+    <div class="p-2 rounded border-top text-center">
+      <h4 class="mb-0">
+        <i class="ti-angle-down text-danger"></i> 
+        <?php 
+        $university_count = mysqli_num_rows(mysqli_query($conn,"select * from `universities`"));
+        echo $university_count;
+        ?>
+      </h4>
+    </div>
+  </a>
+</div>
+             <div class="card">
+               <a href="intakes.php" style="text-decoration:none;"><div class="card-body text-center">
+                <h4 class="text-center">Acadmic Intakes</h4>
+                <div class="d-flex justify-content-center mt-3">
+                    <img src="images/schedule.png" style="width:100px; height:100px;">
+                </div>
+              </div>
+              <div class="p-2 rounded border-top text-center">
+                <h4 class=" mb-0">
+                  <i class="ti-angle-down text-danger"></i> <?php 
+                  $intakes_count=mysqli_num_rows(mysqli_query($conn,"select * from `intakes`"));
+                    echo $intakes_count;
+                  ?>
+                </h4>
+              </div></a>
+            </div>
+  
+              <div class="card">
+               <a href="courses_programs.php" style="text-decoration:none;"><div class="card-body text-center">
+                <h4 class="text-center">Programs</h4>
+                <div class="d-flex justify-content-center mt-3">
+                    <img src="images/programming.png" style="width:100px; height:100px;">
+                </div>
+              </div>
+              <div class="p-2 rounded border-top text-center">
+                <h4 class=" mb-0">
+                  <i class="ti-angle-down text-danger"></i> <?php 
+                  $programs_count=mysqli_num_rows(mysqli_query($conn,"select * from `programs`"));
+                    echo $programs_count;
+                  ?>
+                </h4>
+              </div></a>
+            </div>
+
             <!-- Column -->
           </div>
           <!-- Row -->
@@ -2215,628 +1910,7 @@ include('header.php');
             <!-- Calendar -->
            
             <!-- Recent Chats -->
-            <div class="col-lg-6">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h4 class="card-title">Recent Chats</h4>
-                  <div class="chat-box w-100 h-350" data-simplebar>
-                    <!--chat Row -->
-                    <ul class="chat-list m-0 p-0">
-                      <!--chat Row -->
-                      <li class="mt-4">
-                        <div class="chat-img d-inline-block align-top">
-                          <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle" />
-                        </div>
-                        <div class="chat-content ps-3 d-inline-block">
-                          <h5 class="text-muted fs-3">James Anderson</h5>
-                          <div class="
-                              message
-
-                              bg-info-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            Lorem Ipsum is simply dummy text of the printing &
-                            type setting industry.
-                          </div>
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:56 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="mt-4">
-                        <div class="chat-img d-inline-block align-top">
-                          <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle" />
-                        </div>
-                        <div class="chat-content ps-3 d-inline-block">
-                          <h5 class="text-muted fs-3">Bianca Doe</h5>
-                          <div class="
-                              message
-
-                              bg-success-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            It’s Great opportunity to work.
-                          </div>
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:57 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="odd mt-4">
-                        <div class="chat-content ps-3 d-inline-block text-end">
-                          <div class="
-                              message
-
-                              bg-warning-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            I would love to join the team.
-                          </div>
-                          <br />
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:58 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="odd mt-4">
-                        <div class="chat-content ps-3 d-inline-block text-end">
-                          <div class="
-                              message
-
-                              bg-warning-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            Whats budget of the new project.
-                          </div>
-                          <br />
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:59 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="mt-4">
-                        <div class="chat-img d-inline-block align-top">
-                          <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle" />
-                        </div>
-                        <div class="chat-content ps-3 d-inline-block">
-                          <h5 class="text-muted fs-3">Angelo Rhodes</h5>
-                          <div class="
-                              message
-
-                              bg-primary-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            Well we have good budget for the project
-                          </div>
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          11:00 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="mt-4">
-                        <div class="chat-img d-inline-block align-top">
-                          <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle" />
-                        </div>
-                        <div class="chat-content ps-3 d-inline-block">
-                          <h5 class="text-muted fs-3">James Anderson</h5>
-                          <div class="
-                              message
-
-                              bg-info-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            Lorem Ipsum is simply dummy text of the printing &
-                            type setting industry.
-                          </div>
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:56 am
-                        </div>
-                      </li>
-                      <!--chat Row -->
-                      <li class="odd mt-4">
-                        <div class="chat-content ps-3 d-inline-block text-end">
-                          <div class="
-                              message
-
-                              bg-warning-subtle
-                              d-inline-block
-                              mb-2
-                              text-dark
-                            ">
-                            Whats budget of the new project.
-                          </div>
-                          <br />
-                        </div>
-                        <div class="
-                            chat-time
-                            d-inline-block
-                            text-end
-                            fs-2
-                          ">
-                          10:59 am
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-body border-top">
-                  <div class="row align-items-center">
-                    <div class="col-8">
-                      <input type="text" placeholder="Type your message here" class="form-control border-0">
-                    </div>
-                    <div class="col-4 text-end">
-                      <button type="button" class="btn btn-primary btn-circle btn-lg">
-                        <i data-feather="send" class="fill-white"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- My Contacts -->
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-body pb-0">
-                  <h4 class="card-title">My Contacts</h4>
-                  <p class="card-subtitle mb-0">
-                    Checkout my contacts here
-                  </p>
-                </div>
-                <div class="message-box contact-box position-relative">
-                  <div class="message-widget contact-widget position-relative">
-                    <!-- contact -->
-                    <a href="javascript:void(0)" class="py-4 hstack px-7 gap-3">
-                      <div class="user-img position-relative d-inline-block">
-                        <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-2.jpg" alt="user" class="rounded-circle w-100" />
-                        <span class="
-                            profile-status
-                            pull-right
-                            d-inline-block
-                            position-absolute
-                            text-bg-secondary
-                            rounded-circle
-                          "></span>
-                      </div>
-                      <div class="v-middle d-md-flex align-items-center w-100">
-                        <div class="text-truncate">
-                          <h5 class="mb-1">
-                            James Smith
-                          </h5>
-                          <span class="text-muted fs-3">you were in video
-                            call</span>
-                        </div>
-                        <div class="ms-auto d-flex button-group gap-1">
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-danger-subtle text-danger round-sm rounded-pill m-0">
-                            <i data-feather="video" class="feather-sm"></i>
-                          </button>
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-primary-subtle text-primary round-sm rounded-pill m-0">
-                            <i data-feather="phone-incoming" class="feather-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </a>
-                    <!-- contact -->
-                    <a href="javascript:void(0)" class="py-4 hstack px-7 gap-3">
-                      <div class="user-img position-relative d-inline-block">
-                        <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-3.jpg" alt="user" class="rounded-circle w-100" />
-                        <span class="
-                            profile-status
-                            pull-right
-                            d-inline-block
-                            position-absolute
-                            text-bg-light-indigo
-                            rounded-circle
-                          "></span>
-                      </div>
-                      <div class="v-middle d-md-flex align-items-center w-100">
-                        <div class="text-truncate">
-                          <h5 class="mb-1">
-                            Joseca Garciar
-                          </h5>
-                          <span class="text-muted fs-3">you were in video
-                            call</span>
-                        </div>
-                        <div class="ms-auto d-flex button-group gap-1">
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-danger-subtle text-danger round-sm rounded-pill m-0">
-                            <i data-feather="video" class="feather-sm"></i>
-                          </button>
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-primary-subtle text-primary round-sm rounded-pill m-0">
-                            <i data-feather="phone-incoming" class="feather-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </a>
-                    <!-- contact -->
-                    <a href="javascript:void(0)" class="py-4 hstack px-7 gap-3">
-                      <div class="user-img position-relative d-inline-block">
-                        <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-4.jpg" alt="user" class="rounded-circle w-100" />
-                        <span class="
-                            profile-status
-                            pull-right
-                            d-inline-block
-                            position-absolute
-                            text-bg-secondary
-                            rounded-circle
-                          "></span>
-                      </div>
-                      <div class="v-middle d-md-flex align-items-center w-100">
-                        <div class="text-truncate">
-                          <h5 class="mb-1">
-                            Henry Hernandez
-                          </h5>
-                          <span class="text-muted fs-3">you were in video
-                            call</span>
-                        </div>
-                        <div class="ms-auto d-flex button-group gap-1">
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-danger-subtle text-danger round-sm rounded-pill m-0">
-                            <i data-feather="video" class="feather-sm"></i>
-                          </button>
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-primary-subtle text-primary round-sm rounded-pill m-0">
-                            <i data-feather="phone-incoming" class="feather-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </a>
-                    <!-- contact -->
-                    <a href="javascript:void(0)" class="py-4 hstack px-7 gap-3">
-                      <div class="user-img position-relative d-inline-block">
-                        <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-5.jpg" alt="user" class="rounded-circle w-100" />
-                        <span class="
-                            profile-status
-                            pull-right
-                            d-inline-block
-                            position-absolute
-                            text-bg-light-indigo
-                            rounded-circle
-                          "></span>
-                      </div>
-                      <div class="v-middle d-md-flex align-items-center w-100">
-                        <div class="text-truncate">
-                          <h5 class="mb-1">
-                            Camerin Johnson
-                          </h5>
-                          <span class="text-muted fs-3">you were in video
-                            call</span>
-                        </div>
-                        <div class="ms-auto d-flex button-group gap-1">
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-danger-subtle text-danger round-sm rounded-pill m-0">
-                            <i data-feather="video" class="feather-sm"></i>
-                          </button>
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-primary-subtle text-primary round-sm rounded-pill m-0">
-                            <i data-feather="phone-incoming" class="feather-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </a>
-                    <!-- contact -->
-                    <a href="javascript:void(0)" class="py-4 pb-7 hstack px-7 gap-8">
-                      <div class="user-img position-relative d-inline-block">
-                        <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-6.jpg" alt="user" class="rounded-circle w-100" />
-                        <span class="
-                            profile-status
-                            pull-right
-                            d-inline-block
-                            position-absolute
-                            text-bg-light-indigo
-                            rounded-circle
-                          "></span>
-                      </div>
-                      <div class="v-middle d-md-flex align-items-center w-100">
-                        <div class="text-truncate">
-                          <h5 class="mb-1">
-                            Maria Rodriguez
-                          </h5>
-                          <span class="text-muted fs-3">you missed john
-                            call</span>
-                        </div>
-                        <div class="ms-auto d-flex button-group gap-1">
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-danger-subtle text-danger round-sm rounded-pill m-0">
-                            <i data-feather="video" class="feather-sm"></i>
-                          </button>
-                          <button type="button" href="javascript:void(0)" class="btn btn-sm bg-primary-subtle text-primary round-sm rounded-pill m-0">
-                            <i data-feather="phone-incoming" class="feather-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <script>
-  function handleColorTheme(e) {
-    $("html").attr("data-color-theme", e);
-    $(e).prop("checked", !0);
-  }
-</script>
-      <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <i class="icon ti ti-settings fs-7 text-white"></i>
-      </button>
-
-      <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
-          <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
-            Settings
-          </h4>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body h-n80" data-simplebar>
-          <h6 class="fw-semibold fs-4 mb-2">Theme</h6>
-
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <input type="radio" class="btn-check light-layout " name="theme-layout" id="light-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="light-layout"> <iconify-icon icon="solar:sun-2-outline" class="icon fs-7 me-2"></iconify-icon>Light</label>
-            <input type="radio" class="btn-check dark-layout" name="theme-layout" id="dark-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="dark-layout"><iconify-icon icon="solar:moon-outline" class="icon fs-7 me-2"></iconify-icon>Dark</label>
-          </div>
-
-          <h6 class="mt-5 fw-semibold fs-4 mb-2">Theme Direction</h6>
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <input type="radio" class="btn-check" name="direction-l" id="ltr-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="ltr-layout"><iconify-icon icon="solar:align-left-linear" class="icon fs-7 me-2"></iconify-icon>LTR</label>
-
-            <input type="radio" class="btn-check" name="direction-l" id="rtl-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="rtl-layout">
-              <iconify-icon icon="solar:align-right-linear" class="icon fs-7 me-2"></iconify-icon>RTL
-            </label>
-          </div>
-
-          <h6 class="mt-5 fw-semibold fs-4 mb-2">Theme Colors</h6>
-
-          <div class="d-flex flex-row flex-wrap gap-3 customizer-box color-pallete" role="group">
-            <input type="radio" class="btn-check" name="color-theme-layout" id="Blue_Theme" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Blue_Theme')" for="Blue_Theme" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="BLUE_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-1">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-
-            <input type="radio" class="btn-check" name="color-theme-layout" id="Aqua_Theme" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Aqua_Theme')" for="Aqua_Theme" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="AQUA_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-2">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-
-            <input type="radio" class="btn-check" name="color-theme-layout" id="Purple_Theme" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Purple_Theme')" for="Purple_Theme" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="PURPLE_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-3">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-
-            <input type="radio" class="btn-check" name="color-theme-layout" id="green-theme-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Green_Theme')" for="green-theme-layout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="GREEN_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-4">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-
-            <input type="radio" class="btn-check" name="color-theme-layout" id="cyan-theme-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Cyan_Theme')" for="cyan-theme-layout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="CYAN_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-5">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-
-            <input type="radio" class="btn-check" name="color-theme-layout" id="orange-theme-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center rounded" onclick="handleColorTheme('Orange_Theme')" for="orange-theme-layout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ORANGE_THEME">
-              <div class="color-box rounded-circle d-flex align-items-center justify-content-center skin-6">
-                <i class="ti ti-check text-white d-flex icon fs-5"></i>
-              </div>
-            </label>
-          </div>
-
-          <h6 class="mt-5 fw-semibold fs-4 mb-2">Layout Type</h6>
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <div>
-              <input type="radio" class="btn-check" name="page-layout" id="vertical-layout" autocomplete="off" />
-              <label class="btn p-9 btn-outline-primary rounded" for="vertical-layout">
-                <iconify-icon icon="solar:slider-vertical-minimalistic-linear" class="icon fs-7 me-2"></iconify-icon>Vertical
-              </label>
-            </div>
-            <div>
-              <input type="radio" class="btn-check" name="page-layout" id="horizontal-layout" autocomplete="off" />
-              <label class="btn p-9 btn-outline-primary rounded" for="horizontal-layout">
-                <iconify-icon icon="solar:slider-minimalistic-horizontal-outline" class="icon fs-7 me-2"></iconify-icon>
-                Horizontal
-              </label>
-            </div>
-          </div>
-
-          <h6 class="mt-5 fw-semibold fs-4 mb-2">Container Option</h6>
-
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <input type="radio" class="btn-check" name="layout" id="boxed-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="boxed-layout">
-              <iconify-icon icon="solar:cardholder-linear" class="icon fs-7 me-2"></iconify-icon>
-              Boxed
-            </label>
-
-            <input type="radio" class="btn-check" name="layout" id="full-layout" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="full-layout">
-              <iconify-icon icon="solar:scanner-linear" class="icon fs-7 me-2"></iconify-icon> Full
-            </label>
-          </div>
-
-          <h6 class="fw-semibold fs-4 mb-2 mt-5">Sidebar Type</h6>
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <a href="javascript:void(0)" class="fullsidebar">
-              <input type="radio" class="btn-check" name="sidebar-type" id="full-sidebar" autocomplete="off" />
-              <label class="btn p-9 btn-outline-primary rounded" for="full-sidebar"><iconify-icon icon="solar:sidebar-minimalistic-outline" class="icon fs-7 me-2"></iconify-icon> Full</label>
-            </a>
-            <div>
-              <input type="radio" class="btn-check " name="sidebar-type" id="mini-sidebar" autocomplete="off" />
-              <label class="btn p-9 btn-outline-primary rounded" for="mini-sidebar">
-                <iconify-icon icon="solar:siderbar-outline" class="icon fs-7 me-2"></iconify-icon>Collapse
-              </label>
-            </div>
-          </div>
-
-          <h6 class="mt-5 fw-semibold fs-4 mb-2">Card With</h6>
-
-          <div class="d-flex flex-row gap-3 customizer-box" role="group">
-            <input type="radio" class="btn-check" name="card-layout" id="card-with-border" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="card-with-border"><iconify-icon icon="solar:library-broken" class="icon fs-7 me-2"></iconify-icon>Border</label>
-
-            <input type="radio" class="btn-check" name="card-layout" id="card-without-border" autocomplete="off" />
-            <label class="btn p-9 btn-outline-primary rounded" for="card-without-border">
-              <iconify-icon icon="solar:box-outline " class="icon fs-7 me-2"></iconify-icon>Shadow
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <script>
-  function handleColorTheme(e) {
-    document.documentElement.setAttribute("data-color-theme", e);
-  }
-</script>
-    </div>
-    <!--  Search Bar -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class="modal-content rounded-1">
-          <div class="modal-header border-bottom">
-            <input type="search" class="form-control fs-2" placeholder="Search here" id="search" />
-            <a href="javascript:void(0)" data-bs-dismiss="modal" class="lh-1">
-              <i class="ti ti-x fs-5 ms-3"></i>
-            </a>
-          </div>
-          <div class="modal-body message-body" data-simplebar="">
-            <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
-            <ul class="list mb-0 py-2">
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Modern</span>
-                  <span class="fs-2 text-muted d-block">/dashboards/dashboard1</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Dashboard</span>
-                  <span class="fs-2 text-muted d-block">/dashboards/dashboard2</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Contacts</span>
-                  <span class="fs-2 text-muted d-block">/apps/contacts</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Posts</span>
-                  <span class="fs-2 text-muted d-block">/apps/blog/posts</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Detail</span>
-                  <span class="fs-2 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Shop</span>
-                  <span class="fs-2 text-muted d-block">/apps/ecommerce/shop</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Modern</span>
-                  <span class="fs-2 text-muted d-block">/dashboards/dashboard1</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Dashboard</span>
-                  <span class="fs-2 text-muted d-block">/dashboards/dashboard2</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Contacts</span>
-                  <span class="fs-2 text-muted d-block">/apps/contacts</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Posts</span>
-                  <span class="fs-2 text-muted d-block">/apps/blog/posts</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Detail</span>
-                  <span class="fs-2 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
-                </a>
-              </li>
-              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
-                <a href="javascript:void(0)">
-                  <span class="h6 mb-1">Shop</span>
-                  <span class="fs-2 text-muted d-block">/apps/ecommerce/shop</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+           
   <div class="dark-transparent sidebartoggler"></div>
 
 
@@ -2950,5 +2024,14 @@ $(document).ready(function(){
 </body>
 
 
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 <!-- Mirrored from bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jul 2024 06:15:47 GMT -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
 </html>

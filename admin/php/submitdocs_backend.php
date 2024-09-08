@@ -1,5 +1,5 @@
 <?php
-include('../common/config.php');
+include('../../common/config.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);

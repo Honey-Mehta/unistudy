@@ -1,47 +1,104 @@
 <?php
-if(isset($_GET['delete_id'])){
-    $conn = mysqli_connect("localhost", "root", "", "uni_study");
+// Include database configuration
+include('../common/config.php');
+
+// Check if 'delete_id' is set in the URL
+if (isset($_GET['delete_id'])) {
+    // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
+    // Sanitize and prepare the ID for deletion
     $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
     $sqlDELETE = "DELETE FROM `student` WHERE `id`='$delete_id'";
 
     if (mysqli_query($conn, $sqlDELETE)) {
-        echo "<script>
-            swal({
-                title: 'Deleted!',
-                text: 'Student has been deleted.',
-                icon: 'success',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'students.php';
-            });
-        </script>";
+        // Output SweetAlert2 script for success and redirect
+        echo "<!DOCTYPE html>
+        <html>
+        <head>
+            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Student has been deleted successfully.',
+                    icon: 'success',
+                    timer: 1000,
+                    showConfirmButton: false
+                }).then(function() {
+                    window.location.href = 'students.php';
+                });
+            </script>
+        </body>
+        </html>";
     } else {
-        echo "<script>
-            swal({
-                title: 'Error!',
-                text: 'Failed to delete student.',
-                icon: 'error',
-                timer: 3000, // Popup will be visible for 3 seconds
-                buttons: false
-            }).then(function() {
-                window.location.href = 'students.php';
-            });
-        </script>";
+        // Output SweetAlert2 script for error and redirect
+        echo "<!DOCTYPE html>
+        <html>
+        <head>
+            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to delete student.',
+                    icon: 'error',
+                    timer: 1000,
+                    showConfirmButton: false
+                }).then(function() {
+                    window.location.href = 'students.php';
+                });
+            </script>
+        </body>
+        </html>";
     }
 
+    // Close the connection
     mysqli_close($conn);
+} else {
+    echo "No ID provided.";
 }
 ?>
+
+
+
+
+
+
+
+
+
 <?php include('header.php'); ?>
 
-<?php include('sidebar.php'); ?>
+<style>
+.your-element {
+    display: none; /* Hide the element by default */
+}
 
-<div class="page-wrapper">
+/* Show the element for viewports with a max-width of 1299px */
+@media (max-width: 1300px) {
+    .your-element {
+        display: block;
+    }
+}
+</style>
+
+
+<!-- Preloader -->
+  <div class="preloader">
+    <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-icon.svg" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper" style="min-height:0vh;">
+    <!-- Sidebar Start -->
+   <?php include('sidebar.php'); ?>
+    <!--  Sidebar End -->
+    <div class="page-wrapper">
       <!--  Header Start -->
       <header class="topbar rounded-0 border-0 bg-primary">
         <div class="with-vertical"><!-- ---------------------------------- -->
@@ -50,7 +107,7 @@ if(isset($_GET['delete_id'])){
           <nav class="navbar navbar-expand-lg px-lg-0 px-3 py-0">
             <div class="d-none d-lg-block">
               <div class="brand-logo d-flex align-items-center justify-content-between">
-               
+             
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
@@ -60,7 +117,10 @@ if(isset($_GET['delete_id'])){
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
-                  
+                  <span class="logo-text">
+                    
+                   
+                  </span>
                 </a>
               </div>
 
@@ -69,8 +129,8 @@ if(isset($_GET['delete_id'])){
 
             <ul class="navbar-nav gap-2">
 
-              <li class="nav-item nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+              <li class="nav-item nav-icon-hover-bg rounded-circle your-element">
+                <a class="nav-link nav-icon-hover sidebartoggler navbar-toggler-icon" id="headerCollapse" href="javascript:void(0)">
                   <iconify-icon icon="solar:list-bold"></iconify-icon>
                 </a>
               </li>
@@ -88,51 +148,7 @@ if(isset($_GET['delete_id'])){
                 <a class="nav-link nav-icon-hover" id="drop2" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false">
                   <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
                 </a>
-                <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0 overflow-hidden" aria-labelledby="drop2">
-                  <div class="row align-items-center">
-                    <div class="col-8">
-                      <div class="ps-3 pt-3">
-                        <div class="border-bottom">
-                          <div class="row">
-                            <div class="col-6">
-                              <div class="position-relative">
-                               
-                                
-                              
-                               
-                              </div>
-                            </div>
-                            <div class="col-6">
-                              <div class="position-relative">
-                               
-                               
-                              
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row align-items-center py-3 pb-1">
-                          <div class="col-8">
-                            <a class="text-dark d-flex align-items-center lh-1 fs-3 bg-hover-primary" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-faq.html">
-                              <i class="ti ti-help fs-6 me-2"></i>Frequently Asked Questions
-                            </a>
-                          </div>
-                          <div class="col-4">
-                            <div class="d-flex justify-content-end pe-4">
-                              <button class="btn btn-primary rounded-pill fs-3">Check</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4 ms-n7">
-                      <div class="position-relative p-3 border-start h-100">
-                        <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
-                       
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              
               </li>
 
 
@@ -186,99 +202,7 @@ if(isset($_GET['delete_id'])){
                         <span class="point"></span>
                       </div>
                     </a>
-                    <div class="dropdown-menu py-0 content-dd  dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
-
-                      <div class="py-3 px-4 bg-primary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Notifications</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 4 Notifications</div>
-                      </div>
-                      <div class="message-body" data-simplebar>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center  dropdown-item gap-3   border-bottom">
-                          <span class="flex-shrink-0 bg-primary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-primary">
-                            <iconify-icon icon="solar:widget-3-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Launch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-secondary-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-secondary">
-                            <iconify-icon icon="solar:calendar-mark-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-danger-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-danger">
-                            <iconify-icon icon="solar:settings-minimalistic-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-warning-subtle rounded-circle round-40 d-flex align-items-center justify-content-center fs-6 text-warning">
-                            <iconify-icon icon="solar:link-circle-line-duotone"></iconify-icon>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Luanch Admin</h6>
-                              <span class="fs-2 d-block text-muted ">9:30 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just see the my new admin!</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-success-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="calendar" class="feather-sm fill-white text-success"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Event today</h6>
-                              <span class="fs-2 d-block text-muted ">9:10 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">Just a reminder that you have event</span>
-                          </div>
-                        </a>
-                        <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3  border-bottom">
-                          <span class="flex-shrink-0 bg-info-subtle rounded-circle round-40 d-flex align-items-center justify-content-center">
-                            <i data-feather="settings" class="feather-sm fill-white text-info"></i>
-                          </span>
-                          <div class="w-80">
-                            <div class="d-flex align-items-center justify-content-between">
-                              <h6 class="mb-1">Settings</h6>
-                              <span class="fs-2 d-block text-muted ">9:08 AM</span>
-                            </div>
-                            <span class="fs-2 d-block text-truncate text-muted">You can customize this template as you want</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="p-3">
-                        <a class="d-flex btn btn-primary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Notifications</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
-                      </div>
-
-
-
-
-
-                    </div>
+                  
                   </li>
                   <li class="nav-item hover-dd dropdown nav-icon-hover-bg rounded-circle">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" aria-expanded="false">
@@ -290,10 +214,6 @@ if(isset($_GET['delete_id'])){
                     </a>
                     <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up overflow-hidden" aria-labelledby="drop2">
 
-                      <div class="py-3 px-4 bg-secondary">
-                        <div class="mb-0 fs-6 fw-medium text-white">Messages</div>
-                        <div class="mb-0 fs-2 fw-medium text-white">You have 5 new messages</div>
-                      </div>
                       <div class="message-body" data-simplebar>
                         <a href="javascript:void(0)" class="p-3 d-flex align-items-center dropdown-item gap-3 border-bottom">
                           <span class="user-img position-relative d-inline-block">
@@ -376,10 +296,7 @@ if(isset($_GET['delete_id'])){
                         </a>
                       </div>
                       <div class="p-3">
-                        <a class="d-flex btn btn-secondary  align-items-center justify-content-center gap-2" href="javascript:void(0);">
-                          <span>Check all Messages</span>
-                          <iconify-icon icon="solar:alt-arrow-right-outline" class="iconify-sm"></iconify-icon>
-                        </a>
+                       
                       </div>
 
                     </div>
@@ -390,7 +307,6 @@ if(isset($_GET['delete_id'])){
                   <!-- start language Dropdown -->
                   <!-- ------------------------------- -->
 
-                
 
                   <!-- ------------------------------- -->
                   <!-- end language Dropdown -->
@@ -405,9 +321,11 @@ if(isset($_GET['delete_id'])){
                     </a>
                   </li>
 
-                
-
                  
+                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
+                   
+                    
+                  </li>
 
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
@@ -428,21 +346,19 @@ if(isset($_GET['delete_id'])){
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
+                                  <?php echo  $_SESSION['email']; ?>
                               </p>
                             </div>
                           </div>
                         </div>
                         <div class="message-body pb-3">
-                          <div class="px-3 pt-3">
-                           
-                           
-                            
-                          </div>
+                         
                         
                           <div class="px-3">
-                            
                            
+                            <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
+                              
+                            </div>
                             <div class="h6 mb-0 dropdown-item py-8 px-3 rounded-2 link">
                               <a href="login.php" class=" d-flex  align-items-center ">
                                 Sign Out
@@ -478,7 +394,6 @@ if(isset($_GET['delete_id'])){
                   <b class="logo-icon">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    
                     <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/logos/logo-icon.svg" alt="homepage">
                   </b>
                   <!--End Logo icon -->
@@ -1109,7 +1024,7 @@ if(isset($_GET['delete_id'])){
                           <div class="d-flex align-items-center px-3">
                             <img src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/images/profile/user-1.jpg" class="rounded-circle round-50" alt="" />
                             <div class="ms-3">
-                              <h5 class="mb-1 fs-4">Admin</h5>
+                              <h5 class="mb-1 fs-4">Markarn Doe</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
                                 markrarn@wrappixel.com
                               </p>
@@ -1176,31 +1091,725 @@ if(isset($_GET['delete_id'])){
         </div>
       </header>
       <!--  Header End -->
+      <aside class="left-sidebar with-horizontal">
+        <!-- Sidebar scroll-->
+        <div>
+          <!-- Sidebar navigation-->
+          <nav id="sidebarnavh" class="sidebar-nav scroll-sidebar container-fluid">
+            <ul id="sidebarnav">
+              <!-- ============================= -->
+              <!-- Home -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Home</span>
+              </li>
+              <!-- =================== -->
+              <!-- Dashboard -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Dashboard</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Modern Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Awesome Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index3.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Classy Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="index4.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Analytical Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index5.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Minimal Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/index6.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">General Dashboard</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Apps -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Apps</span>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link two-column has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:archive-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Apps</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-calendar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Calendar</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-kanban.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Kanban</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-chat.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Chat</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-email.html" aria-expanded="false">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Email</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Contact Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-contact2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Contact List</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-notes.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Notes</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/app-invoice.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Invoice</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-user-profile.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">User Profile</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/blog-posts.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Posts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/blog-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Detail</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-shop.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Shop</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-shop-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Shop Detail</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-product-list.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">List</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-checkout.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Checkout</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-add-product.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Add Product</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/eco-edit-product.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Edit Product</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- PAGES -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">PAGES</span>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:programming-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Pages</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-faq.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">FAQ</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-account-settings.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Account Setting</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/page-pricing.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pricing</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-cards.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Card</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-banners.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Banner</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/widgets-charts.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Charts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/landingpage/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Landing Page</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- UI -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">UI</span>
+              </li>
+              <!-- =================== -->
+              <!-- UI Elements -->
+              <!-- =================== -->
+              <li class="sidebar-item mega-dropdown">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:text-underline-cross-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">UI</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-accordian.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Accordian</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-badge.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Badge</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-buttons.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Buttons</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-dropdowns.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Dropdowns</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-modals.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Modals</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-tab.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tab</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-tooltip-popover.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tooltip & Popover</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-notification.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Alerts</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-progressbar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Progressbar</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-pagination.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pagination</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-typography.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Typography</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-bootstrap-ui.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bootstrap UI</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-breadcrumb.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Breadcrumb</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-offcanvas.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Offcanvas</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-lists.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Lists</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-grid.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Grid</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-carousel.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Carousel</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-scrollspy.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Scrollspy</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-spinner.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Spinner</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/ui-link.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Forms -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Forms</span>
+              </li>
+              <!-- =================== -->
+              <!-- Forms -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link two-column has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:book-2-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Forms</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <!-- form elements -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-inputs.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Forms Input</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-input-groups.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Input Groups</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-input-grid.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Input Grid</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-checkbox-radio.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Checkbox & Radios</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-bootstrap-switch.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bootstrap Switch</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-select2.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Select2</span>
+                    </a>
+                  </li>
+                  <!-- form inputs -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Form</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-vertical.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Vertical</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-horizontal.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Horizontal</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-actions.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Actions</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-row-separator.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Row Separator</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-bordered.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Bordered</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-detail.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Detail</span>
+                    </a>
+                  </li>
+                  <!-- form wizard -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-wizard.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Form Wizard</span>
+                    </a>
+                  </li>
+                  <!-- Quill Editor -->
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/form-editor-quill.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Quill Editor</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Tables -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Tables</span>
+              </li>
+              <!-- =================== -->
+              <!-- Bootstrap Table -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:sidebar-minimalistic-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Tables</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-dark-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Dark Basic Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-sizing.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Sizing Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-layout-coloured.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Coloured Table</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-basic.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Basic Initialisation</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-api.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">API</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/table-datatable-advanced.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Advanced Initialisation</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Charts -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Charts</span>
+              </li>
+              <!-- =================== -->
+              <!-- Apex Chart -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:pie-chart-3-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Charts</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-line.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Line Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-area.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Area Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-bar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Bar Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-pie.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Pie Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-radial.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Radial Chart</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/chart-apex-radar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Radar Chart</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- ============================= -->
+              <!-- Icons -->
+              <!-- ============================= -->
+              <li class="nav-small-cap">
+                <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                <span class="hide-menu">Icons</span>
+              </li>
+              <!-- =================== -->
+              <!-- Tabler Icon -->
+              <!-- =================== -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:pie-chart-3-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Icon</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/icon-tabler.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Tabler Icon</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/minisidebar/icon-solar.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Solar Icon</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- multi level -->
+              <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                  <iconify-icon icon="solar:layers-minimalistic-linear" class="aside-icon"></iconify-icon>
+                  <span class="hide-menu">Multi DD</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="https://bootstrapdemos.wrappixel.com/materialpro/dist/docs/index.html" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Documentation</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 1</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link has-arrow">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 2</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse second-level">
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.1</span>
+                        </a>
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.2</span>
+                        </a>
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                          <i class="ti ti-circle"></i>
+                          <span class="hide-menu">Page 2.3</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                      <i class="ti ti-circle"></i>
+                      <span class="hide-menu">Page 3</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+      </aside>
 
+    </div>
+    <!--  Search Bar -->
+   
 
+  </div>
+      <!--  Header End -->
+     
 
 
       <div class="container-fluid" style="margin-top:100px; ">
 	      <div class="row">
 		      <div class="col-sm-8">
-          <h1>Students</h1>
+          <h1>Students </h1>
           </div>
           <div class="col-sm-4" style="margin-top:30px;">
           <div class="toggle-buttons" style="float:left;">
-            <button onclick="toggleView('list')" class="btn btn-primary">List View</button>
-            <button onclick="toggleView('grid')" class="btn btn-primary">Grid View</button>
+            <button onclick="toggleView('list')" class="btn" style="background-color: rgba(27, 132, 255, 1);  color:white; height:45px;">List View  </button>
+            <button onclick="toggleView('grid')" class="btn" style="background-color: rgba(27, 132, 255, 1);  color:white; height:45px;">Grid View</button>
           </div>
 
-           
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-left:10px;"><i class="fa fa-plus mr-4" ></i> Add new Student </button>
+ <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left: 10px; background-color: rgba(27, 132, 255, 1);  color:white;">
+    <i class="fa fa-plus mr-4"></i> Add New Student
+</button>
            <div class="modal fade" id="myModal" >
 				     <div class="modal-dialog" >
-					    <div class="modal-content">
+					    <div class="modal-content" style="min-width:120%;">
 						<!-- Modal Header -->
 						     <div class="modal-header">
-						     	<h4 class="modal-title">Add New Student</h4>
-                   <button type="button" class="close" data-dismiss="modal" style="margin-left:200px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
-                   </div>
+						     	<h4 class="modal-title">Add New Student </h4>
+						     	<button type="button" class="close" data-dismiss="modal" style="margin-left:200px; border-radius: 100px; padding: 10px; width:100px; height:40px;">&times;</button>
+					    	</div>
 						<!-- Modal Body -->
 						<!-- Modal body -->
 					      	<div class="modal-body">
@@ -1227,12 +1836,11 @@ if(isset($_GET['delete_id'])){
 								</div>
 								<div class="form-group">
 									<label for="sel1" class="form-label">Country of citizenship:</label>
-									<select class="form-select" id="sel1" name="country" class="form-control">
+									<select class="form-select" id="country_of_citizenship" name="country" class="form-control">
 										<option>---SELECT COUNTRY---</option> <?php
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM country";
         $result = mysqli_query($conn, $sql);
 
@@ -1277,13 +1885,12 @@ if(isset($_GET['delete_id'])){
 								</div>
 								<div class="form-group">
                 <label for="sel1" class="form-label" style="float:left;" >Status:</label>
-									<select class="form-select" id="sel1" name="status" class="form-control">
+									<select class="form-select" id="status" name="status" class="form-control">
 										<option>Please Choose a status</option>
 										<?php
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM status";
         $result = mysqli_query($conn, $sql);
 
@@ -1301,20 +1908,25 @@ if(isset($_GET['delete_id'])){
 								</div>
 								<div class="form-group">
 									<label for="sel1" class="form-label" style="float:left;">Referral Source:</label>
-									<select class="form-select" id="sel1" name="referall_source" class="form-control">
-										<option>Please Choose a Referall Source </option>
-										<option>Walk in </option>
-										<option>Facebook</option>
-										<option>Instagram</option>
-										<option>Youtube</option>
-										<option>Client</option>
-										<option>Another Student</option>
-										<option>Friend</option>
-										<option>Staff</option>
-										<option>In-Personal Event</option>
-										<option>Virtual Event</option>
-										<option>Immigration agent</option>
-										<option>Other</option>
+									<select class="form-select" id="referall_source" name="referall_source" class="form-control">
+										<option>Please Select Referall Source</option>
+										<?php
+        // Assuming you have established a database connection named $conn
+
+        // SQL query to fetch all countries
+        $sql = "SELECT * FROM referall_source";
+        $result = mysqli_query($conn, $sql);
+
+        // Check if there are results
+        if ($result) {
+            // Loop through the results and create an option element for each country
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<option value="' . $row['referall_source'] . '">' . $row['referall_source'] . '</option>';
+            }
+        } else {
+            
+        }
+        ?>
 									</select>
 								</div>
 								<div class="form-group">
@@ -1324,7 +1936,6 @@ if(isset($_GET['delete_id'])){
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM country_of_interest";
         $result = mysqli_query($conn, $sql);
 
@@ -1347,7 +1958,6 @@ if(isset($_GET['delete_id'])){
         // Assuming you have established a database connection named $conn
 
         // SQL query to fetch all countries
-		$conn=mysqli_connect("localhost","root","","uni_study");
         $sql = "SELECT * FROM services_of_interest";
         $result = mysqli_query($conn, $sql);
 
@@ -1363,26 +1973,29 @@ if(isset($_GET['delete_id'])){
         ?>
 									</select>
 								</div>
-								<div style="display: flex; justify-content: center; margin-top: 20px;" id="subclose">
-                  <button type="submit" class="btn btn-primary" style="margin-right: 10px;" id="submitBtn">Submit</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								<div style="display: flex; justify-content: center; margin-top: 20px;">
+                 
                 </div>
 							</form>
               <div class="row">
 								<div class="col-sm-12">
 									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div> -->
-									<div class="input-group mb-0" id="message_login">
-										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
-									</div>
-                  <div id="loader"></div>
+									
 								</div>
 							</div>
               </div>
 
-              <div class="modal-footer">
-              
+              <div class="modal-footer d-flex justify-content-center">
+               <button type="submit" class="btn btn-primary btn-lg" style="margin-right: 10px;" id="submit_student">Submit</button>
+                  <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
 								<!--   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
 						</div>
+
+
+                        <div class="input-group mb-0" id="message_login">
+										<!-- <a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Register To Create Account</a> -->
+									</div>
+                                    <div id="loader"></div>
 
       </div>
       </div>
@@ -1405,13 +2018,34 @@ if(isset($_GET['delete_id'])){
 
 
 
+      <style>
+/* Loader CSS */
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: none;
+    position: fixed;
+    left: 35%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 
 
 
 
 
 
-   
 
 
 
@@ -1422,33 +2056,57 @@ if(isset($_GET['delete_id'])){
 
 
 
-<!-- 
+ <style>
+//     .button-container {
+//         display: flex; /* Use flexbox to align items */
+//         gap: 5px; /* Space between buttons */
+//     }
+
+//     modal-dialog {
+//   max-width: 500px; /* Set fixed width */
+//   width: 100%; /* Ensure it’s responsive */
+// }
+
+// .modal-body {
+//   max-height: 500px; /* Set fixed height */
+//   overflow-y: auto; /* Enable vertical scrolling */
+// }
+
+
+
+ </style>
+
+
 <style>
-    .button-container {
-        display: flex; /* Use flexbox to align items */
-        gap: 5px; /* Space between buttons */
-    }
-
-    modal-dialog {
-  max-width: 500px; /* Set fixed width */
-  width: 100%; /* Ensure it’s responsive */
+.button-container {
+    display: flex; /* Use flexbox to align items */
+    gap: 5px; /* Space between buttons */
 }
 
+/* Style for modal dialog */
+.modal-dialog {
+    max-width: 500px; /* Set fixed width */
+    width: 100%; /* Ensure it’s responsive */
+   
+ 
+}
+
+/* Style for modal body */
 .modal-body {
-  max-height: 500px; /* Set fixed height */
-  overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 80vh; /* Set height to 80% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 1rem; /* Add padding for better appearance */
+    box-sizing: border-box; /* Ensure padding does not affect the height */
 }
-</style> -->
 
-  
-
+</style>
 
 
 
 <div class="container-fluid"  style="margin-top:50px; max-width:90%;" >
 <div class="row">
 <div class="col-lg-12">
-<div id="list-view" style="display:none; overflow-x:auto;">
+<div id="list-view" style="overflow-x:auto;">
     <table class="table">
         <thead>
             <tr>
@@ -1461,8 +2119,8 @@ if(isset($_GET['delete_id'])){
                 <th scope="col" style="min-width:150px;">Passport Number</th>
                 <th scope="col" style="min-width:250px;">Passport Expiry Date</th>
                 <th scope="col" style="min-width:150px;">Gender</th>
-                <th scope="col" style="min-width:200px;">Student Created Date</th>
-                <th scope="col" style="min-width:200px;">Last Edited Date</th>
+                 <th scope="col" style="min-width:200px;">Student Created Date</th>
+                 <th scope="col" style="min-width:200px;">Last Edited Date</th>
                 <th scope="col">Email</th>
                 <th scope="col" style="min-width:150px;">Status</th>
                 <th scope="col" style="min-width:150px;">Referall source</th>
@@ -1481,8 +2139,6 @@ if(isset($_GET['delete_id'])){
         </thead>
         <tbody>
             <?php
-            $conn=mysqli_connect("localhost","root","","uni_study");
-
             // Set the number of records per page
             $records_per_page = 5;
 
@@ -1516,14 +2172,14 @@ if(isset($_GET['delete_id'])){
                 <td><?php echo $show['passport_num'];?></td>
                 <td><?php echo $show['passport_expiry_date'];?></td>
                 <td><?php echo $show['gender'];?></td>
-                <td><?php echo $show['student_created_date'];?></td>
+                  <td><?php echo $show['student_created_date'];?></td>
                     <td><?php echo $show['last_edited_date'];?></td>
                 <td><?php echo $show['email'];?></td>
                 <td><?php echo $show['status'];?></td>
                 <td><?php echo $show['referall_source'];?></td>
                 <td><?php echo $show['country_of_interest'];?></td>
                 <td><?php echo $show['service_of_interest'];?></td>
-                <td>
+                 <td>
   <?php 
   if ($show['passport_status'] == 1) { ?>
     <button class="btn btn-success">Approved</button>
@@ -1631,8 +2287,8 @@ if(isset($_GET['delete_id'])){
                 <td>
                     <div class="button-container">
                         <a href="edit_students.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Edit" target="_blank">Edit</a>
-                        <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
-                        <a href="view_documents_copy.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Delete" target="_blank">View Document</a>
+                       <a href="#" onclick="confirmDelete(<?php echo $show['id']; ?>)" class="btn btn-primary Delete">Delete</a>
+                        <a href="view_documents.php?edit=<?php echo $show['id']; ?>" class="btn btn-primary Delete" target="_blank">View Document</a>
                     </div>
                 </td>
             </tr>
@@ -1661,45 +2317,85 @@ if(isset($_GET['delete_id'])){
         </ul>
     </nav>
 </div>
-   
+
+<style>
+   #grid-view {
+    display: none;
+    overflow-x: auto;
+    max-height: 600px; /* Set a maximum height for the div */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: inherit;
+}
+</style>
+
+<style>
+    .wide-tall-swal-popup {
+        width: 400px !important; /* Adjust the width as needed */
+        height: 400px !important; /* Adjust the height as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .wide-tall-swal-popup .swal2-html-container {
+        height: 100%; /* Ensure content area fits the new height */
+    }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+  //  width: 100%; /* Full width */
+  //  height: 100%; /* Full height */
+  //  overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
 
 
+</style>
 
-<div id="grid-view"  style="overflow-x:auto;">
-    <table class="table table-bordered" style= "max-width:120px;" >
-        <thead  >
+<div id="grid-view"  style="display:none; overflow-x:auto;">
+    <table class="table table-bordered" style="min-width: 2000px;">
+        <thead>
             <tr>
-                <th scope="col" style="background-color:#ffccff; vertical-align:middle; text-align:center;">Rejected</th>
-                <th scope="col" style="background-color: #e0ebeb; vertical-align:middle; text-align:center;">Pending</th>
-                <th scope="col" style="background-color: #cdb398; vertical-align:middle; text-align:center;">App fee paid</th>
-                <th scope="col" style="background-color: #cc6666; vertical-align:middle; text-align:center;">Offer Letter Received</th>
-                <th scope="col" style="background-color: #ffbf80; vertical-align:middle; text-align:center;">LOA Received</th>
-                <th scope="col" style="background-color: #ffffcc; vertical-align:middle; text-align:center;">Waiting for approval</th>
-                <th scope="col" style="background-color: #ffe6ff; vertical-align:middle; text-align:center;">Approved</th>
-                <th scope="col" style="background-color: #ffe6cc; vertical-align:middle; text-align:center;">On hold</th>
-                <th scope="col" style="background-color: #b3ffcc; vertical-align:middle; text-align:center;">Cancelled Application</th>
-                <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Abandoned</th>
-                 <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">New Lead</th>
-                  <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Follow up</th>
-                   <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Ready to Apply</th>
+                <th scope="col" style="background-color:#ffccff; vertical-align:middle; text-align:center;">Lead</th>
+                <th scope="col" style="background-color: #e0ebeb; vertical-align:middle; text-align:center;">Admission Documents</th>
+                <th scope="col" style="background-color: #cdb398; vertical-align:middle; text-align:center;">Application Paid</th>
+                <th scope="col" style="background-color: #cc6666; vertical-align:middle; text-align:center;">Waiting for Offer letter</th>
+                <th scope="col" style="background-color: #ffbf80; vertical-align:middle; text-align:center;">Offer letter Received</th>
+                <th scope="col" style="background-color: #ffffcc; vertical-align:middle; text-align:center;">Waiting for LOA</th>
+                <th scope="col" style="background-color: #ffe6ff; vertical-align:middle; text-align:center;">LOA Received</th>
+                <th scope="col" style="background-color: #ffe6cc; vertical-align:middle; text-align:center;">Preparing Visa</th>
+                <th scope="col" style="background-color: #b3ffcc; vertical-align:middle; text-align:center;">Waiting for result</th>
+                <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Approved</th>
+                 <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Rejected</th>
+                  <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Onhold/Paused</th>
+                   <th scope="col" style="background-color: #f0f5f5; vertical-align:middle; text-align:center;">Cancelled/abandoned</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $statuses = [
-                'Rejected' => '#ffccff',
-                'Pending' => '#e0ebeb',
-                'App fee paid' => '#cdb398',
-                'Offer Letter Received' => '#cc6666',
-                'LOA Received' => '#ffbf80',
-                'Waiting for approval' => '#ffffcc',
-                'Approved' => '#ffe6ff',
-                'On hold' => '#ffe6cc',
-                'Cancelled Application' => '#b3ffcc',
-                'Abandoned' => '#f0f5f5',
-                'New Lead' => '',
-                'Follow up' => '',
-                'Ready to Apply' => ''
+                'Lead' => '#ffccff',
+                'Admission Documents' => '#e0ebeb',
+                'Application Paid' => '#cdb398',
+                'Waiting for Offer letter' => '#cc6666',
+                'Offer letter Received' => '#ffbf80',
+                'Waiting for LOA' => '#ffffcc',
+                'LOA Received' => '#ffe6ff',
+                'Preparing Visa' => '#ffe6cc',
+                'Waiting for result' => '#b3ffcc',
+                'Approved' => '#f0f5f5',
+                'Rejected' => '',
+                'Onhold/Paused' => '',
+                'Cancelled/abandoned' => ''
             ];
 
             // Fetch all students and organize by status
@@ -1723,8 +2419,8 @@ if(isset($_GET['delete_id'])){
                 foreach ($statuses as $status => $color) {
                     if (isset($studentsByStatus[$status][$i])) {
                         $student = $studentsByStatus[$status][$i];
-                       echo "<td class='card-container' >";
-                        echo "<div class='card' style='min-width:450px;'>";
+                       echo "<td class='card-container'>";
+                        echo "<div class='card' >";
                             echo "<div class='card-body'>";
                                 echo "<p class='card-text'><strong>First Name: </strong>{$student['first_name']} {$student['last_name']}</p>";
                                 echo "<p class='card-text'><strong>Middle Name: </strong>{$student['middle_name']}</p>";
@@ -1733,15 +2429,15 @@ if(isset($_GET['delete_id'])){
                                 echo "<p class='card-text'><strong>Passport Number: </strong>{$student['passport_num']}</p>";
                                 echo "<p class='card-text'><strong>Passport Expiry Date: </strong>{$student['passport_expiry_date']}</p>";
                                 echo "<p class='card-text'><strong>Gender: </strong>{$student['gender']}</p>";
-                                echo "<p class='card-text'><strong>Last Edited Date: </strong>{$student['last_edited_date']}</p>";
-                              echo"<a href='edit_students.php?edit={$student['id']}' class='btn btn-primary Edit' target='_blank'> Edit</a>";
-                              echo "<a href='#' onclick='confirmDelete(" . $student['id'] . ")' class='btn btn-primary Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
+                                 echo "<p class='card-text'><strong>
+                                 Last Edited Date: </strong>{$student['last_edited_date']}</p>";
+                                   echo"<a href='edit_students.php?edit={$student['id']}' class='btn Edit' target='_blank' style='background-color: rgba(27, 132, 255, 1);  color:white;'> Edit</a>";
+                              echo "<a href='#' onclick='confirmDelete(" . $student['id'] . ")' class='btn btn-Danger Delete' style='margin-left:10px;'><i class='fa fa-trash'></i></a>";
 
-                              echo"<a href='view_documents_copy.php?edit={$student['id']}' class='btn btn-primary Delete' style='margin-left:10px;' target='_blank'>View Document</a>";  
+                              echo"<a href='view_documents.php?edit={$student['id']}' class='btn Delete' style='margin-left:10px; background-color: rgba(27, 132, 255, 1);  color:white;' target='_blank'>View Document</a>";  
 
-
-                              echo "<div class='btn-group'>";
-                              echo "<button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Change status</button>";
+                                echo "<div class='btn-group' style='margin:10px;'>";
+                              echo "<button type='button' class='btn btn-primary dropdown-toggle' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' style='background-color: rgba(27, 132, 255, 1);  color:white;'>Change status</button>";
                               echo "<div class='dropdown-menu p-4'>";
                               echo "<form id='change_status' method='post'>";
                               echo "<input type='hidden' name='id' value='{$student['id']}'>";
@@ -1750,7 +2446,7 @@ if(isset($_GET['delete_id'])){
                               echo "<option value='' disabled selected>Please Choose a status</option>";
                               
                               // Assuming you have established a database connection named $conn
-                              $conn = mysqli_connect("localhost", "root", "", "uni_study");
+                              $conn=mysqli_connect("sql211.infinityfree.com","if0_36845122","kwTxRyVkymsQm","if0_36845122_Uni_Study");
                               $sql = "SELECT * FROM status";
                               $result = mysqli_query($conn, $sql);
                           
@@ -1765,16 +2461,16 @@ if(isset($_GET['delete_id'])){
                               }
                           
                               echo "</select>";
-                              echo "<button type='submit' class='btn btn-primary mt-2'>Submit</button>";
+                              echo "<button type='submit' class='btn btn-primary mt-2' style='background-color: rgba(27, 132, 255, 1);  color:white;'>Submit</button>";
                               echo "</form>";
                               echo "</div>";
                               echo "</div>";
                           
+                              
+echo "</div>";
 
 
-                              echo "</div>";
-
-
+                                echo "</div>";
                         echo "</div>";
                     echo "</td>";
                     } else {
@@ -1792,6 +2488,8 @@ if(isset($_GET['delete_id'])){
 </div>
 </div>
 
+
+   
 <script>
         // Get today's date
         var today = new Date();
@@ -1817,22 +2515,29 @@ if(isset($_GET['delete_id'])){
         });
     </script>
 
-<script>
-    const passport_expiry_date = document.getElementById('passport_expiry_date');
+    <script>
+        // Get today's date
+        var today = new Date();
+        
+        // Format today's date to YYYY-MM-DD
+        var todayFormatted = today.toISOString().split('T')[0];
+        
+        // Set the min attribute for the date input to today
+        var passportExpiryInput = document.getElementById('passport_expiry_date');
+        passportExpiryInput.setAttribute('min', todayFormatted);
 
-    passport_expiry_date.addEventListener('focus', function () {
-        this.showPicker();
-    });
+        passportExpiryInput.addEventListener('focus', function () {
+            this.showPicker();
+        });
 
-    passport_expiry_date.addEventListener('click', function () {
-        this.showPicker();
-    });
+        passportExpiryInput.addEventListener('click', function () {
+            this.showPicker();
+        });
 
-    passport_expiry_date.addEventListener('blur', function () {
-        // Optionally, you can add any additional behavior when the input loses focus
-    });
-</script>
-
+        passportExpiryInput.addEventListener('blur', function () {
+            // Optionally, you can add any additional behavior when the input loses focus
+        });
+    </script>
 
 
 
@@ -1848,46 +2553,124 @@ if(isset($_GET['delete_id'])){
 
 
 
-
   <script>
 $(document).ready(function(){
 
-    $("#insertForm").on("submit", function(event){
+    // $("#submit_student").on("click", function(event){
      
-        event.preventDefault();
+    //     event.preventDefault();
+    //     $.ajax({
+    //         url: "insert.php",
+    //         method: "POST",
+    //         data: $(this).serialize(),
+    //         success: function(data){
+          
+    //             $("#message_login").show().html(data);
+    //         }
+    //     });
+    // });
+   
+
+   $("#submit_student").on("click", function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+
+    var name = $("#name").val();
+    var l_name = $("#l_name").val();
+    var intake_status = $("#middle_name").val();
+    var submission_deadline = $("#dob").val();
+     var country_of_citizenship = $("#country_of_citizenship").val();
+     var passport_num = $("#passport_num").val();
+     var passport_expiry_date = $("#passport_expiry_date").val();
+     var male = $("#male").val();
+     var female = $("#female").val();
+   
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var status = $("#status").val();
+                    var referall_source = $("#referall_source").val();
+                   var country_of_interest = $("#country_of_interest").val();
+                 var service_of_interest = $("#service_of_interest").val();
+   
+
+   
+    // Check if any of the fields are empty
+    if (name === "" || l_name === "" || intake_status === "" || intake_status === "" || submission_deadline === "" || country_of_citizenship === "" || passport_num === "" || passport_expiry_date === "" || male === "" || female === "" || email === "" || phone === "" || status === "" || referall_source === "" || country_of_interest === "" || service_of_interest === "") {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Missing Information',
+            text: 'All the fields are compulsory.',
+        });
+    } else {
+        // Assuming the form has an id of 'insertForm'
+        var form = $("#insertForm")[0]; 
+        var formData = new FormData(form); // Pass the form element to FormData
+
         $.ajax({
             url: "insert.php",
             method: "POST",
-            data: $(this).serialize(),
-            success: function(data){
-          
-                $("#message_login").show().html(data);
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+               
+                $("#message_login").html(data);
+            },
+            error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Submission Failed',
+                    text: 'There was an error submitting your data.',
+                });
             }
         });
-    });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     $("#change_status").on("submit", function(event){
-    
+     
      event.preventDefault();
      $.ajax({
          url: "php/update_status.php",
          method: "POST",
          data: $(this).serialize(),
          success: function(data){
-                  alert(data);
+                  
              $("#message_login").show().html(data);
              window.location.reload(); 
          }
      });
  });
 
-    
+
+
+
+
+
+
+
  $('#country_of_interest').multiselect({
   nonSelectedText: 'Select Country of Interest',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'465px'
+  buttonWidth:'542px'
  });
  
  
@@ -1895,7 +2678,7 @@ $(document).ready(function(){
   nonSelectedText: 'Select Service of Interest',
   enableFiltering: true,
   enableCaseInsensitiveFiltering: true,
-  buttonWidth:'465px'
+  buttonWidth:'542px'
  });
  
 
@@ -1924,36 +2707,27 @@ $(document).ready(function(){
     toggleView('grid');
 </script>
 
-
-   <script>
-        // Get today's date
-        var today = new Date();
-        
-        // Format today's date to YYYY-MM-DD
-        var todayFormatted = today.toISOString().split('T')[0];
-        
-        // Set the min attribute for the date input to today
-        var passportExpiryInput = document.getElementById('passport_expiry_date');
-        passportExpiryInput.setAttribute('min', todayFormatted);
+ <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Students!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to PHP script to handle deletion
+                window.location.href = "?delete_id=" + id;
+            }
+        });
+    }
     </script>
 
-<script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this student!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            window.location.href = "?delete_id=" + id;
-        }
-    });
-}
-</script>
 
+ 
 
 
 <div class="dark-transparent sidebartoggler"></div>
@@ -1974,12 +2748,7 @@ function confirmDelete(id) {
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/fullcalendar/index.global.min.js"></script>
   <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/apps/calendar-init.js"></script>
 
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/dashboards/dashboard4.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/libs/jvectormap/jquery-jvectormap.min.js"></script>
-  <script src="https://bootstrapdemos.wrappixel.com/materialpro/dist/assets/js/extra-libs/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 
-
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

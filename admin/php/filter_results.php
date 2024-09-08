@@ -1,4 +1,4 @@
-<?php include("../common/config.php");
+<?php include("../../common/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Initialize the filters

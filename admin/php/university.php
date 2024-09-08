@@ -1,18 +1,25 @@
 <?php  
-include('../common/config.php');
+include('../../common/config.php');
 
 extract($_POST);
 
-$sql="INSERT INTO universities (name, description, start_url) VALUES ('$name', '$description', '$url')";
+   $imagee = $_FILES['image']['name'];
+        $imageePath = '../images/' . basename($imagee);
+
+
+move_uploaded_file($_FILES['image']['tmp_name'], $imageePath);
+
+
+$sql="INSERT INTO universities (name, description, start_url, location, location_url, campus_city, image) VALUES ('$name', '$description', '$url', '$location', '$location_url', '$campus_city', '$imagee')";
 $us=mysqli_query($conn,$sql);
 
 if($us)
 {
 
     echo '<script>
-    document.getElementById("loader").style.display = "block";
+    
    setTimeout(function(){
-       document.getElementById("loader").style.display = "none";
+   
         Swal.fire({
                    title: "University Added successfully!",
                    text: "University Added successfully...",

@@ -9,8 +9,9 @@ $universityname = isset($_GET['universityname']) ? htmlspecialchars($_GET['unive
 
 
 <?php 
-include("./common/config.php");
+// include("./common/config.php");
 
+include("../common/config.php");
 // Fetch the student record from the database
 $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id='$student'"));
 
@@ -37,7 +38,6 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                     <!-- Dark Logo icon -->
                     <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="dark-logo" width="200px" height="50px;" />
                     <!-- Light Logo icon -->
-                    <img src="./images/logo_with_name_white_foreground.png" alt="homepage" class="light-logo" />
                   </b>
                   <!--End Logo icon -->
                   <!-- Logo text -->
@@ -48,20 +48,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
             </div>
 
-            <ul class="navbar-nav gap-2">
-
-              <li class="nav-item nav-icon-hover-bg rounded-circle">
-                <a class="nav-link nav-icon-hover sidebartoggler" id="headerCollapse" href="javascript:void(0)">
-                  <iconify-icon icon="solar:list-bold"></iconify-icon>
-                </a>
-              </li>
-              <!-- ------------------------------- -->
-              <!-- start notification Dropdown -->
-              <!-- ------------------------------- -->
-             
-
-
-            </ul>
+          
 
             <div class="d-block d-lg-none">
               <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -345,23 +332,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
                 
 
-                  <li class="nav-item hover-dd dropdown  nav-icon-hover-bg rounded-circle d-none d-lg-block">
-                   
-                    <div class="dropdown-menu py-0 content-dd dropdown-menu-animate-up dropdown-menu-end overflow-hidden" aria-labelledby="drop2">
-
-                      
-                      <div class="message-body" data-simplebar>
-                      
-                       
-                      
-                        
-                      
-                     
-                      </div>
-                     
-
-                    </div>
-                  </li>
+            
 
                   <!-- ------------------------------- -->
                   <!-- end notification Dropdown -->
@@ -382,7 +353,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                             <div class="ms-3">
                               <h5 class="mb-1 fs-4">Admin</h5>
                               <p class="mb-0 fs-2 d-flex align-items-center text-muted">
-                                markrarn@wrappixel.com
+                                <?php echo  $_SESSION['email']; ?>
                               </p>
                             </div>
                           </div>
@@ -1329,7 +1300,64 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         <div class="row">
             <!-- <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"> -->
                 <!-- <div class="card px-0 pt-4 pb-0 mt-3 mb-3"> -->
-                    <h2 id="heading"><?php echo $fetch['first_name'].' '.$fetch['last_name'].' '.$programlevel.' '.$universityname; ?></h2>
+
+
+
+                <div class="d-flex align-items-center">
+    <h6 id="heading" class="me-3">
+        <?php echo $fetch['first_name'].' '.$fetch['last_name'].' '.$programlevel.' '.$universityname; ?>
+    </h6>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" style="background-color:rgb(230, 239, 254); color:rgb(10, 90, 218);font-weight: 600;">
+        Change Intake
+    </button>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Intake</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="acadmic_intake" method="post">
+                    <label>Academic Intake</label>
+                    <input type="hidden" name="student_id" value="<?php echo $fetch['id']; ?>">
+
+                    <div class="row">
+                        <?php 
+                            include("./common/config.php");
+                            $sql = mysqli_query($conn, "SELECT * FROM acadmic_intakes");
+                            while ($fetch_array = mysqli_fetch_assoc($sql)) {
+                        ?>
+                        <div class="col-sm-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="acadmic_intakes" value="<?php echo $fetch_array['year']; ?>" id="acadmic_intake_<?php echo $fetch_array['year']; ?>">
+                                <label class="form-check-label" for="acadmic_intake_<?php echo $fetch_array['year']; ?>">
+                                    <strong><?php echo $fetch_array['year']; ?></strong>
+                                </label>
+                            </div>
+                            <p><strong>Success Score:</strong> <?php echo $fetch_array['success_score']; ?></p>
+                            <p><strong>Intake Status:</strong> <?php echo $fetch_array['intake_status']; ?></p>
+                            <p><strong>Submission Deadline:</strong> <?php echo $fetch_array['submission_deadline']; ?></p>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+            
+
+
+                   
                     <form id="msform"  method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo  $fetch['id']; ?>"> 
                         <!-- progressbar -->
@@ -1386,20 +1414,20 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <div class="row">
-      <div class="col-lg-6">
-      Login Email</br>
-      Primary Email</br>
-      First Name</br>
-      Last Name</br>
-      Birthday</br>
-      Phone number</br>
-      First Language</br>
-      Gender</br>
-      Marital Status</br>
-      Passport number</br>
-      Passport Expiry Date</br>
-      </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6" style="text-align: left;">
+   Login Email</br>
+   Primary Email</br>
+   First Name</br>
+   Last Name</br>
+   Birthday</br>
+   Phone number</br>
+   First Language</br>
+   Gender</br>
+   Marital Status</br>
+   Passport number</br>
+   Passport Expiry Date</br>
+</div>
+      <div class="col-lg-6" style="text-align: left;">
       <?php echo $fetch['email']; ?></br>
      <?php echo $fetch['email']; ?></br>
       <?php echo $fetch['first_name']; ?></br>
@@ -1440,7 +1468,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
       <div class="accordion-body">
           
                         <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-6" style="text-align: left;">
       Street</br>
       City/Town</br>
       Country</br>
@@ -1449,7 +1477,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
      
     
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6" style="text-align: left;">
       <?php echo $fetch['address']; ?></br>
      <?php echo $fetch['city']; ?></br>
       <?php echo $fetch['country']; ?></br>
@@ -1510,7 +1538,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
           
-                        <div class="row">
+                        <div class="row" style="text-align: left;">
             Country of Education</br>
       Grade</br>
       Schools Attended</br>
@@ -1521,7 +1549,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                {
              ?>
     
-      <div class="col-lg-6">
+      <div class="col-lg-6" style="text-align: left;">
       
       School Name</br>
       Level</br>
@@ -1535,7 +1563,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
       Graduation Date </br>
       <hr>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6" style="text-align: left;">
             <?php 
             
          echo $value;
@@ -1645,6 +1673,516 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
     <p>Application will not be processed until payment received. Submit payment now</p>
 
 
+    <div class="pre-submission">
+
+
+
+
+    <div class="row" style="background-color:rgb(246, 246, 246);">
+    <div class="col-sm-5">
+    <div class="heading" style="text-align: left;">
+      <h6> Pre-submission</h6>
+     <span> 6 Requirements to be completed</span>
+    </div>
+    </div>
+       <div class="col-sm-7">
+
+   </div>
+  
+   </div>
+
+
+   <div class="row">
+   <h4>Marriage Certificate</h4>
+   <div class="col-sm-3">
+   <div id="marriage_certificate" style="width:100%; height:100px;">
+   <?php 
+    if ($fetch['marriage_certificate_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['marriage_certificate_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+
+    <?php if ($fetch['marriage_certificate'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#marraige_certificate_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+ 
+        <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+
+
+     <?php } ?>
+
+
+
+
+   </div>
+
+<div class="col-sm-3">
+        <div class="upload-section">
+    <label for="marriage_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+    <form id="uploadForm" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student1" value="<?php echo $student; ?>" id="studentone" >
+    <input type="file" id="marriage_file" name="marriage_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login"></div>
+</form>
+</div>
+</div>
+ </div>
+
+  <div class="row">
+   <h4>Passport</h4>
+   <div class="col-sm-3">
+   <div id="passport" style="width:100%; height:100px;">
+    <?php 
+    if ($fetch['passport_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['passport_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+
+       <?php if ($fetch['image'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passport_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+            <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+
+
+     <?php } ?>
+
+
+
+   </div>
+
+<div class="col-sm-3">
+        <div class="upload-section">
+    <label for="passport_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+    <form id="uploadForm2" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student2" value="<?php echo $student; ?>" id="studenttwo" >
+    <input type="file" id="passport_file" name="passport_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login2"></div>
+</form>
+</div>
+</div>
+</div>
+
+
+    <div class="row">
+     <h4>College Transcript</h4>
+    <div class="col-sm-3">
+     <div id="college_transcript" style="width:100%; height:100px;">
+       <?php 
+    if ($fetch['college_transcript_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['college_transcript_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+    
+    <div class="col-sm-6">
+        
+           <?php if ($fetch['college_transcript'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#college_transcript_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+    </div>
+
+    <div class="col-sm-3">
+     <div class="upload-section">
+    <label for="college_transcript_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+    <form id="uploadForm3" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student3" value="<?php echo $student; ?>" id="studentthree" >
+    <input type="file" id="college_transcript_file" name="college_transcript_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login3"></div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+
+    <div class="row">
+      <h4>College Diploma</h4>
+    <div class="col-sm-3">
+    <div id="college_diploma" style="width:100%; height:100px;">
+   <?php 
+    if ($fetch['college_diploma_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['college_diploma_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+    </div>
+    <div class="col-sm-6">
+     
+
+       <?php if ($fetch['college_diploma'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#college_diploma_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+
+
+
+
+
+
+    </div>
+        <div class="col-sm-3">
+     <div class="upload-section">
+       <label for="college_diploma_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+     <form id="uploadForm4" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student4" value="<?php echo $student; ?>" id="studentfour" >
+    <input type="file" id="college_diploma_file" name="college_diploma_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login4"></div>
+</form>
+    
+</div>
+    </div>
+   </div>
+
+
+
+     <div class="row">
+       <h4> Highschool Transcript</h4>
+     <div class="col-sm-3">
+    <div id="highschool_transcript" style="width:100%; height:100px;">
+      <?php 
+    if ($fetch['highschool_transcript_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['highschool_transcript_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+
+
+
+
+  
+       <?php if ($fetch['highschool_transcript'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#highschool_transcript_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+
+
+
+
+
+
+
+   </div>
+   
+   <div class="col-sm-3">
+     <div class="upload-section">
+    <label for="highschool_transcript_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+     <form id="uploadForm5" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student5" value="<?php echo $student; ?>" id="studentfive" >
+    <input type="file" id="highschool_transcript_file" name="highschool_transcript_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login5"></div>
+</form>
+</div>
+</div>
+</div>
+
+    <div class="row">
+           <h4> Highschool Diploma</h4>
+    <div class="col-sm-3">
+    <div id="highschool_diploma" style="width:100%; height:100px;">
+     <?php 
+    if ($fetch['highschool_diploma_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['highschool_diploma_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+
+  <?php if ($fetch['highschool_diploma'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#highschool_diploma_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+
+
+
+
+
+
+
+   </div>
+   
+   <div class="col-sm-3">
+     <div class="upload-section">
+    <label for="highschool_diploma_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+     <form id="uploadForm6" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student6" value="<?php echo $student; ?>" id="studentsix" >
+    <input type="file" id="highschool_diploma_file" name="highschool_diploma_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login6"></div>
+</form>
+</div>
+    </div>
+   </div>
+
+
+    <div class="row">
+       <h4> Medium of Instruction</h4>
+    <div class="col-sm-3">
+    <div id="medium_of_instruction" style="width:100%; height:100px;">
+    <?php 
+    if ($fetch['medium_of_instruction_status'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['medium_of_instruction_status'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+ <?php if ($fetch['medium_of_instruction'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mediumof_instruction_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+
+
+   </div>
+
+   <div class="col-sm-3">
+     <div class="upload-section">
+    <label for="medium_of_instruction_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+    <form id="uploadForm7" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student7" value="<?php echo $student; ?>" id="studentseven">
+    <input type="file" id="medium_of_instruction_file" name="medium_of_instruction_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login7"></div>
+</form>
+</div>
+    </div>
+
+
+   </div>
+   
+
+     <div class="row">
+        <h4>Resume</h4>
+    <div class="col-sm-3">
+    <div id="resume" style="width:100%; height:100px;">
+      <?php 
+    if ($fetch['resume'] == 1) { 
+    ?>
+        <i class="fas fa-check-circle text-success"></i> </br><div class="text-success">Approved </div>
+    <?php 
+    } else if($fetch['resume'] == 2) { 
+    ?>
+        <i class="fas fa-times-circle text-danger"></i>  </br><div class="text-danger">Reject...</div>
+    <?php 
+    } else {
+     ?>
+       <i class="fas fa-hourglass-half text-warning"></i>  </br><div class="text-warning">Pending...</div>
+    <?php 
+
+    } 
+    ?>
+   </div> 
+   </div>
+   <div class="col-sm-6">
+
+        <?php if ($fetch['resume'] != "") { ?>
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resume_modal">
+       View PDF
+    </button>
+    <?php } else { ?>
+
+             <div class="d-flex justify-content-center">
+            <img src="./images/pdf.png" width="100px" height="80px" style="margin-top:50px;">
+          </div>
+
+            <?php } ?>
+
+
+   </div>
+   
+   <div class="col-sm-3">
+     <div class="upload-section">
+    <label for="resume_file" class="custom-file-upload">
+       <img src="./images/upload_file.png" style="width:50px;height:50px;">
+    </label>
+     <form id="uploadForm8" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="student8" value="<?php echo $student; ?>" id="studenteight">
+    <input type="file" id="resume_file" name="resume_file" accept="application/pdf" class="form-control" style="display:none;">
+    <div class="message_login8"></div>
+</form>
+</div>
+    </div>
+   </div>
+   
+
+ 
+  
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    </div>                                         
                                   
                                    
@@ -1664,77 +2202,13 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 </div>
 
                            
-                            <input type="button" name="next" class="next action-button" value="Next"  />
+                            <input type="button" name="next" class="next action-button" value="Next" style="display:none;" />
                         </fieldset>
                         <fieldset>
-                            <div class="form-card">
-                            <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Education Summary:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 2 - 4</h2>
-                                    </div>
+                            
 
 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                            <label for="sel1" class="form-label">Country Of Education:</label>
-									<select class="form-select" id="country_of_education" name="country_of_education" class="form-control">
-										<option>---SELECT COUNTRY---</option> <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-		include("./common/config.php");
-
-        $sql = "SELECT * FROM country";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['name'] == $fetch['country']) ? "selected" : "";
-                echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
-            
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
-									</select>
-
-                                            </div>
-                                            <div class="col-sm-6">
-                                            <label for="sel1" class="form-label">Highest Level Of Education:</label>
-									<select class="form-select" id="highest_level_of_education" name="highest_level_of_education" class="form-control">
-										<option>---Select Program Level---</option> <?php
-        // Assuming you have established a database connection named $conn
-
-        // SQL query to fetch all countries
-		include("./common/config.php");
-
-        $sql = "SELECT * FROM program_level";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['program_level'] == $fetch['program_level']) ? "selected" : "";
-                echo '<option value="' . $row['program_level'] . '" ' . $selected . '>' . $row['program_level'] . '</option>';
-            
-            }
-        } else {
-            echo '<option>No Program Level found</option>';
-        }
-        ?>
-									</select>
-                                            </div>
-                                            
-                                        </div>
-                                        </div>
+                                         
 
 
 
@@ -1743,39 +2217,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
 
-                                        <h2 class="fs-title">Schools Attended:</h2>
-
-
-                                        <div id="dropdown-container"></div>
-    <button type="button" id="add-more-btn">Add More</button>
-
-
-<div id="dropdown-template" style="display: none;" class="row">
-    <div class="col-sm-4">
-  <label>Country of Institution</label>
-    <select class="form-select" name="country_of_institute" class="form-control">
-       
-        <?php
-        // Assuming you have established a database connection named $conn
-      include("./common/config.php");
-
-        // SQL query to fetch all countries
-        $sql = "SELECT * FROM country";
-        $result = mysqli_query($conn, $sql);
-        // Check if there are results
-        if ($result) {
-            // Loop through the results and create an option element for each country
-            while ($row = mysqli_fetch_assoc($result)) {
-                $selected = ($row['name'] == $fetch['country']) ? "selected" : "";
-                echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
-            }
-        } else {
-            echo '<option>No countries found</option>';
-        }
-        ?>
-    </select>
-      </div>
-</div>
+                                    
 
 
 
@@ -1796,51 +2238,14 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
 
-                                </div> 
-                            </div> 
-                            <input type="button" name="next" class="next action-button" value="Next" /> 
-                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Upload Document:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 3 - 4</h2>
-                                    </div>
-                                </div> 
-                                
-                                <label class="fieldlabels">Upload Your Photo:</label> 
-                                <input type="file" name="file" id="file" accept="application/pdf">
 
                                 
-                            </div> 
-                            <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
-                            <!-- <input type="button" name="next" class="next action-button" value="Submit" />  -->
-                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                         </fieldset>
                         <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Finish:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 4 - 4</h2>
-                                    </div>
-                                </div> <br><br>
-                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                                </div> <br><br>
-                                <div class="row justify-content-center">
-                                    <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                    </div>
-                                </div>
-                            </div>
+                           
+                        </fieldset>
+                        <fieldset>
+                           
                         </fieldset>
                     </form>
                     <div class="row">
@@ -1856,6 +2261,183 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
             <!-- </div> -->
         </div>
     </div>
+
+
+
+<div class="modal fade" id="marraige_certificate_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['marriage_certificate']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="passport_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['image']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="college_transcript_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['college_transcript']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="modal fade" id="college_diploma_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['college_diploma']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="modal fade" id="highschool_transcript_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['highschool_transcript']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="modal fade" id="highschool_diploma_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['highschool_diploma']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="modal fade" id="mediumof_instruction_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['medium_of_instruction']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+ <div class="modal fade" id="resume_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%; max-width: 1000px; height:50%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Pdf</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <embed id="pdfEmbed" src="./images/<?php echo $fetch['resume']; ?>" type="application/pdf" width="100%" height="600px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" id="submit_acadmic_intake">Save changes</button>
+            </div>
+            <div id="message_login"></div>
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
     <style>
 /* Loader CSS */
@@ -1942,11 +2524,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
                     }
                 }); 
               }
-            var input = document.querySelector("#mobile_number");
-        window.intlTelInput(input, {
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js",
-        });
-   
+            
 
             $('#country').on('change', function(){
             var countryID = $(this).val();
@@ -2001,6 +2579,278 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
 
 
    
+  $("#submit_acadmic_intake").on("click", function(event) {
+    event.preventDefault();
+
+    // Collect form data
+    var formData = new FormData($("#acadmic_intake")[0]);
+    console.log("Form Data: ", ...formData.entries()); // Enhanced debug line to display the form data contents
+
+    $.ajax({
+        url: "php/update_acadmic_intake.php", // Make sure this path is correct
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        beforeSend: function() {
+            // Show loader before making the request
+            $("#loader").show();
+        },
+        success: function(data) {
+            console.log("Response: ", data); // Debug line
+            $("#message_login").show().html(data);
+        },
+        complete: function() {
+            // Hide the loader after the request is complete (whether success or error)
+            $("#loader").hide();
+        },
+        error: function(xhr, status, error) {
+            console.error("Error: ", error); // Debug line for error handling
+            $("#message_login").show().html('<div class="alert alert-danger" role="alert">Failed to submit form. Please try again.</div>');
+        }
+    });
+});
+
+
+   $("#marriage_file").on("change", function(event) {
+  
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("marriage_file", this.files[0]); // File input
+    formData.append("student1", $("#studentone").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+         
+            $(".message_login").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+  
+
+
+
+
+   $("#passport_file").on("change", function(event) {
+      
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("passport_file", this.files[0]); // File input
+    formData.append("student2", $("#studenttwo").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload2.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+           alert(data);
+            $(".message_login2").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login2").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+
+
+   $("#college_transcript_file").on("change", function(event) {
+     
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("college_transcript_file", this.files[0]); // File input
+    formData.append("student3", $("#studentthree").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload3.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+           alert(data);
+            $(".message_login3").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login3").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+
+ 
+   $("#college_diploma_file").on("change", function(event) {
+     
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("college_diploma_file", this.files[0]); // File input
+    formData.append("student4", $("#studentfour").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload4.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+          
+            $(".message_login4").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login4").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+   $("#highschool_transcript_file").on("change", function(event) {
+    
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("highschool_transcript_file", this.files[0]); // File input
+    formData.append("student5", $("#studentfive").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload5.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+      
+            $(".message_login5").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login5").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+
+
+ $("#highschool_diploma_file").on("change", function(event) {
+    
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("highschool_diploma_file", this.files[0]); // File input
+    formData.append("student6", $("#studentsix").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload6.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+         
+            $(".message_login6").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login6").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+
+     $("#medium_of_instruction_file").on("change", function(event) {
+      
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("medium_of_instruction_file", this.files[0]); // File input
+    formData.append("student7", $("#studentseven").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload7.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+           alert(data);
+            $(".message_login7").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login7").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
+
+
+
+
+
+    $("#resume_file").on("change", function(event) {
+    
+    event.preventDefault(); // Prevent default form submission
+
+    // Create a FormData object to hold the file data
+    var formData = new FormData();
+
+    // Append the selected file and the student ID from the form
+    formData.append("resume_file", this.files[0]); // File input
+    formData.append("student8", $("#studenteight").val()); // Hidden or text input for student ID
+
+    $.ajax({
+        url: "php/upload8.php", // The server-side script to handle the upload
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+       
+            $(".message_login8").html(data); // Display server response
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $(".message_login8").html("An error occurred while uploading the file."); // Error message display
+        }
+    });
+});
+
 
 
 
@@ -2121,9 +2971,15 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id=
         passportExpiryInput.setAttribute('min', todayFormatted);
     </script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+       
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 
 

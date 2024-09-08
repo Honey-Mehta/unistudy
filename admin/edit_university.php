@@ -1,7 +1,7 @@
 
 <?php  
    $id = $_GET['edit'];
-$conn=mysqli_connect("localhost","root","","uni_study");   
+include("../common/config.php");
 $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHERE id='$id'"));
 ?>
 
@@ -1055,13 +1055,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
 
 
 
-
-
-
-
- 
-  
-      <div class="container-fluid" style="padding-top:100px;" style="max-width:90%;">
+<div class="container-fluid" style="padding-top:100px;" style="max-width:90%;">
   <div class="row">
     
 
@@ -1073,7 +1067,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
           <div class="form-group">
           <div class="row">
           <div class="col-sm-12">
-          <label for="name" style="float:left; font-size:20px;">University Name:</label></br>
+          <label for="name" style="float:left; font-size:15px;">University Name:</label></br>
            </div>
           </div>
           <input type="text" class="form-control" id="name" name="name" value="<?php echo $fetch['name']; ?>" required>
@@ -1082,7 +1076,7 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
             <div class="form-group">
              <div class="row">
                <div class="col-sm-12">
-          <label for="sel1" style="float:left; font-size:20px;">Description:</label></br>
+          <label for="sel1" style="float:left; font-size:15px;">Description:</label></br>
             </div>
            </div>
           <textarea id="description" class="form-control" name="description" placeholder="Enter your description here"><?php echo $fetch['description']; ?></textarea>
@@ -1091,15 +1085,59 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
           <div class="form-group">
             <div class="row">
             <div class="col-sm-12">
-          <label for="sel1" style="float:left; font-size:20px;">URL:</label></br>
+          <label for="sel1" style="float:left; font-size:15px;">URL:</label></br>
             </div>
            </div>
           <textarea id="url" class="form-control" name="url" placeholder="Enter your URL here"><?php echo $fetch['start_url']; ?></textarea>
          </div>
 
+            <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Location:</label></br>
+            </div>
+           </div>
+          <input type="text" class="form-control" id="location" name="location" value="<?php echo $fetch['location']; ?>" required>
+         </div>
+
+
+          <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Location URL:</label></br>
+            </div>
+           </div>
+           <textarea id="location_url" class="form-control" name="location_url" placeholder="Enter your Location URL here"><?php echo $fetch['location_url']; ?></textarea>
+         </div>
+
+ 
+
+
+            <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">Campus City:</label></br>
+            </div>
+           </div>
+          <input type="text" class="form-control" id="campus_city" name="campus_city" value="<?php echo $fetch['campus_city']; ?>" required>
+         </div>
+
+
+            <div class="form-group">
+            <div class="row">
+            <div class="col-sm-12">
+          <label for="sel1" style="float:left; font-size:15px;">images:</label></br>
+            </div>
+           </div>
+              <input type="file" name="image">
+         </div>
+
+
+
+
        
         <div class="container d-flex justify-content-center align-items-center">
-          <button type="submit" class="btn btn-primary bt-lg mt-5" style="font-size: 20px;width: 150px;height: 50px">Submit</button>
+          <button type="submit" class="btn btn-primary bt-lg mt-5" style="font-size: 20px;width: 150px;height: 50px;">Submit</button>
         </div>
       </form>
 
@@ -1116,6 +1154,15 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
   <div class="row">
   </div>
 </div>
+
+
+
+
+ 
+  
+
+
+
 
 <style>
 /* Loader CSS */
@@ -1144,15 +1191,10 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM universities WHER
 <script src="https://cdn.tiny.cloud/1/x6qk2qvw1l1zz92rb24ri8i715fxz988ms6iw3skd5o05iiq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
     tinymce.init({
-      selector: '#description, #url'
+      selector: '#description, #url, #location_url'
     });
   </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
-
-
-
 
 
 

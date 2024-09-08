@@ -1,8 +1,13 @@
-
+  <?php include('../common/config.php'); ?>
 <?php  
-   $id = $_GET['id'];
-$conn=mysqli_connect("localhost","root","","uni_study");   
-$fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id='$id'"));
+   // Get the encoded ID from the URL
+   $encoded_id = $_GET['id'];
+   
+   // Decode the Base64 encoded ID
+   $id = base64_decode($encoded_id);
+   
+ 
+   $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM student WHERE id='$id'"));
 ?>
 
 <!DOCTYPE html>
@@ -144,7 +149,6 @@ Email *</h5>
     <label for="marriage_certificate">Marriage Certificate</label><br>
     <div class="file-upload-wrapper">
         <input type="file" id="marriage_certificate" name="marriage_certificate"  accept="application/pdf" class="form-control">
-     
     </div>
 </div>
 
@@ -152,15 +156,13 @@ Email *</h5>
     <label for="passport">Passport</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="passport"  accept="application/pdf" class="form-control">
-     
     </div>
   </div>
 
   <div class="form-group">
     <label for="college_transcript">College Transcript</label><br>
     <div class="file-upload-wrapper">
-      <input type="file" name="college_transcript"  accept="application/pdf" class="form-control">
-      
+      <input type="file" name="college_transcript" accept="application/pdf" class="form-control">
     </div>
   </div>
 
@@ -168,7 +170,7 @@ Email *</h5>
     <label for="college_diploma">College Diploma</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="college_diploma"  accept="application/pdf" class="form-control">
-     
+
     </div>
   </div>
 
@@ -176,7 +178,7 @@ Email *</h5>
     <label for="highschool_transcript">HighSchool Transcript</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="highschool_transcript"  accept="application/pdf" class="form-control">
-     
+    
     </div>
   </div>
 
@@ -184,7 +186,6 @@ Email *</h5>
     <label for="highschool_diploma">HighSchool Diploma</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="highschool_diploma"  accept="application/pdf" class="form-control">
-      
     </div>
   </div>
 
@@ -192,7 +193,6 @@ Email *</h5>
     <label for="medium_of_instruction">Medium of Instruction</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="medium_of_instruction"  accept="application/pdf" class="form-control">
-      
     </div>
   </div>
 
@@ -200,22 +200,18 @@ Email *</h5>
     <label for="resume">Resume</label><br>
     <div class="file-upload-wrapper">
       <input type="file" name="resume"  accept="application/pdf" class="form-control">
-     
     </div>
   </div>
 
-  
+   
   <div class="container d-flex justify-content-center align-items-center">
     <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
 </div>
 
-
    </form>
 
-  <div class="input-group mb-0" id="message_login">
-
-  </div>
-  <div id="loader"></div>
+  <div class="input-group mb-0" id="message_login"></div>
+   <div id="loader"></div>
    </div>
 
    <div class="col-sm-4">
@@ -254,14 +250,10 @@ Email *</h5>
     100% { transform: rotate(360deg); }
 }
 </style>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 <script>
     $(document).ready(function() {
       $("#msform").on("submit", function(event) {
-       
         event.preventDefault();
         var formData = new FormData(this);
         $.ajax({
